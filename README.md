@@ -6,7 +6,7 @@ Class that produces a single `value: property`.
 .u-pos-absolute { position: absolute; }
 ```
 
-_In some circumstances_ - like mh (margin-left, margin-right), a utility produces two properties.
+_In some circumstances_ - like `mh` (`margin-left`, `margin-right`), a utility produces two properties.
 ```
 .u-mh-auto {
   margin-left: auto; 
