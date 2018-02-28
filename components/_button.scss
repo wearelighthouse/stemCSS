@@ -1,0 +1,8 @@
+/**
+ * .c-button
+ */
+
+$component: 'button';
+
+#{'.' + $global-components-namespace + $component} {
+}

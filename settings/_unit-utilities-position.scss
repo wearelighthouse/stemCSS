@@ -1,0 +1,85 @@
+/**
+ * Unit Utilities - Position
+ */
+
+$unitUtilitiesPositionSettings: (
+  ( property: 'top',
+    propertyClass: 'top-',
+
+    units: (
+      (
+        unit: '%',
+        unitClass: $global-percentage-class,
+
+        values: (
+          (
+            value: 50,
+          ),
+        ),
+      ),
+    ),
+
+    keywords: (
+      (
+        keyword: 0,
+      ),
+    ),
+  ),
+  ( property: 'right',
+    propertyClass: 'right-',
+
+    units: (
+      (
+        unit: '%',
+        unitClass: $global-percentage-class,
+
+        values: (
+          (
+            value: 100,
+          ),
+        ),
+      ),
+    ),
+
+    keywords: (
+      (
+        keyword: 0,
+        keywordClass: '0',
+      ),
+    ),
+  ),
+  ( property: 'bottom',
+    propertyClass: 'bottom-',
+
+    keywords: (
+      (
+        keyword: 0,
+      ),
+    ),
+  ),
+  ( property: 'left',
+    propertyClass: 'left-',
+
+    units: (
+      (
+        unit: '%',
+        unitClass: $global-percentage-class,
+
+        values: (
+          (
+            value: 50,
+          ),
+          (
+            value: 100,
+          ),
+        ),
+      ),
+    ),
+
+    keywords: (
+      (
+        keyword: 0,
+      ),
+    ),
+  ),
+);

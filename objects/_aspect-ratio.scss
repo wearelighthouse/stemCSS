@@ -1,0 +1,30 @@
+/**
+ * .o-aspect-ratio
+ */
+
+$object: 'aspect-ratio';
+
+#{'.' + $global-objects-namespace + $object} {
+  @extend .u-pos-relative;
+
+  &:before {
+    @extend .u-block;
+    @extend .u-width-100pc;
+    @extend %no-content;
+  }
+
+  > * {
+    @extend .u-pos-absolute;
+  }
+
+  $ratios: (50, 100);
+
+  @each $ratio in $ratios {
+
+    &--#{$ratio} {
+      &:before {
+        padding-top: #{$ratio * 1%};
+      }
+    }
+  }
+}

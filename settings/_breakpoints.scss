@@ -1,0 +1,15 @@
+$breakpoint-minimum: 320px;
+$breakpoint-large: 1400px;
+
+$breakpoint-smallestfont: $breakpoint-minimum;
+$breakpoint-largestfont: $breakpoint-large;
+
+$global-breakpoints: (
+
+  uptolarge:
+  'screen and (max-width: '$breakpoint-large - 1')',
+
+  fromlarge:
+  'screen and (min-width: '$breakpoint-large')',
+
+);

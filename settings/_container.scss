@@ -1,0 +1,7 @@
+:root {
+  --ContainerWidth: 98vw;
+
+  @include breakpoint(fromlarge) {
+    --ContainerWidth: calc(90vw);
+  }
+}

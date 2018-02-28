@@ -1,0 +1,26 @@
+/**
+ * Combinator Utilities
+ */
+
+$combinatorUtilitiesSettings: (
+  ( combinator: '> * + *',
+    properties: (
+      ( property: 'margin-top',
+        propertyClass: 'sibling-mt-',
+
+        units: (
+          (
+            unit: 'rem',
+            unitClass: $global-rem-class,
+
+            values: (
+              (
+                value: 2,
+              ),
+            ),
+          ),
+        ),
+      ),
+    ),
+  ),
+);

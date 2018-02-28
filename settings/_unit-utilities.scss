@@ -1,0 +1,67 @@
+/**
+ * Unit Utilities
+ */
+
+$unitUtilitiesSettings: (
+  ( property: 'width',
+    propertyClass: 'width-',
+
+    units: (
+      (
+        unit: '%',
+        unitClass: $global-percentage-class,
+
+        values: (
+          (
+            value: 100,
+          ),
+        ),
+      ),
+      (
+        unit: 'px',
+        unitClass: $global-px-class,
+
+        values: (
+          (
+            value: 1,
+          ),
+        ),
+      ),
+    ),
+  ),
+  ( property: 'height',
+    propertyClass: 'height-',
+
+    units: (
+      (
+        unit: '%',
+        unitClass: $global-percentage-class,
+
+        values: (
+          (
+            value: 100,
+          ),
+        ),
+      ),
+      (
+        unit: 'px',
+        unitClass: $global-px-class,
+
+        values: (
+          (
+            value: 1,
+          ),
+        ),
+      ),
+    ),
+  ),
+  ( property: ('margin-right', 'margin-left'),
+    propertyClass: 'mh-',
+
+    keywords: (
+      (
+        keyword: 'auto',
+      ),
+    ),
+  ),
+);

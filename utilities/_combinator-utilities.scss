@@ -1,0 +1,7 @@
+$combinatorUtilities: (
+  $combinatorUtilitiesSettings,
+);
+
+@each $utilitySettings in $combinatorUtilities {
+  @include makeCombinatorUtilities($utilitySettings);
+}

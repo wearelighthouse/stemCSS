@@ -1,0 +1,39 @@
+/**
+ * Word Utilities - Colours
+ */
+
+$wordUtilitiesColoursSettings: (
+  (
+    property: 'color',
+    propertyClass: 'color-',
+
+    values: (
+      (
+        value: $colour-white,
+        valueClass: 'white',
+      ),
+    ),
+  ),
+  (
+    property: 'background-color',
+    propertyClass: 'bgcolor-',
+
+    values: (
+      (
+        value: $colour-brand,
+        valueClass: 'brand',
+      ),
+    ),
+  ),
+  (
+    property: 'fill',
+    propertyClass: 'fill-',
+
+    values: (
+      (
+        value: $colour-white,
+        valueClass: 'white',
+      ),
+    ),
+  ),
+);

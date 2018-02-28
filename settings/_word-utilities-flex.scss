@@ -1,0 +1,67 @@
+/**
+ * Word Utilities - Flex
+ */
+
+$wordUtilitiesFlexSettings: (
+  (
+    property: 'flex-direction',
+    propertyClass: 'fd-',
+
+    values: (
+      (
+        value: 'column',
+        valueClass: 'col',
+      ),
+    ),
+  ),
+  (
+    property: 'flex-wrap',
+    propertyClass: 'fw-',
+
+    values: (
+      (
+        value: 'wrap',
+      ),
+      (
+        value: 'nowrap',
+        valueClass: 'no',
+      ),
+    ),
+  ),
+  (
+    property: 'align-items',
+    propertyClass: 'ai-',
+
+    values: (
+      (
+        value: 'flex-start',
+        valueClass: 'start',
+      ),
+      (
+        value: 'center',
+      ),
+      (
+        value: 'flex-end',
+        valueClass: 'end',
+      ),
+    ),
+  ),
+  (
+    property: 'justify-content',
+    propertyClass: 'jc-',
+
+    values: (
+      (
+        value: 'center',
+      ),
+      (
+        value: 'space-between',
+        valueClass: 'between',
+      ),
+      (
+        value: 'space-around',
+        valueClass: 'around',
+      ),
+    ),
+  ),
+);

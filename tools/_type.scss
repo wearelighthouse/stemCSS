@@ -1,0 +1,11 @@
+@mixin font-scale($smallest, $largest) {
+  font-size: #{$smallest}px;
+
+  @media (min-width: #{$breakpoint-smallestfont}px) and (max-width: #{$breakpoint-largestfont}px) {
+    font-size: calc(#{$smallest}px + (#{$largest} - #{$smallest}) * ( (100vw - #{$breakpoint-smallestfont}px) / ( #{$breakpoint-largestfont} - #{$breakpoint-smallestfont}) ));
+  }
+
+  @media (min-width: #{$b-fontmax}px) {
+    font-size: #{$largest}px;
+  }
+}

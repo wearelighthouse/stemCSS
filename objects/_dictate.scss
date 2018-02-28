@@ -1,0 +1,14 @@
+/**
+ * .o-dictate
+ * Visually hidden, but provided for screen readers (dictated).
+ */
+
+$object: 'dictate';
+
+#{'.' + $global-objects-namespace + $object} {
+  @extend .u-ov-hidden;
+  @extend .u-pos-absolute;
+  @extend .u-width-1px;
+  @extend .u-height-1px;
+  clip: rect(1px, 1px, 1px, 1px);
+}

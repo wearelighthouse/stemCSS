@@ -1,0 +1,7 @@
+@mixin makeClass($selector, $properties, $value) {
+  #{$selector} {
+    @each $propertySingle in $properties {
+      #{$propertySingle}: #{$value};
+    }
+  }
+}
