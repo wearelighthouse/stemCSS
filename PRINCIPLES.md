@@ -14,7 +14,7 @@ stemCSS achieves this by:
       }
     }
   ```
-### Too specific? Keep it attached to a component until you re-use it
+### Too edge-case? Keep it attached to a component until you re-use it
 ```
 .c-form {
   &__label {
