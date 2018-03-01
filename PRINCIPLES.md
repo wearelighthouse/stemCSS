@@ -33,7 +33,7 @@ You can build up and style your components in your **HTML**, or in your **SCSS**
 ### Option A - Mess in the HTML
 
 ```
-<a class="u-flex u-ai-center u-jc-center u-bgcolor-green u-shadow u-h4 u-weight-bold u-family-roboto" href="/submit">Submit</a>
+<a class="u-flex u-ai-center u-jc-center u-bgcolor-green u-shadow u-h4 u-weight-bold u-family-roboto">Submit</a>
 ```
 
 <br>
@@ -52,4 +52,20 @@ You can build up and style your components in your **HTML**, or in your **SCSS**
  }
 ```
 
-### Both are fine - but Option B is better 'documentation' of styles.
+<br>
+
+### Option C - A bit of both
+```
+ <a class="c-submit u-bgcolor-green u-shadow">Submit</a>
+ 
+ .c-submit {
+   @extend .u-flex;
+   @extend .u-ai-center;
+   @extend .u-jc-center;
+   @extend .u-h4;
+   @extend .u-weight-bold;
+   @extend .u-family-roboto;
+ }
+```
+
+### The decision is just 'where do  I prefer to manage these 'sets' of classes?
