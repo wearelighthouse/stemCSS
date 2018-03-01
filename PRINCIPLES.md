@@ -50,7 +50,7 @@ You can build up and style your components in your **HTML**, or in your **SCSS**
 
 <br>
 
-### Option B - Mess in the HTML
+### Option B - Mess in the SCSS
 ```
  .c-submit {
    @extend .u-flex;
