@@ -1,0 +1,7 @@
+$utilities: (
+  $utilitiesSettings,
+);
+
+@each $utilitySettings in $utilities {
+  @include makeUtilities($utilitySettings);
+}

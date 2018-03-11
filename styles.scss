@@ -2,8 +2,10 @@
 @import 'tools/breakpoints';
 @import 'tools/make-class';
 @import 'tools/strings';
+@import 'tools/lists';
 @import 'tools/type';
 
+@import 'tools/utilities';
 @import 'tools/combinator-utilities';
 @import 'tools/unit-utilities';
 @import 'tools/number-utilities';
@@ -14,6 +16,9 @@
 @import 'settings/colours';
 @import 'settings/breakpoints';
 @import 'settings/container';
+
+// IN TESTING
+@import 'settings/utilities';
 
 // Settings / Combinator Utilities
 @import 'settings/combinator-utilities';
@@ -38,6 +43,7 @@
 @import 'base/animation';
 
 // Mapped Utilities
+@import 'utilities/utilities';
 @import 'utilities/combinator-utilities';
 @import 'utilities/word-utilities';
 @import 'utilities/number-utilities';

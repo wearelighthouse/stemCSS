@@ -1,0 +1,66 @@
+@function gutters($count) {
+
+  @return calc(var(--GutterUnit) * #{$count});
+
+}
+
+/**
+ * Unit Utilities
+ */
+
+$utilitiesSettings: (
+  (
+    property: ('position', 'pos-'),
+
+    values: (
+      (
+        'fixed',
+        ('relative', 'rel'),
+      ),
+      (
+        value: ('absolute', 'abs'),
+        pseudos: ('hover', 'focus'),
+        breakpoints: ('uptosmall', 'smalltomed'),
+      ),
+    ),
+
+    placeholders: (
+      'static',
+    ),
+  ),
+  // (
+  //   property: 'top',
+
+  //   values: (
+  //     (
+  //       '0',
+  //       'auto',
+  //       '1rem',
+  //       '1.5rem',
+  //       '2rem',
+  //     ),
+  //     (
+  //       unit: ('%', 'pc'),
+  //       start: 10,
+  //       end: 90,
+  //       steps: 10,
+  //     ),
+  //     (
+  //       unit: 'vw',
+  //       values: (10, 30, 35, 50, 85),
+  //       pseudos: ('hover', 'focus'),
+  //       breakpoints: ('uptosmall', 'smalltomed'),
+  //     ),
+  //     (
+  //       value: ('absolute', 'abs'),
+  //       pseudos: ('hover', 'focus'),
+  //       breakpoints: ('uptosmall', 'smalltomed'),
+  //     ),
+  //   ),
+
+  //   placeholders: (
+  //     (gutters(2), '2gu'),
+  //     ('calc(var(--GutterUnit) * 2)', '2gu'),
+  //   ),
+  // ),
+);

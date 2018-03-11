@@ -1,0 +1,181 @@
+@function ifhasget($map, $value) {
+
+    @if map-has-key($map, $value) {
+        @return map-get($map, $value);
+    }
+}
+
+@function ifnoterror($map, $value, $error) {
+
+    @if map-has-key($map, $value) {
+        @return map-get($map, $value);
+    }
+
+    @else {
+        @error $error;
+    }
+}
+
+@mixin makeUtilities($settings) {
+
+  // each property...
+  @each $propertySetting in $settings {
+
+    // property:
+    $propertyName: ifnoterror($propertySetting, property, 'No property declared!');
+    $property: '';
+    $propertyClass: '';
+
+    @if (type_of($property) == string) {
+        // should hyphen be enforced?
+        $property: $propertyName;
+        $propertyClass: $propertyName + '-';
+    }
+
+    @if (type_of($property) == list) {
+        $property: first($propertyName);
+        $propertyClass: last($propertyName);
+    }
+    
+    $values: ifhasget($propertySetting, values);
+
+    @each $valueSetting in $values {
+
+        @if (type_of($valueSetting) == list) {
+
+            // Simple Values
+            @each $simpleValue in $valueSetting {
+
+                // Value = Class
+                @if type_of($simpleValue) == string {
+
+                    $value: $simpleValue;
+                    $valueClass: $simpleValue;
+
+                    $selector: #{'.' + $global-utilities-namespace + $propertyClass + $valueClass};
+                    @include makeClass($selector, $property, $value);
+                }
+
+                // Value has Class nickname
+                @if type_of($simpleValue) == list {
+
+                    $value: first($simpleValue);
+                    $valueClass: last($simpleValue);
+
+                    $selector: #{'.' + $global-utilities-namespace + $propertyClass + $valueClass};
+                    @include makeClass($selector, $property, $value);
+                }
+            }
+        }
+
+        @if (type_of($valueSetting) == map) {
+
+            $valueName: ifnoterror($valueSetting, value, 'No value declared!');
+
+            @debug $valueName;
+
+            // $psuedos: ifhasget($valueSetting, pseudos);
+
+            // $breakpoints: ifhasget($valueSetting, breakpoints);
+
+
+            
+        }
+    }
+
+
+    // ...
+
+    // $placeholders: ifhasget($propertySetting, placeholders);
+
+    // $propertyClass: map-get($utilitySetting, propertyClass);
+
+    // @if map-has-key($utilitySetting, ranges) {
+
+    //   @each $rangeSetting in map-get($utilitySetting, ranges) {
+
+    //     $start: map-get($rangeSetting, start);
+    //     $end: map-get($rangeSetting, end);
+    //     $steps: 1; // default
+
+    //     @if map-has-key($rangeSetting, steps) {
+    //       $steps: map-get($rangeSetting, steps);
+    //     }
+
+    //     @if map-get($rangeSetting, global) != false {
+
+    //       $value: $start;
+
+    //       @while $value <= $end {
+
+    //         $valueClass: str-replace(to-string($value), '.', '');
+
+    //         #{'.' + $global-utilities-namespace + $propertyClass + $valueClass} {
+    //           #{$property}: #{$value};
+    //         }
+
+    //         $value: $value + $steps;
+    //       }
+    //     }
+    //   }
+    // }
+
+//     @if map-has-key($utilitySetting, values) {
+
+//       @each $valueSetting in map-get($utilitySetting, values) {
+
+//         $value: map-get($valueSetting, value);
+
+//         $valueClass: '';
+//         @if map-has-key($valueSetting, valueClass) {
+//           $valueClass: map-get($valueSetting, valueClass);
+//         }
+//         @else {
+//           $valueClass: $value;
+//         }
+
+//         @if map-get($valueSetting, global) != false {
+
+//           $selector: #{'.' + $global-utilities-namespace + $propertyClass + $valueClass};
+//           @include makeClass($selector, $property, $value);
+//         }
+
+//         @if map-has-key($valueSetting, responsive) {
+//           @each $breakpointName in map-get($valueSetting, responsive) {
+//             @include breakpoint($breakpointName) {
+
+//               $selector: #{'.' + $global-utilities-namespace + $propertyClass + $valueClass + $global-breakpoint-separator + $breakpointName};
+
+//               @include makeClass($selector, $property, $value);
+//             }
+//           }
+//         }
+
+//         @if map-has-key($valueSetting, pseudo) {
+
+//           @each $pseudo in map-get($valueSetting, pseudo) {
+
+//             @if (type_of($pseudo) == list) {
+
+//               $pseudoClass: str-replace(to-string($pseudo), '" ', '');
+
+//               @each $pseudoName in $pseudo {
+
+//                 #{'.' + $global-utilities-namespace + $propertyClass + $valueClass + $global-pseudo-separator + $pseudoClass + ':' + $pseudoName} {
+
+//                   @extend #{'.' + $global-utilities-namespace + $propertyClass + $valueClass} !optional;
+//                 }
+//               }
+//             }
+
+//             @else {
+//               #{'.' + $global-utilities-namespace + $propertyClass + $valueClass + $global-pseudo-separator + $pseudo + ':' + $pseudo} {
+//                 @extend #{'.' + $global-utilities-namespace + $propertyClass + $valueClass} !optional;
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+  }
+}

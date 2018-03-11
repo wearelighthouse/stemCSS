@@ -18,3 +18,5 @@ settings/_*future.scss
 package-lock.json
 .sass-lint.yml
 .scss-lint.yml
+*.css
+*.map
