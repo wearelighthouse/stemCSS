@@ -1,3 +1,25 @@
+@mixin createPlaceholder($placeholder) {
+    %#{$placeholder} {
+        @content;
+    }
+}
+
+@mixin extend($placeholder) {
+    @extend %#{$placeholder};
+}
+  
+// $placeholderName: 'u-color-grey';
+// $placeholderProperty: 'color';
+// $placeholderValue: 'grey';
+  
+// @include createPlaceholder($placeholderName) {
+//     #{$placeholderProperty}: #{$placeholderValue};
+// }
+  
+// #{'.' + $placeholderName} {
+//     @extend %#{$placeholderName};
+// }
+
 @function ifhasget($map, $value) {
 
     @if map-has-key($map, $value) {
@@ -46,24 +68,30 @@
             // Simple Values
             @each $simpleValue in $valueSetting {
 
+                $value: '';
+                $valueClass: '';
+
                 // Value = Class
                 @if type_of($simpleValue) == string {
-
                     $value: $simpleValue;
                     $valueClass: $simpleValue;
-
-                    $selector: #{'.' + $global-utilities-namespace + $propertyClass + $valueClass};
-                    @include makeClass($selector, $property, $value);
                 }
-
+                
                 // Value has Class nickname
                 @if type_of($simpleValue) == list {
-
                     $value: first($simpleValue);
                     $valueClass: last($simpleValue);
+                }
 
-                    $selector: #{'.' + $global-utilities-namespace + $propertyClass + $valueClass};
-                    @include makeClass($selector, $property, $value);
+                $pair: $propertyClass + $valueClass;
+                $selector: #{'.' + $global-utilities-namespace + $pair};
+
+                @include createPlaceholder($pair) {
+                    #{$property}: #{$value};
+                }
+
+                #{$selector} {
+                    @extend %#{$pair};
                 }
             }
         }
@@ -71,15 +99,56 @@
         @if (type_of($valueSetting) == map) {
 
             $valueName: ifnoterror($valueSetting, value, 'No value declared!');
+            $valueClass: '';
 
-            @debug $valueName;
+            // Value = Class
+            @if type_of($valueName) == string {
+
+                $value: $valueName;
+                $valueClass: $valueName;
+
+                $selector: #{'.' + $global-utilities-namespace + $propertyClass + $valueClass};
+                @include makeClass($selector, $property, $value);
+            }
+
+            // Value has Class nickname
+            @if type_of($valueName) == list {
+
+                $value: first($valueName);
+                $valueClass: last($valueName);
+
+                $selector: #{'.' + $global-utilities-namespace + $propertyClass + $valueClass};
+                @include makeClass($selector, $property, $value);
+            }
+            
+            // Pseudos
+            $pseudos: ifhasget($valueSetting, pseudos);
+            
+            @each $pseudo in $pseudos {
+    
+                @if (type_of($pseudo) == list) {
+    
+                    $pseudoClass: str-replace(to-string($pseudo), '" ', '');
+    
+                    @each $pseudoName in $pseudo {
+    
+                        #{'.' + $global-utilities-namespace + $propertyClass + $valueClass + $global-pseudo-separator + $pseudoClass + ':' + $pseudoName} {
+        
+                            @extend #{'.' + $global-utilities-namespace + $propertyClass + $valueClass} !optional;
+                        }
+                    }
+                }
+
+                @else {
+                    #{'.' + $global-utilities-namespace + $propertyClass + $valueClass + $global-pseudo-separator + $pseudo + ':' + $pseudo} {
+                        @extend #{'.' + $global-utilities-namespace + $propertyClass + $valueClass} !optional;
+                    }
+                }
+            }
 
             // $psuedos: ifhasget($valueSetting, pseudos);
 
             // $breakpoints: ifhasget($valueSetting, breakpoints);
-
-
-            
         }
     }
 

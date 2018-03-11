@@ -211,8 +211,12 @@ code {
   position: fixed;
 }
 
-.u-pos-rel {
+.test, .u-pos-rel {
   position: relative;
+}
+
+.u-pos-abs, .u-pos-abs\@hover:hover, .u-pos-abs\@focus:focus {
+  position: absolute;
 }
 
 .u-sibling-mt-2rem > * + * {
