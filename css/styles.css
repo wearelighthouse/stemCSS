@@ -211,11 +211,11 @@ code {
   position: fixed;
 }
 
-.test, .u-pos-rel {
+.u-pos-rel {
   position: relative;
 }
 
-.u-pos-abs, .u-pos-abs\@hover:hover, .u-pos-abs\@focus:focus {
+.u-pos-abs, .u-pos-abs\@visited:visited {
   position: absolute;
 }
 

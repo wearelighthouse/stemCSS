@@ -19,8 +19,8 @@ $utilitiesSettings: (
       ),
       (
         value: ('absolute', 'abs'),
-        pseudos: ('hover', 'focus'),
         breakpoints: ('uptosmall', 'smalltomed'),
+        pseudos: ('visited', 'hover+focus'),
       ),
     ),
 

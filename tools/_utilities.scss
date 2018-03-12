@@ -7,18 +7,21 @@
 @mixin extend($placeholder) {
     @extend %#{$placeholder};
 }
-  
-// $placeholderName: 'u-color-grey';
-// $placeholderProperty: 'color';
-// $placeholderValue: 'grey';
-  
-// @include createPlaceholder($placeholderName) {
-//     #{$placeholderProperty}: #{$placeholderValue};
-// }
-  
-// #{'.' + $placeholderName} {
-//     @extend %#{$placeholderName};
-// }
+
+@mixin createUtilityFromPlaceholder($selector, $utilityPair) {
+    #{$selector} {
+        @include extend($utilityPair);
+    }
+}
+
+@mixin createPlaceholderAndUtility($utilityPair, $property, $value, $selector) {
+                    
+    @include createPlaceholder($utilityPair) {
+        #{$property}: #{$value};
+    }
+
+    @include createUtilityFromPlaceholder($selector, $utilityPair);
+}
 
 @function ifhasget($map, $value) {
 
@@ -65,7 +68,7 @@
 
         @if (type_of($valueSetting) == list) {
 
-            // Simple Values
+            // Simple Value
             @each $simpleValue in $valueSetting {
 
                 $value: '';
@@ -83,67 +86,91 @@
                     $valueClass: last($simpleValue);
                 }
 
-                $pair: $propertyClass + $valueClass;
-                $selector: #{'.' + $global-utilities-namespace + $pair};
+                $utilityPair: $propertyClass + $valueClass;
+                $selector: #{'.' + $global-utilities-namespace + $utilityPair};
 
-                @include createPlaceholder($pair) {
-                    #{$property}: #{$value};
-                }
-
-                #{$selector} {
-                    @extend %#{$pair};
-                }
+                @include createPlaceholderAndUtility($utilityPair, $property, $value, $selector);
             }
         }
 
+        // Complex Value
         @if (type_of($valueSetting) == map) {
 
-            $valueName: ifnoterror($valueSetting, value, 'No value declared!');
+            $valueDefinition: ifnoterror($valueSetting, value, 'No value declared!');
+            $value: '';
             $valueClass: '';
 
             // Value = Class
-            @if type_of($valueName) == string {
-
-                $value: $valueName;
-                $valueClass: $valueName;
-
-                $selector: #{'.' + $global-utilities-namespace + $propertyClass + $valueClass};
-                @include makeClass($selector, $property, $value);
+            @if type_of($valueDefinition) == string {
+                $value: $valueDefinition;
+                $valueClass: $valueDefinition;
             }
 
-            // Value has Class nickname
-            @if type_of($valueName) == list {
-
-                $value: first($valueName);
-                $valueClass: last($valueName);
-
-                $selector: #{'.' + $global-utilities-namespace + $propertyClass + $valueClass};
-                @include makeClass($selector, $property, $value);
+            // Value Class = Shortname
+            @if type_of($valueDefinition) == list {
+                $value: first($valueDefinition);
+                $valueClass: last($valueDefinition);
             }
+
+            // Define the utility
+            $utilityPair: $propertyClass + $valueClass;
+
+            // Define the selector
+            $selector: #{'.' + $global-utilities-namespace + $utilityPair};
+
+            @include createPlaceholderAndUtility($utilityPair, $property, $value, $selector);
             
             // Pseudos
             $pseudos: ifhasget($valueSetting, pseudos);
             
             @each $pseudo in $pseudos {
-    
-                @if (type_of($pseudo) == list) {
-    
-                    $pseudoClass: str-replace(to-string($pseudo), '" ', '');
-    
-                    @each $pseudoName in $pseudo {
-    
-                        #{'.' + $global-utilities-namespace + $propertyClass + $valueClass + $global-pseudo-separator + $pseudoClass + ':' + $pseudoName} {
-        
-                            @extend #{'.' + $global-utilities-namespace + $propertyClass + $valueClass} !optional;
-                        }
-                    }
-                }
+                
+                
+                
+                // Is this pseudo a combination pseudo?
+                // Does it contain a + ?
+                @if (str-index($pseudo, '+')) {
 
-                @else {
-                    #{'.' + $global-utilities-namespace + $propertyClass + $valueClass + $global-pseudo-separator + $pseudo + ':' + $pseudo} {
-                        @extend #{'.' + $global-utilities-namespace + $propertyClass + $valueClass} !optional;
+                    $pseudoListClass: str-replace($pseudo, '+', '');
+
+                    $pseudoList: ();
+                    $split-values: str-split($pseudo, ", ");
+                    
+                    @each $value in $split-values {
+                        $pseudoList: append($pseudoList, str-split($value, "+"));
                     }
+                    
+                    @each $pseudoInList in $pseudoList {
+                        @debug $pseudoInList;
+                        $selector: #{'.' + $global-utilities-namespace + $utilityPair + $global-pseudo-separator + $pseudoListClass + ':' + $pseudoInList};
+                        @debug $selector;
+
+                        // @include createUtilityFromPlaceholder($selector, $utilityPair);
+                    }
+
                 }
+                
+                // Simple Pseudo
+                @else {
+                    $selector: #{'.' + $global-utilities-namespace + $utilityPair + $global-pseudo-separator + $pseudo + ':' + $pseudo};
+    
+                    @include createUtilityFromPlaceholder($selector, $utilityPair);
+                }
+                
+
+                // @each $pseudoName in $pseudo {
+
+                //     #{'.' + $global-utilities-namespace + $propertyClass + $valueClass + $global-pseudo-separator + $pseudoClass + ':' + $pseudoName} {
+    
+                //         @extend #{'.' + $global-utilities-namespace + $propertyClass + $valueClass} !optional;
+                //     }
+                // }
+
+                // @else {
+                //     #{'.' + $global-utilities-namespace + $propertyClass + $valueClass + $global-pseudo-separator + $pseudo + ':' + $pseudo} {
+                //         @extend #{'.' + $global-utilities-namespace + $propertyClass + $valueClass} !optional;
+                //     }
+                // }
             }
 
             // $psuedos: ifhasget($valueSetting, pseudos);
