@@ -27,11 +27,12 @@ $utilitiesSettings: (
         pseudos: ('visited', ('hover', 'focus')),
       ),
     ),
-
     placeholders: (
       'static',
       ('dynamic', 'dyn'),
+      (gutters(2), '2gu'),
     ),
+
   ),
   // (
   //   property: 'top',
@@ -56,16 +57,6 @@ $utilitiesSettings: (
   //       pseudos: ('hover', 'focus'),
   //       breakpoints: ('uptosmall', 'smalltomed'),
   //     ),
-  //     (
-  //       value: ('absolute', 'abs'),
-  //       pseudos: ('hover', 'focus'),
-  //       breakpoints: ('uptosmall', 'smalltomed'),
-  //     ),
-  //   ),
-
-  //   placeholders: (
-  //     (gutters(2), '2gu'),
-  //     ('calc(var(--GutterUnit) * 2)', '2gu'),
   //   ),
   // ),
 );

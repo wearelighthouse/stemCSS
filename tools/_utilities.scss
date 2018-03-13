@@ -161,6 +161,27 @@
                 }
             }
         }
+
+        $placeholders: ifhasget($propertySetting, placeholders);
+
+        @each $placeholder in $placeholders {
+
+            $value: $placeholder;
+            $valueClass: $placeholder;
+            
+            // Value has Class nickname
+            @if type_of($placeholder) == list {
+                $value: first($placeholder);
+                $valueClass: last($placeholder);
+            }
+
+            $utilityPair: $propertyClass + $valueClass;
+            $selector: #{'.' + $global-utilities-namespace + $utilityPair};
+
+            @include createPlaceholder($utilityPair) {
+                #{$property}: #{$value};
+            }
+        }
     }
 
 
