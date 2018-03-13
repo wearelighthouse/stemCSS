@@ -16,11 +16,15 @@ $utilitiesSettings: (
       (
         'fixed',
         ('relative', 'rel'),
+        '0',
+        '1rem',
+        '2rem',
+        '15rem',
       ),
       (
         value: ('absolute', 'abs'),
-        breakpoints: ('uptosmall', 'smalltomed'),
-        pseudos: ('visited', 'hover+focus'),
+        breakpoints: ('uptolarge', 'fromlarge'),
+        pseudos: ('visited', ('hover', 'focus')),
       ),
     ),
 

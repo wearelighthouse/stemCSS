@@ -215,8 +215,42 @@ code {
   position: relative;
 }
 
-.u-pos-abs, .u-pos-abs\@visited:visited {
+.u-pos-0 {
+  position: 0;
+}
+
+.u-pos-1rem {
+  position: 1rem;
+}
+
+.u-pos-2rem {
+  position: 2rem;
+}
+
+.u-pos-15rem {
+  position: 15rem;
+}
+
+/**
+             * VALUE
+             */
+.u-pos-abs, .u-pos-abs\@visited:visited, .u-pos-abs\@hoverfocus:hover, .u-pos-abs\@hoverfocus:focus {
   position: absolute;
+}
+
+/**
+             * PSEUDOS
+             */
+@media screen and (max-width: 1399px) {
+  .u-pos-abs\@uptolarge {
+    position: absolute;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .u-pos-abs\@fromlarge {
+    position: absolute;
+  }
 }
 
 .u-sibling-mt-2rem > * + * {

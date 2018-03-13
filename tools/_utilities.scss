@@ -96,6 +96,9 @@
         // Complex Value
         @if (type_of($valueSetting) == map) {
 
+            /**
+             * VALUE
+             */
             $valueDefinition: ifnoterror($valueSetting, value, 'No value declared!');
             $value: '';
             $valueClass: '';
@@ -120,62 +123,43 @@
 
             @include createPlaceholderAndUtility($utilityPair, $property, $value, $selector);
             
-            // Pseudos
+            /**
+             * PSEUDOS
+             */
             $pseudos: ifhasget($valueSetting, pseudos);
             
             @each $pseudo in $pseudos {
                 
-                
-                
-                // Is this pseudo a combination pseudo?
-                // Does it contain a + ?
-                @if (str-index($pseudo, '+')) {
-
-                    $pseudoListClass: str-replace($pseudo, '+', '');
-
-                    $pseudoList: ();
-                    $split-values: str-split($pseudo, ", ");
-                    
-                    @each $value in $split-values {
-                        $pseudoList: append($pseudoList, str-split($value, "+"));
-                    }
-                    
-                    @each $pseudoInList in $pseudoList {
-                        @debug $pseudoInList;
-                        $selector: #{'.' + $global-utilities-namespace + $utilityPair + $global-pseudo-separator + $pseudoListClass + ':' + $pseudoInList};
-                        @debug $selector;
-
-                        // @include createUtilityFromPlaceholder($selector, $utilityPair);
-                    }
-
-                }
-                
                 // Simple Pseudo
-                @else {
+                @if (type_of($pseudo) == string) {
                     $selector: #{'.' + $global-utilities-namespace + $utilityPair + $global-pseudo-separator + $pseudo + ':' + $pseudo};
     
                     @include createUtilityFromPlaceholder($selector, $utilityPair);
                 }
-                
 
-                // @each $pseudoName in $pseudo {
+                // Is this pseudo a combination pseudo?
+                @if (type_of($pseudo) == list) {
 
-                //     #{'.' + $global-utilities-namespace + $propertyClass + $valueClass + $global-pseudo-separator + $pseudoClass + ':' + $pseudoName} {
-    
-                //         @extend #{'.' + $global-utilities-namespace + $propertyClass + $valueClass} !optional;
-                //     }
-                // }
+                    $pseudoClass: str-replace(to-string($pseudo), '" ', '');
 
-                // @else {
-                //     #{'.' + $global-utilities-namespace + $propertyClass + $valueClass + $global-pseudo-separator + $pseudo + ':' + $pseudo} {
-                //         @extend #{'.' + $global-utilities-namespace + $propertyClass + $valueClass} !optional;
-                //     }
-                // }
+                    @each $pseudoPart in $pseudo {
+                        $selector: #{'.' + $global-utilities-namespace + $utilityPair + $global-pseudo-separator + $pseudoClass + ':' + $pseudoPart};
+                        @include createUtilityFromPlaceholder($selector, $utilityPair);
+                    }
+                }
             }
 
-            // $psuedos: ifhasget($valueSetting, pseudos);
+            $breakpoints: ifhasget($valueSetting, breakpoints);
 
-            // $breakpoints: ifhasget($valueSetting, breakpoints);
+            @each $breakpoint in $breakpoints {
+                
+                $selector: #{'.' + $global-utilities-namespace + $utilityPair + $global-breakpoint-separator + $breakpoint};
+    
+                @include breakpoint($breakpoint) {
+                    // Can't @extend, but that's fine!
+                    @include makeClass($selector, $property, $value);
+                }
+            }
         }
     }
 
