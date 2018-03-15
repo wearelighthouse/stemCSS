@@ -6,10 +6,11 @@
 
 $utilitiesSettings: (
   (
-    property: ('position', 'pos-'),
+    property: ('position', 'pos'),
 
     values: (
       (
+        // Simple Values
         'fixed',
         ('relative', 'rel'),
         '0',
@@ -19,11 +20,13 @@ $utilitiesSettings: (
         (gutters(6), '6gu'),
       ),
       (
+        // Complex Value
         value: ('absolute', 'abs'),
         breakpoints: ('uptolarge', 'fromlarge'),
         pseudos: ('visited', ('hover', 'focus')),
       ),
       (
+        // Placeholders
         placeholders: (
           'static',
           ('dynamic', 'dyn'),
@@ -33,17 +36,35 @@ $utilitiesSettings: (
         ),
       ),
       (
-        unit: ('%', 'pc'),
+        // Stepped Unit
+        unit: ('%', 'pc'), // optional
         start: 10,
         end: 90,
-        steps: 10,
+        step: 10, // optional
       ),
-      // (
-      //   unit: 'vw',
-      //   values: (10, 30, 35, 50, 85),
-      //   pseudos: ('hover', 'focus'),
-      //   breakpoints: ('uptolarge', 'fromlarge'),
-      // ),
+    ),
+  ),
+  (
+    property: ('opacity', 'opac'),
+
+    values: (
+      (
+        // Stepped Number
+        start: 0,
+        end: 1,
+        step: 0.1, // optional
+      ),
+    ),
+  ),
+  (
+    property: ('z-index', 'z'),
+
+    values: (
+      (
+        // Stepped Number
+        start: -1,
+        end: 5,
+      ),
     ),
   ),
 );

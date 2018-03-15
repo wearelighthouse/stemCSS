@@ -23,264 +23,189 @@
     @include createUtilityFromPlaceholder($selector, $utilityPair);
 }
 
-@function ifhasget($map, $value) {
+@mixin makeUtilities($propertiesSettings) {
 
-    @if map-has-key($map, $value) {
-        @return map-get($map, $value);
-    }
+    // each property...
+    @each $propertySetting in $propertiesSettings {
 
-    @else {
-        @return '';
-    }
-}
+        // property:
+        $propertyDefinition: ifnoterror($propertySetting, property, 'No "Property: "declared in settings!');
+        
+        // string
+        $property: $propertyDefinition;
+        $propertyClass: $propertyDefinition;
 
-@function ifnoterror($map, $value, $error) {
-
-    @if map-has-key($map, $value) {
-        @return map-get($map, $value);
-    }
-
-    @else {
-        @error $error;
-    }
-}
-
-@mixin makeUtilities($settings) {
-
-  // each property...
-  @each $propertySetting in $settings {
-
-    // property:
-    $propertyName: ifnoterror($propertySetting, property, 'No property declared!');
-    $property: '';
-    $propertyClass: '';
-
-    @if (type_of($property) == string) {
-        // should hyphen be enforced?
-        $property: $propertyName;
-        $propertyClass: $propertyName + '-';
-    }
-
-    @if (type_of($property) == list) {
-        $property: first($propertyName);
-        $propertyClass: last($propertyName);
-    }
-    
-    $values: ifhasget($propertySetting, values);
-
-    @each $valueSetting in $values {
-
-        // No { prop: val } just a list of values!
-        @if (type_of($valueSetting) == list) {
-            
-            @each $simpleValue in $valueSetting {
-
-                $value: '';
-                $valueClass: '';
-
-                // Value = Class
-                @if type_of($simpleValue) == string {
-                    $value: $simpleValue;
-                    $valueClass: $simpleValue;
-                }
-                
-                // Value has Class nickname
-                @if type_of($simpleValue) == list {
-                    $value: first($simpleValue);
-                    $valueClass: last($simpleValue);
-                }
-
-                $utilityPair: $propertyClass + $valueClass;
-                $selector: #{'.' + $global-utilities-namespace + $utilityPair};
-
-                @include createPlaceholderAndUtility($utilityPair, $property, $value, $selector);
-            }
+        // list
+        @if (type_of($property) == list) {
+            $property: first($propertyDefinition);
+            $propertyClass: last($propertyDefinition)
         }
 
-        // Complex Values - has keys
-        @if (type_of($valueSetting) == map) {
+        // add hyphen
+        // wait - this won't work for .u-block or .u-absolute;
+        $propertyClass: $propertyClass + '-';
+        
+        // List values
+        $valuesSettings: ifnoterror($propertySetting, values, 'No "Values: ()" declared in settings!');
 
-            /**
-             * VALUE
-             */
-            $valueDefinition: ifhasget($valueSetting, value);
-            
-            @if ($valueDefinition != '') {
-                $value: $valueDefinition;
-                $valueClass: $valueDefinition;
+        @each $valueSetting in $valuesSettings {
 
-                // Value Class = Shortname
-                @if type_of($valueDefinition) == list {
-                    $value: first($valueDefinition);
-                    $valueClass: last($valueDefinition);
-                }
-
-                // Define the utility
-                $utilityPair: $propertyClass + $valueClass;
-
-                // Define the selector
-                $selector: #{'.' + $global-utilities-namespace + $utilityPair};
-
-                @include createPlaceholderAndUtility($utilityPair, $property, $value, $selector);
+            // Simple Values
+            @if (type_of($valueSetting) == list) {
                 
-                /**
-                * PSEUDOS
-                */
-                $pseudos: ifhasget($valueSetting, pseudos);
+                @each $valueDefinition in $valueSetting {
 
-                @if ($pseudos != '') {
-                    @each $pseudo in $pseudos {
-                        
-                        // Simple Pseudo
-                        @if (type_of($pseudo) == string) {
-                            $selector: #{'.' + $global-utilities-namespace + $utilityPair + $global-pseudo-separator + $pseudo + ':' + $pseudo};
-            
-                            @include createUtilityFromPlaceholder($selector, $utilityPair);
+                    $value: $valueDefinition;
+                    $valueClass: $valueDefinition;
+                    
+                    // Value has Class nickname
+                    @if type_of($valueDefinition) == list {
+                        $value: first($valueDefinition);
+                        $valueClass: last($valueDefinition);
+                    }
+
+                    $utility: $global-utilities-namespace + $propertyClass + $valueClass;
+                    $selector: #{'.' + $utility};
+
+                    @include createPlaceholderAndUtility($utility, $property, $value, $selector);
+                }
+            }
+
+            // NOT Simple Values
+            @if (type_of($valueSetting) == map) {
+
+                // Complex Value
+                @if map-has-key($valueSetting, value) {
+
+                    $valueDefinition: map-get($valueSetting, value);
+                    $value: $valueDefinition;
+                    $valueClass: $valueDefinition;
+
+                    // Value Class = Shortname
+                    @if type_of($valueDefinition) == list {
+                        $value: first($valueDefinition);
+                        $valueClass: last($valueDefinition);
+                    }
+
+                    // Define the utility
+                    $utility: $global-utilities-namespace + $propertyClass + $valueClass;
+
+                    // Define the selector
+                    $selector: #{'.' + $utility};
+
+                    // Create Placeholder, Make Utility Classes
+                    @include createPlaceholderAndUtility($utility, $property, $value, $selector);
+
+                    // Psuedos
+                    @if (map-has-key($valueSetting, pseudos)) {
+
+                        @each $pseudo in map-get($valueSetting, pseudos) {
+                            
+                            // Simple Pseudo
+                            @if (type_of($pseudo) == string) {
+                                $selector: #{'.' + $utility + $global-pseudo-separator + $pseudo + ':' + $pseudo};
+                
+                                @include createUtilityFromPlaceholder($selector, $utility);
+                            }
+
+                            // Combination pseudo (hoverfocus)
+                            @if (type_of($pseudo) == list) {
+
+                                $pseudoClass: str-replace(to-string($pseudo), '" ', '');
+
+                                @each $pseudoPart in $pseudo {
+                                    $selector: #{'.' + $utility + $global-pseudo-separator + $pseudoClass + ':' + $pseudoPart};
+                                    @include createUtilityFromPlaceholder($selector, $utility);
+                                }
+                            }
                         }
+                    }
 
-                        // Is this pseudo a combination pseudo?
-                        @if (type_of($pseudo) == list) {
+                    // Breakpoints
+                    @if (map-has-key($valueSetting, breakpoints)) {
 
-                            $pseudoClass: str-replace(to-string($pseudo), '" ', '');
-
-                            @each $pseudoPart in $pseudo {
-                                $selector: #{'.' + $global-utilities-namespace + $utilityPair + $global-pseudo-separator + $pseudoClass + ':' + $pseudoPart};
-                                @include createUtilityFromPlaceholder($selector, $utilityPair);
+                        @each $breakpoint in map-get($valueSetting, breakpoints) {
+                    
+                            $selector: #{'.' + $utility + $global-breakpoint-separator + $breakpoint};
+                
+                            @include breakpoint($breakpoint) {
+                                @include makeClass($selector, $property, $value);
                             }
                         }
                     }
                 }
 
+                // Placeholders
+                @if (map-has-key($valueSetting, placeholders)) {
+
+                    @each $placeholder in map-get($valueSetting, placeholders) {
+
+                        $value: $placeholder;
+                        $valueClass: $placeholder;
+                        
+                        // Value has Class nickname
+                        @if type_of($placeholder) == list {
+                            $value: first($placeholder);
+                            $valueClass: last($placeholder);
+                        }
+            
+                        $utility: $global-utilities-namespace + $propertyClass + $valueClass;
+                        $selector: #{'.' + $utility};
+            
+                        @include createPlaceholder($utility) {
+                            #{$property}: #{$value};
+                        }
+                    }
+                }
+
+                // Stepped
+                @if (map-has-key($valueSetting, start)) {
+
+                    $start: map-get($valueSetting, start);
+                    $end: map-get($valueSetting, end);
+                    $step: 1;
+
+                    @if (map-has-key($valueSetting, step)) {
+                        $step: map-get($valueSetting, step);
+                    }
+
+                    $unit: '';
+                    $unitClass: '';
+
+                    @if (map-has-key($valueSetting, unit)) {
+                        $unitDefinition: map-get($valueSetting, unit);
+                        
+                        $unit: $unitDefinition;
+                        $unitClass: $unitDefinition;
+
+                        @if (type_of($unitDefinition) == list) {
+                            $unit: first($unitDefinition);
+                            $unitClass: last($unitDefinition);
+                        }
+                    }
+
+                    $value: $start;
+                    $valueClass: ''; // do I need this?
+
+                    @while $value <= $end {
+
+                        $valueClass: #{str-replace(to-string($value), '.', '') + $unitClass};
+
+                        $valueAndUnit: #{$value + $unit};
+
+                        // Define the utility
+                        $utility: $global-utilities-namespace + $propertyClass + $valueClass;
+
+                        // Define the selector
+                        $selector: #{'.' + $utility};
+
+                        // Create Placeholder, Make Utility Classes
+                        @include createPlaceholderAndUtility($utility, $property, $valueAndUnit, $selector);
+
+                        $value: $value + $step;
+                    }
+                }
             }
-
-            // $breakpoints: ifhasget($valueSetting, breakpoints);
-
-            // @each $breakpoint in $breakpoints {
-                
-            //     $selector: #{'.' + $global-utilities-namespace + $utilityPair + $global-breakpoint-separator + $breakpoint};
-    
-            //     @include breakpoint($breakpoint) {
-            //         // Can't @extend, but that's fine!
-            //         @include makeClass($selector, $property, $value);
-            //     }
-            // }
-
-            // $placeholders: ifhasget($valueSetting, placeholders);
-    
-            // @each $placeholder in $placeholders {
-    
-            //     $value: $placeholder;
-            //     $valueClass: $placeholder;
-                
-            //     // Value has Class nickname
-            //     @if type_of($placeholder) == list {
-            //         $value: first($placeholder);
-            //         $valueClass: last($placeholder);
-            //     }
-    
-            //     $utilityPair: $propertyClass + $valueClass;
-            //     $selector: #{'.' + $global-utilities-namespace + $utilityPair};
-    
-            //     @include createPlaceholder($utilityPair) {
-            //         #{$property}: #{$value};
-            //     }
-            // }
         }
     }
-
-
-    // ...
-
-    // $placeholders: ifhasget($propertySetting, placeholders);
-
-    // $propertyClass: map-get($utilitySetting, propertyClass);
-
-    // @if map-has-key($utilitySetting, ranges) {
-
-    //   @each $rangeSetting in map-get($utilitySetting, ranges) {
-
-    //     $start: map-get($rangeSetting, start);
-    //     $end: map-get($rangeSetting, end);
-    //     $steps: 1; // default
-
-    //     @if map-has-key($rangeSetting, steps) {
-    //       $steps: map-get($rangeSetting, steps);
-    //     }
-
-    //     @if map-get($rangeSetting, global) != false {
-
-    //       $value: $start;
-
-    //       @while $value <= $end {
-
-    //         $valueClass: str-replace(to-string($value), '.', '');
-
-    //         #{'.' + $global-utilities-namespace + $propertyClass + $valueClass} {
-    //           #{$property}: #{$value};
-    //         }
-
-    //         $value: $value + $steps;
-    //       }
-    //     }
-    //   }
-    // }
-
-//     @if map-has-key($utilitySetting, values) {
-
-//       @each $valueSetting in map-get($utilitySetting, values) {
-
-//         $value: map-get($valueSetting, value);
-
-//         $valueClass: '';
-//         @if map-has-key($valueSetting, valueClass) {
-//           $valueClass: map-get($valueSetting, valueClass);
-//         }
-//         @else {
-//           $valueClass: $value;
-//         }
-
-//         @if map-get($valueSetting, global) != false {
-
-//           $selector: #{'.' + $global-utilities-namespace + $propertyClass + $valueClass};
-//           @include makeClass($selector, $property, $value);
-//         }
-
-//         @if map-has-key($valueSetting, responsive) {
-//           @each $breakpointName in map-get($valueSetting, responsive) {
-//             @include breakpoint($breakpointName) {
-
-//               $selector: #{'.' + $global-utilities-namespace + $propertyClass + $valueClass + $global-breakpoint-separator + $breakpointName};
-
-//               @include makeClass($selector, $property, $value);
-//             }
-//           }
-//         }
-
-//         @if map-has-key($valueSetting, pseudo) {
-
-//           @each $pseudo in map-get($valueSetting, pseudo) {
-
-//             @if (type_of($pseudo) == list) {
-
-//               $pseudoClass: str-replace(to-string($pseudo), '" ', '');
-
-//               @each $pseudoName in $pseudo {
-
-//                 #{'.' + $global-utilities-namespace + $propertyClass + $valueClass + $global-pseudo-separator + $pseudoClass + ':' + $pseudoName} {
-
-//                   @extend #{'.' + $global-utilities-namespace + $propertyClass + $valueClass} !optional;
-//                 }
-//               }
-//             }
-
-//             @else {
-//               #{'.' + $global-utilities-namespace + $propertyClass + $valueClass + $global-pseudo-separator + $pseudo + ':' + $pseudo} {
-//                 @extend #{'.' + $global-utilities-namespace + $propertyClass + $valueClass} !optional;
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-  }
 }

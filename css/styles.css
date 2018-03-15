@@ -224,7 +224,7 @@ code {
   position: 2rem;
 }
 
-.u-pos-15r {
+.u-pos-15rem {
   position: 15rem;
 }
 
@@ -232,22 +232,130 @@ code {
   position: calc(var(--GutterUnit) * 6);
 }
 
-/**
-             * VALUE
-             */
 .u-pos-abs, .u-pos-abs\@visited:visited, .u-pos-abs\@hoverfocus:hover, .u-pos-abs\@hoverfocus:focus {
   position: absolute;
 }
 
-/**
-                * PSEUDOS
-                */
-/**
-             * VALUE
-             */
-/**
-             * VALUE
-             */
+@media screen and (max-width: 1399px) {
+  .u-pos-abs\@uptolarge {
+    position: absolute;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .u-pos-abs\@fromlarge {
+    position: absolute;
+  }
+}
+
+.u-pos-10pc {
+  position: 10%;
+}
+
+.u-pos-20pc {
+  position: 20%;
+}
+
+.u-pos-30pc {
+  position: 30%;
+}
+
+.u-pos-40pc {
+  position: 40%;
+}
+
+.u-pos-50pc {
+  position: 50%;
+}
+
+.u-pos-60pc {
+  position: 60%;
+}
+
+.u-pos-70pc {
+  position: 70%;
+}
+
+.u-pos-80pc {
+  position: 80%;
+}
+
+.u-pos-90pc {
+  position: 90%;
+}
+
+.u-opac-0 {
+  opacity: 0;
+}
+
+.u-opac-01 {
+  opacity: 0.1;
+}
+
+.u-opac-02 {
+  opacity: 0.2;
+}
+
+.u-opac-03 {
+  opacity: 0.3;
+}
+
+.u-opac-04 {
+  opacity: 0.4;
+}
+
+.u-opac-05 {
+  opacity: 0.5;
+}
+
+.u-opac-06 {
+  opacity: 0.6;
+}
+
+.u-opac-07 {
+  opacity: 0.7;
+}
+
+.u-opac-08 {
+  opacity: 0.8;
+}
+
+.u-opac-09 {
+  opacity: 0.9;
+}
+
+.u-opac-1 {
+  opacity: 1;
+}
+
+.u-z--1, .o-hide {
+  z-index: -1;
+}
+
+.u-z-0 {
+  z-index: 0;
+}
+
+.u-z-1 {
+  z-index: 1;
+}
+
+.u-z-2 {
+  z-index: 2;
+}
+
+.u-z-3 {
+  z-index: 3;
+}
+
+.u-z-4 {
+  z-index: 4;
+}
+
+.u-z-5 {
+  z-index: 5;
+}
+
 .u-sibling-mt-2rem > * + * {
   margin-top: 2rem;
 }
