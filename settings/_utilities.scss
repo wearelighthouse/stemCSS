@@ -4,10 +4,6 @@
 
 }
 
-/**
- * Unit Utilities
- */
-
 $utilitiesSettings: (
   (
     property: ('position', 'pos-'),
@@ -20,43 +16,34 @@ $utilitiesSettings: (
         '1rem',
         '2rem',
         '15rem',
+        (gutters(6), '6gu'),
       ),
       (
         value: ('absolute', 'abs'),
         breakpoints: ('uptolarge', 'fromlarge'),
         pseudos: ('visited', ('hover', 'focus')),
       ),
+      (
+        placeholders: (
+          'static',
+          ('dynamic', 'dyn'),
+          (gutters(1), '1gu'),
+          (gutters(2), '2gu'),
+          (gutters(3), '3gu'),
+        ),
+      ),
+      (
+        unit: ('%', 'pc'),
+        start: 10,
+        end: 90,
+        steps: 10,
+      ),
+      // (
+      //   unit: 'vw',
+      //   values: (10, 30, 35, 50, 85),
+      //   pseudos: ('hover', 'focus'),
+      //   breakpoints: ('uptolarge', 'fromlarge'),
+      // ),
     ),
-    placeholders: (
-      'static',
-      ('dynamic', 'dyn'),
-      (gutters(2), '2gu'),
-    ),
-
   ),
-  // (
-  //   property: 'top',
-
-  //   values: (
-  //     (
-  //       '0',
-  //       'auto',
-  //       '1rem',
-  //       '1.5rem',
-  //       '2rem',
-  //     ),
-  //     (
-  //       unit: ('%', 'pc'),
-  //       start: 10,
-  //       end: 90,
-  //       steps: 10,
-  //     ),
-  //     (
-  //       unit: 'vw',
-  //       values: (10, 30, 35, 50, 85),
-  //       pseudos: ('hover', 'focus'),
-  //       breakpoints: ('uptosmall', 'smalltomed'),
-  //     ),
-  //   ),
-  // ),
 );

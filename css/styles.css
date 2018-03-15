@@ -10,9 +10,6 @@
 }
 
 /**
- * Unit Utilities
- */
-/**
  * Combinator Utilities
  */
 /**
@@ -227,8 +224,12 @@ code {
   position: 2rem;
 }
 
-.u-pos-15rem {
+.u-pos-15r {
   position: 15rem;
+}
+
+.u-pos-6gu {
+  position: calc(var(--GutterUnit) * 6);
 }
 
 /**
@@ -239,20 +240,14 @@ code {
 }
 
 /**
-             * PSEUDOS
+                * PSEUDOS
+                */
+/**
+             * VALUE
              */
-@media screen and (max-width: 1399px) {
-  .u-pos-abs\@uptolarge {
-    position: absolute;
-  }
-}
-
-@media screen and (min-width: 1400px) {
-  .u-pos-abs\@fromlarge {
-    position: absolute;
-  }
-}
-
+/**
+             * VALUE
+             */
 .u-sibling-mt-2rem > * + * {
   margin-top: 2rem;
 }
