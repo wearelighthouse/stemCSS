@@ -1,4 +1,11 @@
 /* Source: IotaCSS iota-breakpoint */
+/**
+  * TODO
+  * Multi-property
+  * Combinators
+  * Stepped are extending - but it checks classnames not values?
+  * placeholdersDefined is a list of 'propertyvalue'. BUT.
+ */
 :root {
   --ContainerWidth: 98vw;
 }
@@ -228,22 +235,18 @@ code {
   position: 15rem;
 }
 
-.u-pos-6gu {
-  position: calc(var(--GutterUnit) * 6);
-}
-
-.u-pos-abs, .u-pos-abs\@visited:visited, .u-pos-abs\@hoverfocus:hover, .u-pos-abs\@hoverfocus:focus {
+.u-pos-abs > * + *, .u-pos-abs\@visited:visited > * + *, .u-pos-abs\@hoverfocus:hover > * + *, .u-pos-abs\@hoverfocus:focus > * + * {
   position: absolute;
 }
 
 @media screen and (max-width: 1399px) {
-  .u-pos-abs\@uptolarge {
+  .u-pos-abs\@uptolargecombinator {
     position: absolute;
   }
 }
 
 @media screen and (min-width: 1400px) {
-  .u-pos-abs\@fromlarge {
+  .u-pos-abs\@fromlargecombinator {
     position: absolute;
   }
 }
@@ -288,52 +291,24 @@ code {
   opacity: 0;
 }
 
-.u-opac-01 {
-  opacity: 0.1;
-}
-
 .u-opac-02 {
   opacity: 0.2;
-}
-
-.u-opac-03 {
-  opacity: 0.3;
 }
 
 .u-opac-04 {
   opacity: 0.4;
 }
 
-.u-opac-05 {
-  opacity: 0.5;
-}
-
 .u-opac-06 {
   opacity: 0.6;
-}
-
-.u-opac-07 {
-  opacity: 0.7;
 }
 
 .u-opac-08 {
   opacity: 0.8;
 }
 
-.u-opac-09 {
-  opacity: 0.9;
-}
-
 .u-opac-1 {
   opacity: 1;
-}
-
-.u-z--1, .o-hide {
-  z-index: -1;
-}
-
-.u-z-0 {
-  z-index: 0;
 }
 
 .u-z-1 {
@@ -344,7 +319,7 @@ code {
   z-index: 2;
 }
 
-.u-z-3 {
+.u-z-top {
   z-index: 3;
 }
 
@@ -352,100 +327,7 @@ code {
   z-index: 4;
 }
 
-.u-z-5 {
-  z-index: 5;
-}
-
-.u-sibling-mt-2rem > * + * {
-  margin-top: 2rem;
-}
-
-.u-ov-hidden, .o-hide, .o-dictate {
-  overflow: hidden;
-}
-
-.u-vis-hidden, .o-hide {
-  visibility: hidden;
-}
-
-.u-pos-absolute, .o-aspect-ratio > *, .o-absfill, .o-abscentre, .o-dictate {
-  position: absolute;
-}
-
-.u-pos-relative, .o-aspect-ratio, .o-hide {
-  position: relative;
-}
-
-.u-flex {
-  display: flex;
-}
-
-.u-grid {
-  display: -ms-grid;
-  display: grid;
-}
-
-.u-block, .o-aspect-ratio:before {
-  display: block;
-}
-
-.u-none {
-  display: none;
-}
-
-.u-pointer-none, .o-hide {
-  pointer-events: none;
-}
-
-.u-fd-col {
-  flex-direction: column;
-}
-
-.u-fw-wrap {
-  flex-wrap: wrap;
-}
-
-.u-fw-no {
-  flex-wrap: nowrap;
-}
-
-.u-ai-start {
-  align-items: flex-start;
-}
-
-.u-ai-center {
-  align-items: center;
-}
-
-.u-ai-end {
-  align-items: flex-end;
-}
-
-.u-jc-center {
-  justify-content: center;
-}
-
-.u-jc-between {
-  justify-content: space-between;
-}
-
-.u-jc-around {
-  justify-content: space-around;
-}
-
-.u-color-white {
-  color: #FFFFFF;
-}
-
-.u-bgcolor-brand {
-  background-color: #FFFFFF;
-}
-
-.u-fill-white {
-  fill: #FFFFFF;
-}
-
-.u-z--1, .o-hide {
+.u-z--1 {
   z-index: -1;
 }
 
@@ -453,134 +335,8 @@ code {
   z-index: 0;
 }
 
-.u-z-1 {
-  z-index: 1;
-}
-
-.u-grow-0 {
-  flex-grow: 0;
-}
-
-.u-grow-1 {
-  flex-grow: 1;
-}
-
-.u-shrink-0 {
-  flex-shrink: 0;
-}
-
-.u-shrink-1 {
-  flex-shrink: 1;
-}
-
-.u-basis-0 {
-  flex-basis: 0;
-}
-
-.u-width-100pc, .o-aspect-ratio:before, .o-absfill {
-  width: 100%;
-}
-
-.u-width-1px, .o-dictate {
-  width: 1px;
-}
-
-.u-height-100pc, .o-absfill {
-  height: 100%;
-}
-
-.u-height-1px, .o-dictate {
-  height: 1px;
-}
-
-.u-mh-auto, .o-container {
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.u-top-50pc, .o-abscentre {
-  top: 50%;
-}
-
-.u-top-0, .o-absfill {
-  top: 0;
-}
-
-.u-right-100pc {
-  right: 100%;
-}
-
-.u-right-0 {
-  right: 0;
-}
-
-.u-bottom-0 {
-  bottom: 0;
-}
-
-.u-left-50pc, .o-abscentre {
-  left: 50%;
-}
-
-.u-left-100pc {
-  left: 100%;
-}
-
-.u-left-0, .o-absfill {
-  left: 0;
-}
-
-.o-aspect-ratio:before {
-  content: '';
-}
-
-/**
- * .o-container
- */
-.o-container {
-  width: var(--ContainerWidth);
-}
-
-/**
- * .o-aspect-ratio
- */
-.o-aspect-ratio--50:before {
-  padding-top: 50%;
-}
-
-.o-aspect-ratio--100:before {
-  padding-top: 100%;
-}
-
-/**
- * .o-absfill
- */
-/**
- * .o-abscentre
- */
-.o-abscentre {
-  transform: translate(-50%, -50%);
-}
-
-/**
- * .o-abscentre-y
- */
-/**
- * .o-abscentre-x
- */
-/**
- * .o-hide
- */
-.o-hide {
-  clip: rect(0, 0, 0, 0);
-}
-
-/**
- * .o-dictate
- * Visually hidden, but provided for screen readers (dictated).
- */
-.o-dictate {
-  clip: rect(1px, 1px, 1px, 1px);
+.u-z-5 {
+  z-index: 5;
 }
 
 /**

@@ -4,6 +4,7 @@
 @import 'tools/make-class';
 @import 'tools/lists';
 @import 'tools/strings';
+@import 'tools/placeholders';
 @import 'tools/type';
 
 @import 'tools/utilities';
@@ -45,18 +46,18 @@
 
 // Mapped Utilities
 @import 'utilities/utilities';
-@import 'utilities/combinator-utilities';
-@import 'utilities/word-utilities';
-@import 'utilities/number-utilities';
-@import 'utilities/unit-utilities';
+// @import 'utilities/combinator-utilities';
+// @import 'utilities/word-utilities';
+// @import 'utilities/number-utilities';
+// @import 'utilities/unit-utilities';
 @import 'utilities/type';
 
 // Objects
-@import 'objects/container';
-@import 'objects/aspect-ratio';
-@import 'objects/position';
-@import 'objects/hide';
-@import 'objects/dictate';
+// @import 'objects/container';
+// @import 'objects/aspect-ratio';
+// @import 'objects/position';
+// @import 'objects/hide';
+// @import 'objects/dictate';
 
 
 // Components

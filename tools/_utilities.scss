@@ -1,27 +1,11 @@
-@mixin createPlaceholder($placeholder) {
-    %#{$placeholder} {
-        @content;
-    }
-}
+/**
+  * TODO
+  * Multi-property
+  * Stepped are extending - but it checks classnames not values?
+  * placeholdersDefined is a list of 'propertyvalue'. BUT.
+ */
 
-@mixin extend($placeholder) {
-    @extend %#{$placeholder};
-}
-
-@mixin createUtilityFromPlaceholder($selector, $utilityPair) {
-    #{$selector} {
-        @include extend($utilityPair);
-    }
-}
-
-@mixin createPlaceholderAndUtility($utilityPair, $property, $value, $selector) {
-                    
-    @include createPlaceholder($utilityPair) {
-        #{$property}: #{$value};
-    }
-
-    @include createUtilityFromPlaceholder($selector, $utilityPair);
-}
+$placeholdersDefined: '' !global;
 
 @mixin makeUtilities($propertiesSettings) {
 
@@ -68,6 +52,8 @@
                     $selector: #{'.' + $utility};
 
                     @include createPlaceholderAndUtility($utility, $property, $value, $selector);
+                    
+                    @include addToPlaceholderDefinitions(#{$property + $value});
                 }
             }
 
@@ -90,12 +76,19 @@
                     // Define the utility
                     $utility: $global-utilities-namespace + $propertyClass + $valueClass;
 
+                    $combinator: '';
+                    @if (map-has-key($valueSetting, combinator)) {
+                        $combinator: map-get($valueSetting, combinator);
+                    }
+                    
                     // Define the selector
-                    $selector: #{'.' + $utility};
-
+                    $selector: #{'.' + $utility + $combinator};
+                    
                     // Create Placeholder, Make Utility Classes
                     @include createPlaceholderAndUtility($utility, $property, $value, $selector);
-
+                    
+                    @include addToPlaceholderDefinitions(#{$property + $value});
+                    
                     // Psuedos
                     @if (map-has-key($valueSetting, pseudos)) {
 
@@ -103,7 +96,13 @@
                             
                             // Simple Pseudo
                             @if (type_of($pseudo) == string) {
-                                $selector: #{'.' + $utility + $global-pseudo-separator + $pseudo + ':' + $pseudo};
+
+                                $combinator: '';
+                                @if (map-has-key($valueSetting, combinator)) {
+                                    $combinator: map-get($valueSetting, combinator);
+                                }
+
+                                $selector: #{'.' + $utility + $global-pseudo-separator + $pseudo + ':' + $pseudo + $combinator};
                 
                                 @include createUtilityFromPlaceholder($selector, $utility);
                             }
@@ -114,7 +113,13 @@
                                 $pseudoClass: str-replace(to-string($pseudo), '" ', '');
 
                                 @each $pseudoPart in $pseudo {
-                                    $selector: #{'.' + $utility + $global-pseudo-separator + $pseudoClass + ':' + $pseudoPart};
+
+                                    $combinator: '';
+                                    @if (map-has-key($valueSetting, combinator)) {
+                                        $combinator: map-get($valueSetting, combinator);
+                                    }
+
+                                    $selector: #{'.' + $utility + $global-pseudo-separator + $pseudoClass + ':' + $pseudoPart + $combinator};
                                     @include createUtilityFromPlaceholder($selector, $utility);
                                 }
                             }
@@ -125,9 +130,14 @@
                     @if (map-has-key($valueSetting, breakpoints)) {
 
                         @each $breakpoint in map-get($valueSetting, breakpoints) {
+
+                            $combinator: '';
+                            @if (map-has-key($valueSetting, combinator)) {
+                                $combinator: map-get($valueSetting, combinator);
+                            }
                     
-                            $selector: #{'.' + $utility + $global-breakpoint-separator + $breakpoint};
-                
+                            $selector: #{'.' + $utility + $global-breakpoint-separator + $breakpoint + combinator};
+                 
                             @include breakpoint($breakpoint) {
                                 @include makeClass($selector, $property, $value);
                             }
@@ -150,11 +160,14 @@
                         }
             
                         $utility: $global-utilities-namespace + $propertyClass + $valueClass;
+                        
                         $selector: #{'.' + $utility};
-            
+                        
                         @include createPlaceholder($utility) {
                             #{$property}: #{$value};
                         }
+
+                        @include addToPlaceholderDefinitions(#{$property + $value});
                     }
                 }
 
@@ -184,6 +197,11 @@
                         }
                     }
 
+                    $combinator: '';
+                    @if (map-has-key($valueSetting, combinator)) {
+                        $combinator: map-get($valueSetting, combinator);
+                    }
+
                     $value: $start;
                     $valueClass: ''; // do I need this?
 
@@ -191,16 +209,24 @@
 
                         $valueClass: #{str-replace(to-string($value), '.', '') + $unitClass};
 
-                        $valueAndUnit: #{$value + $unit};
-
                         // Define the utility
                         $utility: $global-utilities-namespace + $propertyClass + $valueClass;
-
+                        
                         // Define the selector
-                        $selector: #{'.' + $utility};
+                        $selector: #{'.' + $utility + $combinator};
 
-                        // Create Placeholder, Make Utility Classes
-                        @include createPlaceholderAndUtility($utility, $property, $valueAndUnit, $selector);
+                        $valuePlusUnit: #{$value + $unit};
+                        
+                        @if (index($placeholdersDefined, #{$property + $value}) != null) {
+
+                        } @else {
+                            
+                            // new placeholder
+                            @include createPlaceholderAndUtility($utility, $property, $valuePlusUnit, $selector);
+
+                            @include addToPlaceholderDefinitions(#{$property + $value});
+
+                        }
 
                         $value: $value + $step;
                     }
@@ -208,4 +234,6 @@
             }
         }
     }
+
+    @debug $placeholdersDefined;
 }
