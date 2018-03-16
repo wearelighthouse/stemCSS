@@ -2,7 +2,6 @@
 /**
   * TODO
   * Multi-property
-  * Combinators
   * Stepped are extending - but it checks classnames not values?
   * placeholdersDefined is a list of 'propertyvalue'. BUT.
  */
@@ -337,6 +336,34 @@ code {
 
 .u-z-5 {
   z-index: 5;
+}
+
+.u-mt-0 {
+  margin-top: 0;
+}
+
+.u-mt-auto {
+  margin-top: auto;
+}
+
+.u-mt-1rem > * + * {
+  margin-top: 1rem;
+}
+
+.u-mt-2rem > * + * {
+  margin-top: 2rem;
+}
+
+.u-mt-3rem > * + * {
+  margin-top: 3rem;
+}
+
+.u-mt-4rem > * + * {
+  margin-top: 4rem;
+}
+
+.u-mt-5rem > * + * {
+  margin-top: 5rem;
 }
 
 /**
