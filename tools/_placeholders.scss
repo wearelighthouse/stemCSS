@@ -8,21 +8,21 @@
     }
 }
 
-@mixin extend($placeholder) {
-    @extend %#{$placeholder};
+@mixin extend($placeholderId) {
+    @extend %#{$placeholderId};
 }
 
-@mixin createUtilityFromPlaceholder($selector, $utilityPair) {
+@mixin createUtilityFromPlaceholder($selector, $placeholderId) {
     #{$selector} {
-        @include extend($utilityPair);
+        @include extend($placeholderId);
     }
 }
 
-@mixin createPlaceholderAndUtility($utilityPair, $property, $value, $selector) {
+@mixin createPlaceholderAndUtility($placeholderId, $property, $value, $selector) {
                     
-    @include createPlaceholder($utilityPair) {
+    @include createPlaceholder($placeholderId) {
         #{$property}: #{$value};
-    }
-
-    @include createUtilityFromPlaceholder($selector, $utilityPair);
+    };
+    @include addToPlaceholderDefinitions($placeholderId);
+    @include createUtilityFromPlaceholder($selector, $placeholderId);
 }

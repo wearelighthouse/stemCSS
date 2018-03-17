@@ -1,3 +1,5 @@
+@import 'utilities-margin';
+
 $utilitiesSettings: (
   (
     property: ('position', 'pos'),
@@ -7,17 +9,14 @@ $utilitiesSettings: (
         // Simple Values
         'fixed',
         ('relative', 'rel'),
-        '0',
-        '1rem',
-        '2rem',
-        '15rem',
+        (10%, 10pc),
       ),
       (
         // Complex Value
         value: ('absolute', 'abs'),
         breakpoints: ('uptolarge', 'fromlarge'),
         pseudos: ('visited', ('hover', 'focus')),
-        combinator: '> * + *',
+        // combinator: '> * + *',
       ),
       (
         // Placeholders
@@ -41,7 +40,7 @@ $utilitiesSettings: (
     values: (
       (
         // Stepped Number
-        start: 0,
+        start: .2,
         end: 1,
         step: 0.2,
       ),

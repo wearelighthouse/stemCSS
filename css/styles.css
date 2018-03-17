@@ -2,8 +2,8 @@
 /**
   * TODO
   * Multi-property
-  * Stepped are extending - but it checks classnames not values?
-  * placeholdersDefined is a list of 'propertyvalue'. BUT.
+  * Classes without properties (like .u-block)
+  * Stepped unit with Combinator?
  */
 :root {
   --ContainerWidth: 98vw;
@@ -218,40 +218,24 @@ code {
   position: relative;
 }
 
-.u-pos-0 {
-  position: 0;
+.u-pos-10pc {
+  position: 10%;
 }
 
-.u-pos-1rem {
-  position: 1rem;
-}
-
-.u-pos-2rem {
-  position: 2rem;
-}
-
-.u-pos-15rem {
-  position: 15rem;
-}
-
-.u-pos-abs > * + *, .u-pos-abs\@visited:visited > * + *, .u-pos-abs\@hoverfocus:hover > * + *, .u-pos-abs\@hoverfocus:focus > * + * {
+.u-pos-abs, .u-pos-abs\@visited:visited, .u-pos-abs\@hoverfocus:hover, .u-pos-abs\@hoverfocus:focus {
   position: absolute;
 }
 
 @media screen and (max-width: 1399px) {
-  .u-pos-abs\@uptolargecombinator {
+  .u-pos-abs\@uptolarge {
     position: absolute;
   }
 }
 
 @media screen and (min-width: 1400px) {
-  .u-pos-abs\@fromlargecombinator {
+  .u-pos-abs\@fromlarge {
     position: absolute;
   }
-}
-
-.u-pos-10pc {
-  position: 10%;
 }
 
 .u-pos-20pc {
@@ -284,10 +268,6 @@ code {
 
 .u-pos-90pc {
   position: 90%;
-}
-
-.u-opac-0 {
-  opacity: 0;
 }
 
 .u-opac-02 {
@@ -334,6 +314,10 @@ code {
   z-index: 0;
 }
 
+.u-z-3 {
+  z-index: 3;
+}
+
 .u-z-5 {
   z-index: 5;
 }
@@ -364,6 +348,26 @@ code {
 
 .u-mt-5rem > * + * {
   margin-top: 5rem;
+}
+
+.u-ml-auto {
+  margin-left: auto;
+}
+
+.u-ml-1rem > * + * {
+  margin-left: 1rem;
+}
+
+.u-ml-2rem > * + * {
+  margin-left: 2rem;
+}
+
+.u-ml-3rem > * + * {
+  margin-left: 3rem;
+}
+
+.u-ml-4rem > * + * {
+  margin-left: 4rem;
 }
 
 /**

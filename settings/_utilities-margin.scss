@@ -1,0 +1,17 @@
+$utilitiesMarginSettings: (
+  (
+    property: ('margin-left', 'ml'),
+
+    values: (
+      (
+        auto,
+      ),
+      (
+        unit: rem,
+        start: 1,
+        end: 4,
+        combinator: '> * + *',
+      ),
+    ),
+  ),
+);

@@ -1,8 +1,8 @@
 /**
   * TODO
   * Multi-property
-  * Stepped are extending - but it checks classnames not values?
-  * placeholdersDefined is a list of 'propertyvalue'. BUT.
+  * Classes without properties (like .u-block)
+  * Combinator class
  */
 
 $placeholdersDefined: '' !global;
@@ -48,12 +48,21 @@ $placeholdersDefined: '' !global;
                         $valueClass: last($valueDefinition);
                     }
 
+                    // u-pos-abs;
                     $utility: $global-utilities-namespace + $propertyClass + $valueClass;
+
+                    // .u-pos-abs;
                     $selector: #{'.' + $utility};
 
-                    @include createPlaceholderAndUtility($utility, $property, $value, $selector);
-                    
-                    @include addToPlaceholderDefinitions(#{$property + $value});
+                    // u-position-absolute;
+                    $placeholderId: $global-utilities-namespace + $property + '-' + $valueClass;
+
+                    // Create utility - and maybe a new %placeholder
+                    @if (index($placeholdersDefined, $placeholderId) != null) {
+                        @include createUtilityFromPlaceholder($selector, $placeholderId);
+                    } @else {
+                        @include createPlaceholderAndUtility($placeholderId, $property, $value, $selector);
+                    }
                 }
             }
 
@@ -84,10 +93,14 @@ $placeholdersDefined: '' !global;
                     // Define the selector
                     $selector: #{'.' + $utility + $combinator};
                     
-                    // Create Placeholder, Make Utility Classes
-                    @include createPlaceholderAndUtility($utility, $property, $value, $selector);
-                    
-                    @include addToPlaceholderDefinitions(#{$property + $value});
+                    $placeholderId: $global-utilities-namespace + $property + '-' + $valueClass;
+
+                    // Create utility - and maybe a new %placeholder
+                    @if (index($placeholdersDefined, $placeholderId) != null) {
+                        @include createUtilityFromPlaceholder($selector, $placeholderId);
+                    } @else {
+                        @include createPlaceholderAndUtility($placeholderId, $property, $value, $selector);
+                    }
                     
                     // Psuedos
                     @if (map-has-key($valueSetting, pseudos)) {
@@ -102,9 +115,18 @@ $placeholdersDefined: '' !global;
                                     $combinator: map-get($valueSetting, combinator);
                                 }
 
+                                // .u-color-link@hover:hover > *
                                 $selector: #{'.' + $utility + $global-pseudo-separator + $pseudo + ':' + $pseudo + $combinator};
+
+                                // u-color-link
+                                $placeholderId: $global-utilities-namespace + $property + '-' + $valueClass;
                 
-                                @include createUtilityFromPlaceholder($selector, $utility);
+                                // Create utility - and maybe a new %placeholder
+                                @if (index($placeholdersDefined, $placeholderId) != null) {
+                                    @include createUtilityFromPlaceholder($selector, $placeholderId);
+                                } @else {
+                                    @include createPlaceholderAndUtility($placeholderId, $property, $value, $selector);
+                                }
                             }
 
                             // Combination pseudo (hoverfocus)
@@ -120,7 +142,13 @@ $placeholdersDefined: '' !global;
                                     }
 
                                     $selector: #{'.' + $utility + $global-pseudo-separator + $pseudoClass + ':' + $pseudoPart + $combinator};
-                                    @include createUtilityFromPlaceholder($selector, $utility);
+
+                                    // Create utility - and maybe a new %placeholder
+                                    @if (index($placeholdersDefined, $placeholderId) != null) {
+                                        @include createUtilityFromPlaceholder($selector, $placeholderId);
+                                    } @else {
+                                        @include createPlaceholderAndUtility($placeholderId, $property, $value, $selector);
+                                    }
                                 }
                             }
                         }
@@ -136,7 +164,7 @@ $placeholdersDefined: '' !global;
                                 $combinator: map-get($valueSetting, combinator);
                             }
                     
-                            $selector: #{'.' + $utility + $global-breakpoint-separator + $breakpoint + combinator};
+                            $selector: #{'.' + $utility + $global-breakpoint-separator + $breakpoint + $combinator};
                  
                             @include breakpoint($breakpoint) {
                                 @include makeClass($selector, $property, $value);
@@ -162,12 +190,16 @@ $placeholdersDefined: '' !global;
                         $utility: $global-utilities-namespace + $propertyClass + $valueClass;
                         
                         $selector: #{'.' + $utility};
-                        
-                        @include createPlaceholder($utility) {
-                            #{$property}: #{$value};
-                        }
 
-                        @include addToPlaceholderDefinitions(#{$property + $value});
+                        $placeholderId: $global-utilities-namespace + $property + '-' + $valueClass;
+                        
+                        // Create %placeholder if it's new!
+                        @if (index($placeholdersDefined, $placeholderId) == null) {
+                            @include createPlaceholder($placeholderId) {
+                                #{$property}: #{$value};
+                            };
+                            @include addToPlaceholderDefinitions($placeholderId);
+                        }
                     }
                 }
 
@@ -207,25 +239,24 @@ $placeholdersDefined: '' !global;
 
                     @while $value <= $end {
 
-                        $valueClass: #{str-replace(to-string($value), '.', '') + $unitClass};
+                        $valueClass: $value + $unitClass;
 
                         // Define the utility
                         $utility: $global-utilities-namespace + $propertyClass + $valueClass;
-                        
-                        // Define the selector
+                        $utility: str-replace(to-string($utility), '.', '');
+
                         $selector: #{'.' + $utility + $combinator};
-
-                        $valuePlusUnit: #{$value + $unit};
                         
-                        @if (index($placeholdersDefined, #{$property + $value}) != null) {
-
+                        $valueWithUnit: #{$value + $unit};
+                        
+                        // u-color-link
+                        $placeholderId: $global-utilities-namespace + $property + '-' + $value + $unitClass;
+                
+                        // Create utility - and maybe a new %placeholder
+                        @if (index($placeholdersDefined, $placeholderId) != null) {
+                            @include createUtilityFromPlaceholder($selector, $placeholderId);
                         } @else {
-                            
-                            // new placeholder
-                            @include createPlaceholderAndUtility($utility, $property, $valuePlusUnit, $selector);
-
-                            @include addToPlaceholderDefinitions(#{$property + $value});
-
+                            @include createPlaceholderAndUtility($placeholderId, $property, $valueWithUnit, $selector);
                         }
 
                         $value: $value + $step;
@@ -235,5 +266,5 @@ $placeholdersDefined: '' !global;
         }
     }
 
-    @debug $placeholdersDefined;
+    // @debug $placeholdersDefined;
 }

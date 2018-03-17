@@ -1,5 +1,6 @@
 $utilities: (
   $utilitiesSettings,
+  $utilitiesMarginSettings,
 );
 
 @each $utilitySettings in $utilities {
