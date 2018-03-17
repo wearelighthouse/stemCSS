@@ -2,8 +2,7 @@
 /**
   * TODO
   * Multi-property
-  * Classes without properties (like .u-block)
-  * Stepped unit with Combinator?
+  * Combinator classname
  */
 :root {
   --ContainerWidth: 98vw;
@@ -210,63 +209,63 @@ code {
   -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
 }
 
-.u-pos-fixed {
+.u-fixed {
   position: fixed;
 }
 
-.u-pos-rel {
+.u-rel {
   position: relative;
 }
 
-.u-pos-10pc {
+.u-10pc, "> * + *".u-10pc, "to" {
   position: 10%;
 }
 
-.u-pos-abs, .u-pos-abs\@visited:visited, .u-pos-abs\@hoverfocus:hover, .u-pos-abs\@hoverfocus:focus {
+.u-absto, "> * + *".u-abs\@visited:visited, "sb", "to", "> * + *".u-abs\@hoverfocus:hover, "> * + *".u-abs\@hoverfocus:focus {
   position: absolute;
 }
 
 @media screen and (max-width: 1399px) {
-  .u-pos-abs\@uptolarge {
+  .u-abs\@uptolarge"> * + *", "sb", "to" {
     position: absolute;
   }
 }
 
 @media screen and (min-width: 1400px) {
-  .u-pos-abs\@fromlarge {
+  .u-abs\@fromlarge"> * + *", "sb", "to" {
     position: absolute;
   }
 }
 
-.u-pos-20pc {
+"> * + *".u-20pc, "to" {
   position: 20%;
 }
 
-.u-pos-30pc {
+"> * + *".u-30pc, "to" {
   position: 30%;
 }
 
-.u-pos-40pc {
+"> * + *".u-40pc, "to" {
   position: 40%;
 }
 
-.u-pos-50pc {
+"> * + *".u-50pc, "to" {
   position: 50%;
 }
 
-.u-pos-60pc {
+"> * + *".u-60pc, "to" {
   position: 60%;
 }
 
-.u-pos-70pc {
+"> * + *".u-70pc, "to" {
   position: 70%;
 }
 
-.u-pos-80pc {
+"> * + *".u-80pc, "to" {
   position: 80%;
 }
 
-.u-pos-90pc {
+"> * + *".u-90pc, "to" {
   position: 90%;
 }
 

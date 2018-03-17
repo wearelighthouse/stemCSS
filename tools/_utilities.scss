@@ -1,8 +1,7 @@
 /**
   * TODO
   * Multi-property
-  * Classes without properties (like .u-block)
-  * Combinator class
+  * Combinator classname
  */
 
 $placeholdersDefined: '' !global;
@@ -27,7 +26,9 @@ $placeholdersDefined: '' !global;
 
         // add hyphen
         // wait - this won't work for .u-block or .u-absolute;
-        $propertyClass: $propertyClass + '-';
+        @if ($propertyClass != '') {
+            $propertyClass: $propertyClass + '-';
+        }
         
         // List values
         $valuesSettings: ifnoterror($propertySetting, values, 'No "Values: ()" declared in settings!');
@@ -82,16 +83,30 @@ $placeholdersDefined: '' !global;
                         $valueClass: last($valueDefinition);
                     }
 
-                    // Define the utility
-                    $utility: $global-utilities-namespace + $propertyClass + $valueClass;
+                    $combinatorDefinition: '';
+                    @if (map-has-key($valueSetting, combinator)) {
+                        $combinatorDefinition: map-get($valueSetting, combinator);
+                    }
 
                     $combinator: '';
-                    @if (map-has-key($valueSetting, combinator)) {
-                        $combinator: map-get($valueSetting, combinator);
+                    $combinatorClass: '';
+
+                    @if (type_of($combinatorDefinition) == string) {
+                        @debug $combinator;
+                        $combinator: $combinatorDefinition;
                     }
+
+                    @if (type_of($combinatorDefinition) == list) {
+                        @debug $combinator;
+                        $combinator: first($combinatorDefinition);
+                        $combinatorClass: last($combinatorDefinition);
+                    }
+
+                    // Define the utility
+                    $utility: $global-utilities-namespace + $propertyClass + $valueClass;
                     
                     // Define the selector
-                    $selector: #{'.' + $utility + $combinator};
+                    $selector: #{'.' + $utility + $combinatorClass};
                     
                     $placeholderId: $global-utilities-namespace + $property + '-' + $valueClass;
 

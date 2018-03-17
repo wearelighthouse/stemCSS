@@ -2,7 +2,7 @@
 
 $utilitiesSettings: (
   (
-    property: ('position', 'pos'),
+    property: ('position', ''),
 
     values: (
       (
@@ -16,7 +16,7 @@ $utilitiesSettings: (
         value: ('absolute', 'abs'),
         breakpoints: ('uptolarge', 'fromlarge'),
         pseudos: ('visited', ('hover', 'focus')),
-        // combinator: '> * + *',
+        combinator: ('> * + *', 'sb', 'to'),
       ),
       (
         // Placeholders
@@ -31,6 +31,7 @@ $utilitiesSettings: (
         start: 10,
         end: 90,
         step: 10,
+        combinator: ('> * + *', 'to'),
       ),
     ),
   ),
