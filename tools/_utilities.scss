@@ -1,7 +1,6 @@
 /**
   * TODO
   * Multi-property
-  * Combinator classname
  */
 
 $placeholdersDefined: '' !global;
@@ -92,21 +91,19 @@ $placeholdersDefined: '' !global;
                     $combinatorClass: '';
 
                     @if (type_of($combinatorDefinition) == string) {
-                        @debug $combinator;
                         $combinator: $combinatorDefinition;
                     }
 
                     @if (type_of($combinatorDefinition) == list) {
-                        @debug $combinator;
                         $combinator: first($combinatorDefinition);
-                        $combinatorClass: last($combinatorDefinition);
+                        $combinatorClass: last($combinatorDefinition) + '-';
                     }
 
                     // Define the utility
                     $utility: $global-utilities-namespace + $propertyClass + $valueClass;
                     
                     // Define the selector
-                    $selector: #{'.' + $utility + $combinatorClass};
+                    $selector: #{'.' + $global-utilities-namespace + $combinatorClass + $propertyClass + $valueClass + ' ' + $combinator};
                     
                     $placeholderId: $global-utilities-namespace + $property + '-' + $valueClass;
 
@@ -125,13 +122,8 @@ $placeholdersDefined: '' !global;
                             // Simple Pseudo
                             @if (type_of($pseudo) == string) {
 
-                                $combinator: '';
-                                @if (map-has-key($valueSetting, combinator)) {
-                                    $combinator: map-get($valueSetting, combinator);
-                                }
-
                                 // .u-color-link@hover:hover > *
-                                $selector: #{'.' + $utility + $global-pseudo-separator + $pseudo + ':' + $pseudo + $combinator};
+                                $selector: #{'.' + $global-utilities-namespace + $combinatorClass + $propertyClass + $valueClass + $global-pseudo-separator + $pseudo + ':' + $pseudo + ' ' + $combinator};
 
                                 // u-color-link
                                 $placeholderId: $global-utilities-namespace + $property + '-' + $valueClass;
@@ -151,12 +143,7 @@ $placeholdersDefined: '' !global;
 
                                 @each $pseudoPart in $pseudo {
 
-                                    $combinator: '';
-                                    @if (map-has-key($valueSetting, combinator)) {
-                                        $combinator: map-get($valueSetting, combinator);
-                                    }
-
-                                    $selector: #{'.' + $utility + $global-pseudo-separator + $pseudoClass + ':' + $pseudoPart + $combinator};
+                                    $selector: #{'.' + $utility + $combinatorClass + $global-pseudo-separator + $pseudoClass + ' ' +  + ':' + $pseudoPart};
 
                                     // Create utility - and maybe a new %placeholder
                                     @if (index($placeholdersDefined, $placeholderId) != null) {
@@ -174,12 +161,7 @@ $placeholdersDefined: '' !global;
 
                         @each $breakpoint in map-get($valueSetting, breakpoints) {
 
-                            $combinator: '';
-                            @if (map-has-key($valueSetting, combinator)) {
-                                $combinator: map-get($valueSetting, combinator);
-                            }
-                    
-                            $selector: #{'.' + $utility + $global-breakpoint-separator + $breakpoint + $combinator};
+                            $selector: #{'.' + $global-utilities-namespace + $combinatorClass + $propertyClass + $valueClass + $global-breakpoint-separator + $breakpoint + ' ' + $combinator};
                  
                             @include breakpoint($breakpoint) {
                                 @include makeClass($selector, $property, $value);
@@ -244,9 +226,17 @@ $placeholdersDefined: '' !global;
                         }
                     }
 
-                    $combinator: '';
+                    $combinatorDefinition: '';
                     @if (map-has-key($valueSetting, combinator)) {
-                        $combinator: map-get($valueSetting, combinator);
+                        $combinatorDefinition: map-get($valueSetting, combinator);
+                    }
+
+                    $combinator: $combinatorDefinition;
+                    $combinatorClass: '';
+
+                    @if (type_of($combinatorDefinition) == list) {
+                        $combinator: first($combinatorDefinition);
+                        $combinatorClass: last($combinatorDefinition) + '-';
                     }
 
                     $value: $start;
@@ -260,7 +250,7 @@ $placeholdersDefined: '' !global;
                         $utility: $global-utilities-namespace + $propertyClass + $valueClass;
                         $utility: str-replace(to-string($utility), '.', '');
 
-                        $selector: #{'.' + $utility + $combinator};
+                        $selector: #{'.' + $global-utilities-namespace + $combinatorClass + $propertyClass + $valueClass + ' ' + $combinator};
                         
                         $valueWithUnit: #{$value + $unit};
                         
