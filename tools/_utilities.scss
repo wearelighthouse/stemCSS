@@ -1,6 +1,5 @@
 /**
   * TODO
-  * Multi-property
  */
 
 $placeholdersDefined: '' !global;
@@ -13,18 +12,15 @@ $placeholdersDefined: '' !global;
         // property:
         $propertyDefinition: ifnoterror($propertySetting, property, 'No "Property: "declared in settings!');
         
-        // string
         $property: $propertyDefinition;
         $propertyClass: $propertyDefinition;
-
+        
         // list
-        @if (type_of($property) == list) {
+        @if (type_of($propertyDefinition) == list) {
             $property: first($propertyDefinition);
-            $propertyClass: last($propertyDefinition)
+            $propertyClass: last($propertyDefinition);
         }
 
-        // add hyphen
-        // wait - this won't work for .u-block or .u-absolute;
         @if ($propertyClass != '') {
             $propertyClass: $propertyClass + '-';
         }
@@ -55,7 +51,7 @@ $placeholdersDefined: '' !global;
                     $selector: #{'.' + $utility};
 
                     // u-position-absolute;
-                    $placeholderId: $global-utilities-namespace + $property + '-' + $valueClass;
+                    $placeholderId: $global-utilities-namespace + $propertyClass + $valueClass;
 
                     // Create utility - and maybe a new %placeholder
                     @if (index($placeholdersDefined, $placeholderId) != null) {
@@ -105,7 +101,7 @@ $placeholdersDefined: '' !global;
                     // Define the selector
                     $selector: #{'.' + $global-utilities-namespace + $combinatorClass + $propertyClass + $valueClass + ' ' + $combinator};
                     
-                    $placeholderId: $global-utilities-namespace + $property + '-' + $valueClass;
+                    $placeholderId: $global-utilities-namespace + $propertyClass + $valueClass;
 
                     // Create utility - and maybe a new %placeholder
                     @if (index($placeholdersDefined, $placeholderId) != null) {
@@ -114,7 +110,7 @@ $placeholdersDefined: '' !global;
                         @include createPlaceholderAndUtility($placeholderId, $property, $value, $selector);
                     }
                     
-                    // Psuedos
+                    // Pseudos
                     @if (map-has-key($valueSetting, pseudos)) {
 
                         @each $pseudo in map-get($valueSetting, pseudos) {
@@ -126,7 +122,7 @@ $placeholdersDefined: '' !global;
                                 $selector: #{'.' + $global-utilities-namespace + $combinatorClass + $propertyClass + $valueClass + $global-pseudo-separator + $pseudo + ':' + $pseudo + ' ' + $combinator};
 
                                 // u-color-link
-                                $placeholderId: $global-utilities-namespace + $property + '-' + $valueClass;
+                                $placeholderId: $global-utilities-namespace + $propertyClass + $valueClass;
                 
                                 // Create utility - and maybe a new %placeholder
                                 @if (index($placeholdersDefined, $placeholderId) != null) {
@@ -188,12 +184,14 @@ $placeholdersDefined: '' !global;
                         
                         $selector: #{'.' + $utility};
 
-                        $placeholderId: $global-utilities-namespace + $property + '-' + $valueClass;
+                        $placeholderId: $global-utilities-namespace + $propertyClass + $valueClass;
                         
                         // Create %placeholder if it's new!
                         @if (index($placeholdersDefined, $placeholderId) == null) {
                             @include createPlaceholder($placeholderId) {
-                                #{$property}: #{$value};
+                                @each $property in $property {
+                                    #{$property}: #{$value};
+                                }
                             };
                             @include addToPlaceholderDefinitions($placeholderId);
                         }
@@ -255,7 +253,7 @@ $placeholdersDefined: '' !global;
                         $valueWithUnit: #{$value + $unit};
                         
                         // u-color-link
-                        $placeholderId: $global-utilities-namespace + $property + '-' + $value + $unitClass;
+                        $placeholderId: $global-utilities-namespace + $propertyClass + '-' + $value + $unitClass;
                 
                         // Create utility - and maybe a new %placeholder
                         @if (index($placeholdersDefined, $placeholderId) != null) {

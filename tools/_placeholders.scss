@@ -21,7 +21,10 @@
 @mixin createPlaceholderAndUtility($placeholderId, $property, $value, $selector) {
                     
     @include createPlaceholder($placeholderId) {
-        #{$property}: #{$value};
+        // Working I think
+        @each $property in $property {
+            #{$property}: #{$value};
+        }
     };
     @include addToPlaceholderDefinitions($placeholderId);
     @include createUtilityFromPlaceholder($selector, $placeholderId);

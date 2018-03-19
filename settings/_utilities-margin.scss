@@ -10,7 +10,31 @@ $utilitiesMarginSettings: (
         unit: rem,
         start: 1,
         end: 4,
-        combinator: '> * + *',
+        combinator: ('> * + *', 'test'),
+      ),
+    ),
+  ),
+  (
+    property: (('margin-left', 'margin-right'), 'mh'),
+
+    values: (
+      (
+        auto,
+      ),
+    ),
+  ),
+  (
+    property: (('margin-top', 'margin-bottom'), 'mv'),
+
+    values: (
+      (
+        auto,
+      ),
+      (
+        unit: rem,
+        start: 1,
+        end: 4,
+        combinator: ('> * + *', 'sibling'),
       ),
     ),
   ),

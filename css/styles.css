@@ -1,8 +1,6 @@
 /* Source: IotaCSS iota-breakpoint */
 /**
   * TODO
-  * Multi-property
-  * Combinator classname
  */
 :root {
   --ContainerWidth: 98vw;
@@ -209,164 +207,54 @@ code {
   -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
 }
 
-.u-pos-fixed {
-  position: fixed;
-}
-
-.u-pos-rel {
-  position: relative;
-}
-
-.u-pos-10pc, .u-sibling-pos-10pc > * + * {
-  position: 10%;
-}
-
-.u-pos-abs, .u-pos-abs\@visited:visited {
-  position: absolute;
-}
-
-@media screen and (max-width: 1399px) {
-  .u-pos-abs\@uptolarge {
-    position: absolute;
-  }
-}
-
-@media screen and (min-width: 1400px) {
-  .u-pos-abs\@fromlarge {
-    position: absolute;
-  }
-}
-
-.u-sibling-pos-20pc > * + * {
-  position: 20%;
-}
-
-.u-sibling-pos-30pc > * + * {
-  position: 30%;
-}
-
-.u-sibling-pos-40pc > * + * {
-  position: 40%;
-}
-
-.u-sibling-pos-50pc > * + * {
-  position: 50%;
-}
-
-.u-sibling-pos-60pc > * + * {
-  position: 60%;
-}
-
-.u-sibling-pos-70pc > * + * {
-  position: 70%;
-}
-
-.u-sibling-pos-80pc > * + * {
-  position: 80%;
-}
-
-.u-sibling-pos-90pc > * + * {
-  position: 90%;
-}
-
-.2.u-opac-0 {
-  opacity: 0.2;
-}
-
-.4.u-opac-0 {
-  opacity: 0.4;
-}
-
-.6.u-opac-0 {
-  opacity: 0.6;
-}
-
-.8.u-opac-0 {
-  opacity: 0.8;
-}
-
-.u-opac-1 {
-  opacity: 1;
-}
-
-.u-z-1 {
-  z-index: 1;
-}
-
-.u-z-2 {
-  z-index: 2;
-}
-
-.u-z-top {
-  z-index: 3;
-}
-
-.u-z-4 {
-  z-index: 4;
-}
-
-.u-z--1 {
-  z-index: -1;
-}
-
-.u-z-0 {
-  z-index: 0;
-}
-
-.u-z-3 {
-  z-index: 3;
-}
-
-.u-z-5 {
-  z-index: 5;
-}
-
-.u-mt-0 {
-  margin-top: 0;
-}
-
-.u-mt-auto {
-  margin-top: auto;
-}
-
-.u-mt-1rem {
-  margin-top: 1rem;
-}
-
-.u-mt-2rem {
-  margin-top: 2rem;
-}
-
-.u-mt-3rem {
-  margin-top: 3rem;
-}
-
-.u-mt-4rem {
-  margin-top: 4rem;
-}
-
-.u-mt-5rem {
-  margin-top: 5rem;
-}
-
 .u-ml-auto {
   margin-left: auto;
 }
 
-.u-ml-1rem > * + * {
+.u-test-ml-1rem > * + * {
   margin-left: 1rem;
 }
 
-.u-ml-2rem > * + * {
+.u-test-ml-2rem > * + * {
   margin-left: 2rem;
 }
 
-.u-ml-3rem > * + * {
+.u-test-ml-3rem > * + * {
   margin-left: 3rem;
 }
 
-.u-ml-4rem > * + * {
+.u-test-ml-4rem > * + * {
   margin-left: 4rem;
+}
+
+.u-mh-auto, .c-button {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.u-mv-auto {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.u-sibling-mv-1rem > * + * {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.u-sibling-mv-2rem > * + * {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.u-sibling-mv-3rem > * + * {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.u-sibling-mv-4rem > * + * {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
 }
 
 /**

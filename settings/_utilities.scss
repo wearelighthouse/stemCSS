@@ -1,84 +1,84 @@
 @import 'utilities-margin';
 
 $utilitiesSettings: (
-  (
-    property: ('position', 'pos'),
+  // (
+  //   property: ('position', 'pos'),
 
-    values: (
-      (
-        // Simple Values
-        'fixed',
-        ('relative', 'rel'),
-        (10%, 10pc),
-      ),
-      (
-        // Complex Value
-        value: ('absolute', 'abs'),
-        breakpoints: ('uptolarge', 'fromlarge'),
-        pseudos: ('visited', ('hover', 'focus')),
-        // combinator: ('> * + *', 'sibling'),
-      ),
-      (
-        // Placeholders
-        placeholders: (
-          'static',
-          ('dynamic', 'dyn'),
-        ),
-      ),
-      (
-        // Stepped Unit
-        unit: ('%', 'pc'),
-        start: 10,
-        end: 90,
-        step: 10,
-        combinator: ('> * + *', 'sibling'),
-      ),
-    ),
-  ),
-  (
-    property: ('opacity', 'opac'),
+  //   values: (
+  //     (
+  //       // Simple Values
+  //       'fixed',
+  //       ('relative', 'rel'),
+  //       (10%, 10pc),
+  //     ),
+  //     (
+  //       // Complex Value
+  //       value: ('absolute', 'abs'),
+  //       breakpoints: ('uptolarge', 'fromlarge'),
+  //       pseudos: ('visited', ('hover', 'focus')),
+  //       // combinator: ('> * + *', 'sibling'),
+  //     ),
+  //     (
+  //       // Placeholders
+  //       placeholders: (
+  //         'static',
+  //         ('dynamic', 'dyn'),
+  //       ),
+  //     ),
+  //     (
+  //       // Stepped Unit
+  //       unit: ('%', 'pc'),
+  //       start: 10,
+  //       end: 90,
+  //       step: 10,
+  //       combinator: ('> * + *', 'sibling'),
+  //     ),
+  //   ),
+  // ),
+  // (
+  //   property: ('opacity', 'opac'),
 
-    values: (
-      (
-        // Stepped Number
-        start: .2,
-        end: 1,
-        step: 0.2,
-      ),
-    ),
-  ),
-  (
-    property: ('z-index', 'z'),
+  //   values: (
+  //     (
+  //       // Stepped Number
+  //       start: .2,
+  //       end: 1,
+  //       step: 0.2,
+  //     ),
+  //   ),
+  // ),
+  // (
+  //   property: ('z-index', 'z'),
 
-    values: (
-      (
-        // Simple Values
-        1,
-        2,
-        (3, 'top'),
-        4,
-      ),
-      (
-        // Stepped Number
-        start: -1,
-        end: 5,
-      ),
-    ),
-  ),
-  (
-    property: ('margin-top', 'mt'),
+  //   values: (
+  //     (
+  //       // Simple Values
+  //       1,
+  //       2,
+  //       (3, 'top'),
+  //       4,
+  //     ),
+  //     (
+  //       // Stepped Number
+  //       start: -1,
+  //       end: 5,
+  //     ),
+  //   ),
+  // ),
+  // (
+  //   property: ('margin-top', 'mt'),
 
-    values: (
-      (
-        0,
-        auto,
-      ),
-      (
-        // Stepped Number
-        start: 1,
-        end: 5,
-        unit: 'rem',
-      ),
-    ),
-  ),
+  //   values: (
+  //     (
+  //       0,
+  //       auto,
+  //     ),
+  //     (
+  //       // Stepped Number
+  //       start: 1,
+  //       end: 5,
+  //       unit: 'rem',
+  //     ),
+  //   ),
+  // ),
 );
