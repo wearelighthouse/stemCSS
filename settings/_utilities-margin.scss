@@ -38,4 +38,20 @@ $utilitiesMarginSettings: (
       ),
     ),
   ),
+  (
+    property: ('border-radius', 'radius'),
+
+    values: (
+      (
+        2px,
+        ('2px 2px 0 0', '2200'),
+      ),
+      (
+        unit: rem,
+        start: 1,
+        end: 4,
+        combinator: ('> * + *', 'sibling'),
+      ),
+    ),
+  ),
 );
