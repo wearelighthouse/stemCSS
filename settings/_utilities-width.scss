@@ -1,0 +1,18 @@
+$utilitiesWidthSettings: (
+  (
+    property: 'width',
+
+    values: (
+      (
+        ('100%', '100pc'),
+      ),
+      (
+        placeholders: (
+          1px,
+        ),
+      ),
+    ),
+  ),
+);
+
+$makeUtilities: append($makeUtilities, $utilitiesWidthSettings);

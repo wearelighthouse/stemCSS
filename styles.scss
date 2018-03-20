@@ -1,60 +1,20 @@
 // Tools
-@import 'tools/breakpoints';
-@import 'tools/make-class';
-@import 'tools/strings';
-@import 'tools/type';
-
-@import 'tools/combinator-utilities';
-@import 'tools/unit-utilities';
-@import 'tools/number-utilities';
-@import 'tools/word-utilities';
+@import 'tools/_import';
 
 // Settings
-@import 'settings/global';
-@import 'settings/colours';
-@import 'settings/breakpoints';
-@import 'settings/container';
-
-// Settings / Combinator Utilities
-@import 'settings/combinator-utilities';
-
-// Settings / Number Utilities
-@import 'settings/number-utilities';
-@import 'settings/number-utilities-flex';
-
-// Settings / Unit Utilities
-@import 'settings/unit-utilities';
-@import 'settings/unit-utilities-position';
-
-// Settings / Word Utilities
-@import 'settings/word-utilities';
-@import 'settings/word-utilities-flex';
-@import 'settings/word-utilities-colours';
+@import 'settings/_import';
 
 // Base
-@import 'base/reset';
-@import 'base/type';
-@import 'base/forms';
-@import 'base/animation';
+@import 'base/_import';
 
 // Mapped Utilities
-@import 'utilities/combinator-utilities';
-@import 'utilities/word-utilities';
-@import 'utilities/number-utilities';
-@import 'utilities/unit-utilities';
-@import 'utilities/type';
+@import 'utilities/_import';
 
 // Objects
-@import 'objects/container';
-@import 'objects/aspect-ratio';
-@import 'objects/position';
-@import 'objects/hide';
-@import 'objects/dictate';
-
+@import 'objects/_import';
 
 // Components
-@import 'components/button';
-
+@import 'components/_import';
 
 // Interactions
-// @import 'interactions/';
+@import 'interactions/_import';

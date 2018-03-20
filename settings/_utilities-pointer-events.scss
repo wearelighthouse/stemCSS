@@ -1,0 +1,13 @@
+$utilitiesPointerEventsSettings: (
+  (
+    property: ('pointer-events', 'events'),
+
+    values: (
+      (
+        none,
+      ),
+    ),
+  ),
+);
+
+$makeUtilities: append($makeUtilities, $utilitiesPointerEventsSettings);

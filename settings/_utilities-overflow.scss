@@ -1,0 +1,31 @@
+$utilitiesOverflowSettings: (
+  (
+    property: ('overflow', 'ov'),
+
+    values: (
+      (
+        hidden,
+      ),
+    ),
+  ),
+  (
+    property: ('overflow-x', 'ovx'),
+
+    values: (
+      (
+        hidden,
+      ),
+    ),
+  ),
+  (
+    property: ('overflow-y', 'ovy'),
+
+    values: (
+      (
+        hidden,
+      ),
+    ),
+  ),
+);
+
+$makeUtilities: append($makeUtilities, $utilitiesOverflowSettings);

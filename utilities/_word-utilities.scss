@@ -1,9 +1,0 @@
-$wordUtilities: (
-  $wordUtilitiesSettings,
-  $wordUtilitiesFlexSettings,
-  $wordUtilitiesColoursSettings,
-);
-
-@each $utilitySettings in $wordUtilities {
-  @include makeWordUtilities($utilitySettings);
-}

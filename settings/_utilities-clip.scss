@@ -1,0 +1,16 @@
+$utilitiesClipSettings: (
+  (
+    property: 'clip',
+
+    values: (
+      (
+        placeholders: (
+          ('rect(0, 0, 0, 0)', '0'),
+          ('rect(1px, 1px, 1px, 1px)', '1px'),
+        ),
+      ),
+    ),
+  ),
+);
+
+$makeUtilities: append($makeUtilities, $utilitiesClipSettings);

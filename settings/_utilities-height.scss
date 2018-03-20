@@ -1,0 +1,18 @@
+$utilitiesHeightSettings: (
+  (
+    property: 'height',
+
+    values: (
+      (
+        ('100%', '100pc'),
+      ),
+      (
+        placeholders: (
+          1px,
+        ),
+      ),
+    ),
+  ),
+);
+
+$makeUtilities: append($makeUtilities, $utilitiesHeightSettings);

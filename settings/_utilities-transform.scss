@@ -1,0 +1,15 @@
+$utilitiesTransformSettings: (
+  (
+    property: ('transform', ''),
+
+    values: (
+      (
+        ('translate(-50%, -50%)', 'trans--50pc'),
+        ('translateX(-50%)', 'transx--50pc'),
+        ('translateY(-50%)', 'transy--50pc'),
+      ),
+    ),
+  ),
+);
+
+$makeUtilities: append($makeUtilities, $utilitiesTransformSettings);

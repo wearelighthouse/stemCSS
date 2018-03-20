@@ -1,8 +1,0 @@
-$numberUtilities: (
-  $numberUtilitiesSettings,
-  $numberUtilitiesFlexSettings,
-);
-
-@each $utilitySettings in $numberUtilities {
-  @include makeNumberUtilities($utilitySettings);
-}

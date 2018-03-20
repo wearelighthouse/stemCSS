@@ -1,0 +1,31 @@
+@mixin addToPlaceholderDefinitions($utility) {
+    $placeholderLibrary: append($placeholderLibrary, $utility) !global;
+}
+
+@mixin createPlaceholder($placeholder) {
+    %#{$placeholder} {
+        @content;
+    }
+}
+
+@mixin extend($placeholderId) {
+    @extend %#{$placeholderId};
+}
+
+@mixin createUtilityFromPlaceholder($selector, $placeholderId) {
+    #{$selector} {
+        @include extend($placeholderId);
+    }
+}
+
+@mixin createPlaceholderAndUtility($placeholderId, $property, $value, $selector) {
+                    
+    @include createPlaceholder($placeholderId) {
+        // Working I think
+        @each $property in $property {
+            #{$property}: #{$value};
+        }
+    };
+    @include addToPlaceholderDefinitions($placeholderId);
+    @include createUtilityFromPlaceholder($selector, $placeholderId);
+}

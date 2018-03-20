@@ -1,0 +1,14 @@
+$utilitiesVisibilitySettings: (
+  (
+    property: ('visibility', 'vis'),
+
+    values: (
+      (
+        hidden,
+        visible,
+      ),
+    ),
+  ),
+);
+
+$makeUtilities: append($makeUtilities, $utilitiesVisibilitySettings);

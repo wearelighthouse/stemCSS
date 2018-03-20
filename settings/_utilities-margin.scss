@@ -1,0 +1,13 @@
+$utilitiesMarginSettings: (
+  (
+    property: (('margin-left', 'margin-right'), 'mh'),
+
+    values: (
+      (
+        auto,
+      ),
+    ),
+  ),
+);
+
+$makeUtilities: append($makeUtilities, $utilitiesMarginSettings);

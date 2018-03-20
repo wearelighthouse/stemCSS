@@ -1,0 +1,14 @@
+$utilitiesZindexSettings: (
+  (
+    property: ('z-index', 'z'),
+
+    values: (
+      (
+        start: -1,
+        end: 2,
+      ),
+    ),
+  ),
+);
+
+$makeUtilities: append($makeUtilities, $utilitiesZindexSettings);
