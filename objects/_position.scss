@@ -23,29 +23,29 @@ $object: 'abscentre';
   @extend .u-pos-absolute;
   @extend .u-top-50pc;
   @extend .u-left-50pc;
-  transform: translate(-50%, -50%);
+  @extend .u-trans--50pc;
 }
 
 /**
  * .o-abscentre-y
  */
 
-// $object: 'abscentre-y';
+$object: 'abscentre-y';
 
-// #{'.' + $global-objects-namespace + $object} {
-//   @extend .u-pos-absolute;
-//   @extend .u-top-50pc;
-//   transform: translateY(-50%);
-// }
+#{'.' + $global-objects-namespace + $object} {
+  @extend .u-pos-absolute;
+  @extend .u-top-50pc;
+  @extend .u-transy--50pc;
+}
 
 /**
  * .o-abscentre-x
  */
 
-// $object: 'abscentre-x';
+$object: 'abscentre-x';
 
-// #{'.' + $global-objects-namespace + $object} {
-//   @extend .u-pos-absolute;
-//   @extend .u-left-50pc;
-//   transform: translateX(-50%);
-// }
+#{'.' + $global-objects-namespace + $object} {
+  @extend .u-pos-absolute;
+  @extend .u-left-50pc;
+  @extend .u-transx--50pc;
+}

@@ -1,0 +1,34 @@
+$utilitiesPositionSettings: (
+  (
+    property: ('position', 'pos'),
+
+    values: (
+      (
+        absolute,
+        relative,
+      ),
+    ),
+  ),
+  (
+    property: 'top',
+
+    values: (
+      (
+        0,
+        (50%, 50pc),
+        (100%, 100pc),
+      ),
+    ),
+  ),
+  (
+    property: 'left',
+
+    values: (
+      (
+        0,
+        (50%, 50pc),
+        (100%, 100pc),
+      ),
+    ),
+  ),
+);

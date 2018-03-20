@@ -1,56 +1,10 @@
 $utilitiesMarginSettings: (
   (
-    property: ('margin-left', 'ml'),
-
-    values: (
-      (
-        auto,
-      ),
-      (
-        unit: rem,
-        start: 1,
-        end: 4,
-        combinator: ('> * + *', 'test'),
-      ),
-    ),
-  ),
-  (
     property: (('margin-left', 'margin-right'), 'mh'),
 
     values: (
       (
         auto,
-      ),
-    ),
-  ),
-  (
-    property: (('margin-top', 'margin-bottom'), 'mv'),
-
-    values: (
-      (
-        auto,
-      ),
-      (
-        unit: rem,
-        start: 1,
-        end: 4,
-        combinator: ('> * + *', 'sibling'),
-      ),
-    ),
-  ),
-  (
-    property: ('border-radius', 'radius'),
-
-    values: (
-      (
-        2px,
-        ('2px 2px 0 0', '2200'),
-      ),
-      (
-        unit: rem,
-        start: 1,
-        end: 4,
-        combinator: ('> * + *', 'sibling'),
       ),
     ),
   ),

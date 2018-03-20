@@ -1,0 +1,34 @@
+// Global
+@import 'settings/global';
+@import 'settings/colours';
+@import 'settings/breakpoints';
+
+// Utilities
+@import 'settings/utilities-position';
+@import 'settings/utilities-z-index';
+@import 'settings/utilities-visibility';
+@import 'settings/utilities-overflow';
+@import 'settings/utilities-clip';
+@import 'settings/utilities-display';
+@import 'settings/utilities-width';
+@import 'settings/utilities-height';
+@import 'settings/utilities-margin';
+@import 'settings/utilities-transform';
+@import 'settings/utilities-pointer-events';
+
+$makeUtilities: (
+  $utilitiesPositionSettings,
+  $utilitiesZindexSettings,
+  $utilitiesVisibilitySettings,
+  $utilitiesOverflowSettings,
+  $utilitiesClipSettings,
+  $utilitiesDisplaySettings,
+  $utilitiesWidthSettings,
+  $utilitiesHeightSettings,
+  $utilitiesMarginSettings,
+  $utilitiesTransformSettings,
+  $utilitiesPointerEventsSettings,
+);
+
+// Component
+@import 'settings/container';

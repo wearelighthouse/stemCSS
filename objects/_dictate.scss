@@ -10,5 +10,5 @@ $object: 'dictate';
   @extend .u-pos-absolute;
   @extend .u-width-1px;
   @extend .u-height-1px;
-  clip: rect(1px, 1px, 1px, 1px);
+  @extend .u-clip-1px;
 }

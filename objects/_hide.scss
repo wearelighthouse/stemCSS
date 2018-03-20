@@ -9,6 +9,6 @@ $object: 'hide';
   @extend .u-pos-relative;
   @extend .u-ov-hidden;
   @extend .u-vis-hidden;
-  @extend .u-pointer-none;
-  clip: rect(0, 0, 0, 0);
+  @extend .u-events-none;
+  @extend .u-clip-0;
 }

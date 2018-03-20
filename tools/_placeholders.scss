@@ -1,5 +1,5 @@
 @mixin addToPlaceholderDefinitions($utility) {
-    $placeholdersDefined: append($placeholdersDefined, $utility) !global;
+    $placeholderLibrary: append($placeholderLibrary, $utility) !global;
 }
 
 @mixin createPlaceholder($placeholder) {
