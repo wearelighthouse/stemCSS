@@ -9,3 +9,5 @@ $utilitiesMarginSettings: (
     ),
   ),
 );
+
+$makeUtilities: append($makeUtilities, $utilitiesMarginSettings);

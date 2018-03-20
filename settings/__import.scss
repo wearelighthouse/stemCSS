@@ -4,6 +4,7 @@
 @import 'settings/breakpoints';
 
 // Utilities
+$makeUtilities: ();
 @import 'settings/utilities-position';
 @import 'settings/utilities-z-index';
 @import 'settings/utilities-visibility';
@@ -13,22 +14,9 @@
 @import 'settings/utilities-width';
 @import 'settings/utilities-height';
 @import 'settings/utilities-margin';
+@import 'settings/utilities-content';
 @import 'settings/utilities-transform';
 @import 'settings/utilities-pointer-events';
-
-$makeUtilities: (
-  $utilitiesPositionSettings,
-  $utilitiesZindexSettings,
-  $utilitiesVisibilitySettings,
-  $utilitiesOverflowSettings,
-  $utilitiesClipSettings,
-  $utilitiesDisplaySettings,
-  $utilitiesWidthSettings,
-  $utilitiesHeightSettings,
-  $utilitiesMarginSettings,
-  $utilitiesTransformSettings,
-  $utilitiesPointerEventsSettings,
-);
 
 // Component
 @import 'settings/container';

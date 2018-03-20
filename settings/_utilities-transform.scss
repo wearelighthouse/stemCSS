@@ -11,3 +11,5 @@ $utilitiesTransformSettings: (
     ),
   ),
 );
+
+$makeUtilities: append($makeUtilities, $utilitiesTransformSettings);

@@ -10,3 +10,5 @@ $utilitiesVisibilitySettings: (
     ),
   ),
 );
+
+$makeUtilities: append($makeUtilities, $utilitiesVisibilitySettings);

@@ -10,3 +10,5 @@ $utilitiesZindexSettings: (
     ),
   ),
 );
+
+$makeUtilities: append($makeUtilities, $utilitiesZindexSettings);

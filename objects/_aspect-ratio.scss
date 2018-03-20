@@ -10,7 +10,7 @@ $object: 'aspect-ratio';
   &:before {
     @extend .u-block;
     @extend .u-width-100pc;
-    @extend %no-content;
+    @extend %u-content-none;
   }
 
   > * {

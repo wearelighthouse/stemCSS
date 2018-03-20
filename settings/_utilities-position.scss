@@ -32,3 +32,5 @@ $utilitiesPositionSettings: (
     ),
   ),
 );
+
+$makeUtilities: append($makeUtilities, $utilitiesPositionSettings);

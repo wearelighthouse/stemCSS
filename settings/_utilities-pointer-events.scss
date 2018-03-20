@@ -9,3 +9,5 @@ $utilitiesPointerEventsSettings: (
     ),
   ),
 );
+
+$makeUtilities: append($makeUtilities, $utilitiesPointerEventsSettings);

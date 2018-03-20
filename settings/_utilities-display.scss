@@ -4,8 +4,12 @@ $utilitiesDisplaySettings: (
 
     values: (
       (
+        flex,
+        grid,
         block,
       ),
     ),
   ),
 );
+
+$makeUtilities: append($makeUtilities, $utilitiesDisplaySettings);

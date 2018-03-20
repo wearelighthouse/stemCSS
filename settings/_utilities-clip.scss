@@ -12,3 +12,5 @@ $utilitiesClipSettings: (
     ),
   ),
 );
+
+$makeUtilities: append($makeUtilities, $utilitiesClipSettings);

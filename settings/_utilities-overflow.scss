@@ -27,3 +27,5 @@ $utilitiesOverflowSettings: (
     ),
   ),
 );
+
+$makeUtilities: append($makeUtilities, $utilitiesOverflowSettings);

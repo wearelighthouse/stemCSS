@@ -1,0 +1,15 @@
+$utilitiesContentSettings: (
+  (
+    property: 'content',
+
+    values: (
+      (
+        placeholders: (
+          ('""', 'none'),
+        ),
+      ),
+    ),
+  ),
+);
+
+$makeUtilities: append($makeUtilities, $utilitiesContentSettings);

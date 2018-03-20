@@ -4,9 +4,15 @@ $utilitiesHeightSettings: (
 
     values: (
       (
-        1px,
         ('100%', '100pc'),
+      ),
+      (
+        placeholders: (
+          1px,
+        ),
       ),
     ),
   ),
 );
+
+$makeUtilities: append($makeUtilities, $utilitiesHeightSettings);
