@@ -1,4 +1,4 @@
-$utilitiesVisibilitySettings: (
+$utilities-visibility-settings: (
   (
     property: ('visibility', 'vis'),
 
@@ -11,4 +11,4 @@ $utilitiesVisibilitySettings: (
   ),
 );
 
-$makeUtilities: append($makeUtilities, $utilitiesVisibilitySettings);
+$make-utilities: append($make-utilities, $utilities-visibility-settings);

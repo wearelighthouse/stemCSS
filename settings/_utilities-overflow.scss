@@ -1,4 +1,4 @@
-$utilitiesOverflowSettings: (
+$utilities-overflow-settings: (
   (
     property: ('overflow', 'ov'),
 
@@ -28,4 +28,4 @@ $utilitiesOverflowSettings: (
   ),
 );
 
-$makeUtilities: append($makeUtilities, $utilitiesOverflowSettings);
+$make-utilities: append($make-utilities, $utilities-overflow-settings);

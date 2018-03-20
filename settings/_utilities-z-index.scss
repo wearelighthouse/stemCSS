@@ -1,4 +1,4 @@
-$utilitiesZindexSettings: (
+$utilities-z-index-settings: (
   (
     property: ('z-index', 'z'),
 
@@ -11,4 +11,4 @@ $utilitiesZindexSettings: (
   ),
 );
 
-$makeUtilities: append($makeUtilities, $utilitiesZindexSettings);
+$make-utilities: append($make-utilities, $utilities-z-index-settings);

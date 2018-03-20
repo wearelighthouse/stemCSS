@@ -2,133 +2,133 @@
   * TODO
  */
 
-$placeholderLibrary: '' !global;
+$placeholder-library: '' !global;
 
-@mixin makeUtilities($propertiesSettings) {
+@mixin makeUtilities($properties-settings) {
 
     // each property...
-    @each $propertySetting in $propertiesSettings {
+    @each $property-setting in $properties-settings {
 
         // property:
-        $propertyDefinition: ifnoterror($propertySetting, property, 'No "Property: "declared in settings!');
+        $property-definition: ifnoterror($property-setting, property, 'No "Property: "declared in settings!');
         
-        $property: $propertyDefinition;
-        $propertyClass: $propertyDefinition;
+        $property: $property-definition;
+        $property-class: $property-definition;
         
         // list
-        @if (type_of($propertyDefinition) == list) {
-            $property: first($propertyDefinition);
-            $propertyClass: last($propertyDefinition);
+        @if (type_of($property-definition) == list) {
+            $property: first($property-definition);
+            $property-class: last($property-definition);
         }
 
-        @if ($propertyClass != '') {
-            $propertyClass: $propertyClass + '-';
+        @if ($property-class != '') {
+            $property-class: $property-class + '-';
         }
         
         // List values
-        $valuesSettings: ifnoterror($propertySetting, values, 'No "Values: ()" declared in settings!');
+        $valuesSettings: ifnoterror($property-setting, values, 'No "Values: ()" declared in settings!');
 
-        @each $valueSetting in $valuesSettings {
+        @each $value-setting in $valuesSettings {
 
             // Simple Values
-            @if (type_of($valueSetting) == list) {
+            @if (type_of($value-setting) == list) {
                 
-                @each $valueDefinition in $valueSetting {
+                @each $value-definition in $value-setting {
 
-                    $value: $valueDefinition;
-                    $valueClass: $valueDefinition;
+                    $value: $value-definition;
+                    $value-class: $value-definition;
                     
                     // Value has Class nickname
-                    @if type_of($valueDefinition) == list {
-                        $value: first($valueDefinition);
-                        $valueClass: last($valueDefinition);
+                    @if type_of($value-definition) == list {
+                        $value: first($value-definition);
+                        $value-class: last($value-definition);
                     }
 
                     // u-pos-abs;
-                    $utility: $global-utilities-namespace + $propertyClass + $valueClass;
+                    $utility: $global-utilities-namespace + $property-class + $value-class;
 
                     // .u-pos-abs;
                     $selector: #{'.' + $utility};
 
                     // u-position-absolute;
-                    $placeholderId: $global-utilities-namespace + $propertyClass + $valueClass;
+                    $placeholder-id: $global-utilities-namespace + $property-class + $value-class;
 
                     // Create utility - and maybe a new %placeholder
-                    @if (index($placeholderLibrary, $placeholderId) != null) {
-                        @include createUtilityFromPlaceholder($selector, $placeholderId);
+                    @if (index($placeholder-library, $placeholder-id) != null) {
+                        @include createUtilityFromPlaceholder($selector, $placeholder-id);
                     } @else {
-                        @include createPlaceholderAndUtility($placeholderId, $property, $value, $selector);
+                        @include createPlaceholderAndUtility($placeholder-id, $property, $value, $selector);
                     }
                 }
             }
 
             // NOT Simple Values
-            @if (type_of($valueSetting) == map) {
+            @if (type_of($value-setting) == map) {
 
                 // Complex Value
-                @if map-has-key($valueSetting, value) {
+                @if map-has-key($value-setting, value) {
 
-                    $valueDefinition: map-get($valueSetting, value);
-                    $value: $valueDefinition;
-                    $valueClass: $valueDefinition;
+                    $value-definition: map-get($value-setting, value);
+                    $value: $value-definition;
+                    $value-class: $value-definition;
 
                     // Value Class = Shortname
-                    @if type_of($valueDefinition) == list {
-                        $value: first($valueDefinition);
-                        $valueClass: last($valueDefinition);
+                    @if type_of($value-definition) == list {
+                        $value: first($value-definition);
+                        $value-class: last($value-definition);
                     }
 
-                    $combinatorDefinition: '';
-                    @if (map-has-key($valueSetting, combinator)) {
-                        $combinatorDefinition: map-get($valueSetting, combinator);
+                    $combinator-definition: '';
+                    @if (map-has-key($value-setting, combinator)) {
+                        $combinator-definition: map-get($value-setting, combinator);
                     }
 
                     $combinator: '';
-                    $combinatorClass: '';
+                    $combinator-class: '';
 
-                    @if (type_of($combinatorDefinition) == string) {
-                        $combinator: $combinatorDefinition;
+                    @if (type_of($combinator-definition) == string) {
+                        $combinator: $combinator-definition;
                     }
 
-                    @if (type_of($combinatorDefinition) == list) {
-                        $combinator: first($combinatorDefinition);
-                        $combinatorClass: last($combinatorDefinition) + '-';
+                    @if (type_of($combinator-definition) == list) {
+                        $combinator: first($combinator-definition);
+                        $combinator-class: last($combinator-definition) + '-';
                     }
 
                     // Define the utility
-                    $utility: $global-utilities-namespace + $propertyClass + $valueClass;
+                    $utility: $global-utilities-namespace + $property-class + $value-class;
                     
                     // Define the selector
-                    $selector: #{'.' + $global-utilities-namespace + $combinatorClass + $propertyClass + $valueClass + ' ' + $combinator};
+                    $selector: #{'.' + $global-utilities-namespace + $combinator-class + $property-class + $value-class + ' ' + $combinator};
                     
-                    $placeholderId: $global-utilities-namespace + $propertyClass + $valueClass;
+                    $placeholder-id: $global-utilities-namespace + $property-class + $value-class;
 
                     // Create utility - and maybe a new %placeholder
-                    @if (index($placeholderLibrary, $placeholderId) != null) {
-                        @include createUtilityFromPlaceholder($selector, $placeholderId);
+                    @if (index($placeholder-library, $placeholder-id) != null) {
+                        @include createUtilityFromPlaceholder($selector, $placeholder-id);
                     } @else {
-                        @include createPlaceholderAndUtility($placeholderId, $property, $value, $selector);
+                        @include createPlaceholderAndUtility($placeholder-id, $property, $value, $selector);
                     }
                     
                     // Pseudos
-                    @if (map-has-key($valueSetting, pseudos)) {
+                    @if (map-has-key($value-setting, pseudos)) {
 
-                        @each $pseudo in map-get($valueSetting, pseudos) {
+                        @each $pseudo in map-get($value-setting, pseudos) {
                             
                             // Simple Pseudo
                             @if (type_of($pseudo) == string) {
 
                                 // .u-color-link@hover:hover > *
-                                $selector: #{'.' + $global-utilities-namespace + $combinatorClass + $propertyClass + $valueClass + $global-pseudo-separator + $pseudo + ':' + $pseudo + ' ' + $combinator};
+                                $selector: #{'.' + $global-utilities-namespace + $combinator-class + $property-class + $value-class + $global-pseudo-separator + $pseudo + ':' + $pseudo + ' ' + $combinator};
 
                                 // u-color-link
-                                $placeholderId: $global-utilities-namespace + $propertyClass + $valueClass;
+                                $placeholder-id: $global-utilities-namespace + $property-class + $value-class;
                 
                                 // Create utility - and maybe a new %placeholder
-                                @if (index($placeholderLibrary, $placeholderId) != null) {
-                                    @include createUtilityFromPlaceholder($selector, $placeholderId);
+                                @if (index($placeholder-library, $placeholder-id) != null) {
+                                    @include createUtilityFromPlaceholder($selector, $placeholder-id);
                                 } @else {
-                                    @include createPlaceholderAndUtility($placeholderId, $property, $value, $selector);
+                                    @include createPlaceholderAndUtility($placeholder-id, $property, $value, $selector);
                                 }
                             }
 
@@ -139,13 +139,13 @@ $placeholderLibrary: '' !global;
 
                                 @each $pseudoPart in $pseudo {
 
-                                    $selector: #{'.' + $utility + $combinatorClass + $global-pseudo-separator + $pseudoClass + ' ' +  + ':' + $pseudoPart};
+                                    $selector: #{'.' + $utility + $combinator-class + $global-pseudo-separator + $pseudoClass + ' ' +  + ':' + $pseudoPart};
 
                                     // Create utility - and maybe a new %placeholder
-                                    @if (index($placeholderLibrary, $placeholderId) != null) {
-                                        @include createUtilityFromPlaceholder($selector, $placeholderId);
+                                    @if (index($placeholder-library, $placeholder-id) != null) {
+                                        @include createUtilityFromPlaceholder($selector, $placeholder-id);
                                     } @else {
-                                        @include createPlaceholderAndUtility($placeholderId, $property, $value, $selector);
+                                        @include createPlaceholderAndUtility($placeholder-id, $property, $value, $selector);
                                     }
                                 }
                             }
@@ -153,11 +153,11 @@ $placeholderLibrary: '' !global;
                     }
 
                     // Breakpoints
-                    @if (map-has-key($valueSetting, breakpoints)) {
+                    @if (map-has-key($value-setting, breakpoints)) {
 
-                        @each $breakpoint in map-get($valueSetting, breakpoints) {
+                        @each $breakpoint in map-get($value-setting, breakpoints) {
 
-                            $selector: #{'.' + $global-utilities-namespace + $combinatorClass + $propertyClass + $valueClass + $global-breakpoint-separator + $breakpoint + ' ' + $combinator};
+                            $selector: #{'.' + $global-utilities-namespace + $combinator-class + $property-class + $value-class + $global-breakpoint-separator + $breakpoint + ' ' + $combinator};
                  
                             @include breakpoint($breakpoint) {
                                 @include makeClass($selector, $property, $value);
@@ -167,99 +167,99 @@ $placeholderLibrary: '' !global;
                 }
 
                 // Placeholders
-                @if (map-has-key($valueSetting, placeholders)) {
+                @if (map-has-key($value-setting, placeholders)) {
 
-                    @each $placeholder in map-get($valueSetting, placeholders) {
+                    @each $placeholder in map-get($value-setting, placeholders) {
 
                         $value: $placeholder;
-                        $valueClass: $placeholder;
+                        $value-class: $placeholder;
                         
                         // Value has Class nickname
                         @if type_of($placeholder) == list {
                             $value: first($placeholder);
-                            $valueClass: last($placeholder);
+                            $value-class: last($placeholder);
                         }
             
-                        $utility: $global-utilities-namespace + $propertyClass + $valueClass;
+                        $utility: $global-utilities-namespace + $property-class + $value-class;
                         
                         $selector: #{'.' + $utility};
 
-                        $placeholderId: $global-utilities-namespace + $propertyClass + $valueClass;
+                        $placeholder-id: $global-utilities-namespace + $property-class + $value-class;
                         
                         // Create %placeholder if it's new!
-                        @if (index($placeholderLibrary, $placeholderId) == null) {
-                            @include createPlaceholder($placeholderId) {
+                        @if (index($placeholder-library, $placeholder-id) == null) {
+                            @include createPlaceholder($placeholder-id) {
                                 @each $property in $property {
                                     #{$property}: #{$value};
                                 }
                             };
-                            @include addToPlaceholderDefinitions($placeholderId);
+                            @include addToPlaceholderDefinitions($placeholder-id);
                         }
                     }
                 }
 
                 // Stepped
-                @if (map-has-key($valueSetting, start)) {
+                @if (map-has-key($value-setting, start)) {
 
-                    $start: map-get($valueSetting, start);
-                    $end: map-get($valueSetting, end);
+                    $start: map-get($value-setting, start);
+                    $end: map-get($value-setting, end);
                     $step: 1;
 
-                    @if (map-has-key($valueSetting, step)) {
-                        $step: map-get($valueSetting, step);
+                    @if (map-has-key($value-setting, step)) {
+                        $step: map-get($value-setting, step);
                     }
 
                     $unit: '';
                     $unitClass: '';
 
-                    @if (map-has-key($valueSetting, unit)) {
-                        $unitDefinition: map-get($valueSetting, unit);
+                    @if (map-has-key($value-setting, unit)) {
+                        $unit-definition: map-get($value-setting, unit);
                         
-                        $unit: $unitDefinition;
-                        $unitClass: $unitDefinition;
+                        $unit: $unit-definition;
+                        $unitClass: $unit-definition;
 
-                        @if (type_of($unitDefinition) == list) {
-                            $unit: first($unitDefinition);
-                            $unitClass: last($unitDefinition);
+                        @if (type_of($unit-definition) == list) {
+                            $unit: first($unit-definition);
+                            $unitClass: last($unit-definition);
                         }
                     }
 
-                    $combinatorDefinition: '';
-                    @if (map-has-key($valueSetting, combinator)) {
-                        $combinatorDefinition: map-get($valueSetting, combinator);
+                    $combinator-definition: '';
+                    @if (map-has-key($value-setting, combinator)) {
+                        $combinator-definition: map-get($value-setting, combinator);
                     }
 
-                    $combinator: $combinatorDefinition;
-                    $combinatorClass: '';
+                    $combinator: $combinator-definition;
+                    $combinator-class: '';
 
-                    @if (type_of($combinatorDefinition) == list) {
-                        $combinator: first($combinatorDefinition);
-                        $combinatorClass: last($combinatorDefinition) + '-';
+                    @if (type_of($combinator-definition) == list) {
+                        $combinator: first($combinator-definition);
+                        $combinator-class: last($combinator-definition) + '-';
                     }
 
                     $value: $start;
-                    $valueClass: ''; // do I need this?
+                    $value-class: ''; // do I need this?
 
                     @while $value <= $end {
 
-                        $valueClass: $value + $unitClass;
+                        $value-class: $value + $unitClass;
 
                         // Define the utility
-                        $utility: $global-utilities-namespace + $propertyClass + $valueClass;
+                        $utility: $global-utilities-namespace + $property-class + $value-class;
                         $utility: str-replace(to-string($utility), '.', '');
 
-                        $selector: #{'.' + $global-utilities-namespace + $combinatorClass + $propertyClass + $valueClass + ' ' + $combinator};
+                        $selector: #{'.' + $global-utilities-namespace + $combinator-class + $property-class + $value-class + ' ' + $combinator};
                         
-                        $valueWithUnit: #{$value + $unit};
+                        $value-with-unit: #{$value + $unit};
                         
                         // u-color-link
-                        $placeholderId: $global-utilities-namespace + $propertyClass + '-' + $value + $unitClass;
+                        $placeholder-id: $global-utilities-namespace + $property-class + '-' + $value + $unitClass;
                 
                         // Create utility - and maybe a new %placeholder
-                        @if (index($placeholderLibrary, $placeholderId) != null) {
-                            @include createUtilityFromPlaceholder($selector, $placeholderId);
+                        @if (index($placeholder-library, $placeholder-id) != null) {
+                            @include createUtilityFromPlaceholder($selector, $placeholder-id);
                         } @else {
-                            @include createPlaceholderAndUtility($placeholderId, $property, $valueWithUnit, $selector);
+                            @include createPlaceholderAndUtility($placeholder-id, $property, $value-with-unit, $selector);
                         }
 
                         $value: $value + $step;
@@ -269,5 +269,5 @@ $placeholderLibrary: '' !global;
         }
     }
 
-    // @debug $placeholderLibrary;
+    // @debug $placeholder-library;
 }

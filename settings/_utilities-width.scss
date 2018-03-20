@@ -1,4 +1,4 @@
-$utilitiesWidthSettings: (
+$utilities-width-settings: (
   (
     property: 'width',
 
@@ -15,4 +15,4 @@ $utilitiesWidthSettings: (
   ),
 );
 
-$makeUtilities: append($makeUtilities, $utilitiesWidthSettings);
+$make-utilities: append($make-utilities, $utilities-width-settings);

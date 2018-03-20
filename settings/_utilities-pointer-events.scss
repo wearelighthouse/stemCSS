@@ -1,4 +1,4 @@
-$utilitiesPointerEventsSettings: (
+$utilities-pointer-events-settings: (
   (
     property: ('pointer-events', 'events'),
 
@@ -10,4 +10,4 @@ $utilitiesPointerEventsSettings: (
   ),
 );
 
-$makeUtilities: append($makeUtilities, $utilitiesPointerEventsSettings);
+$make-utilities: append($make-utilities, $utilities-pointer-events-settings);

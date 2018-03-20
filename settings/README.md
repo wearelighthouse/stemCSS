@@ -7,9 +7,9 @@ $grid-max: 1680px;
 ```
 
 ```
-$typeMarginTop: 1.125rem;
+$type-margin-top: 1.125rem;
 
 :root {
-  --typeMarginTop: $typeMarginTop;
+  --typeMarginTop: $type-margin-top;
 }
 ```

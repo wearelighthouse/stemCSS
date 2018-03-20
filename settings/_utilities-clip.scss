@@ -1,4 +1,4 @@
-$utilitiesClipSettings: (
+$utilities-clip-settings: (
   (
     property: 'clip',
 
@@ -13,4 +13,4 @@ $utilitiesClipSettings: (
   ),
 );
 
-$makeUtilities: append($makeUtilities, $utilitiesClipSettings);
+$make-utilities: append($make-utilities, $utilities-clip-settings);

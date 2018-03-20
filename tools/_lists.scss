@@ -1,7 +1,7 @@
 @function first($list) {
-    @return nth($list, 1);
-  }
-  
-  @function last($list) {
-    @return nth($list, length($list));
-  }
+  @return nth($list, 1);
+}
+
+@function last($list) {
+  @return nth($list, length($list));
+}

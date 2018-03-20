@@ -1,4 +1,4 @@
-$utilitiesTransformSettings: (
+$utilities-transform-settings: (
   (
     property: ('transform', ''),
 
@@ -12,4 +12,4 @@ $utilitiesTransformSettings: (
   ),
 );
 
-$makeUtilities: append($makeUtilities, $utilitiesTransformSettings);
+$make-utilities: append($make-utilities, $utilities-transform-settings);

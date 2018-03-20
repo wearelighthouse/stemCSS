@@ -1,4 +1,4 @@
-$utilitiesPositionSettings: (
+$utilities-position-settings: (
   (
     property: ('position', 'pos'),
 
@@ -33,4 +33,4 @@ $utilitiesPositionSettings: (
   ),
 );
 
-$makeUtilities: append($makeUtilities, $utilitiesPositionSettings);
+$make-utilities: append($make-utilities, $utilities-position-settings);

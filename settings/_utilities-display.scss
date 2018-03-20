@@ -1,4 +1,4 @@
-$utilitiesDisplaySettings: (
+$utilities-display-settings: (
   (
     property: ('display', ''),
 
@@ -12,4 +12,4 @@ $utilitiesDisplaySettings: (
   ),
 );
 
-$makeUtilities: append($makeUtilities, $utilitiesDisplaySettings);
+$make-utilities: append($make-utilities, $utilities-display-settings);
