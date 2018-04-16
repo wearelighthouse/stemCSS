@@ -1,0 +1,32 @@
+$utilitiesBackgroundSettings: (
+  (
+    property: ('background-color', 'bgcolor'),
+
+    values: (
+      (
+        ($colour-white, white),
+      ),
+    ),
+  ),
+  (
+    property: ('background-repeat', 'bgrepeat'),
+
+    values: (
+      (
+        (no-repeat, no),
+      ),
+    ),
+  ),
+  (
+    property: ('background-size', 'bgsize'),
+
+    values: (
+      (
+        cover,
+        contain,
+      ),
+    ),
+  ),
+);
+
+$makeUtilities: append($makeUtilities, $utilitiesBackgroundSettings);
