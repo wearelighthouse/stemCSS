@@ -1,0 +1,13 @@
+$utilitiesColorSettings: (
+  (
+    property: 'color',
+
+    values: (
+      (
+        ($colour-white, white),
+      ),
+    ),
+  ),
+);
+
+$makeUtilities: append($makeUtilities, $utilitiesColorSettings);
