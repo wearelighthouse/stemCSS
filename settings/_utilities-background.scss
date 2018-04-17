@@ -1,4 +1,4 @@
-$utilitiesBackgroundSettings: (
+$utilities-background-settings: (
   (
     property: ('background-color', 'bgcolor'),
 
@@ -29,4 +29,4 @@ $utilitiesBackgroundSettings: (
   ),
 );
 
-$makeUtilities: append($makeUtilities, $utilitiesBackgroundSettings);
+$make-utilities: append($make-utilities, $utilities-background-settings);

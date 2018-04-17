@@ -1,4 +1,4 @@
-$utilitiesColorSettings: (
+$utilities-color-settings: (
   (
     property: 'color',
 
@@ -10,4 +10,4 @@ $utilitiesColorSettings: (
   ),
 );
 
-$makeUtilities: append($makeUtilities, $utilitiesColorSettings);
+$make-utilities: append($make-utilities, $utilities-color-settings);
