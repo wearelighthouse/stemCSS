@@ -10,15 +10,21 @@ $component: 'button';
   %u-pos-absolute,
   %u-top-50pc,
   %u-left-50pc; // can you tell that the @extends end here?
+  color: weird;
+  transform: translateX(50%);
 
   @extend 
   .u-mh-auto,
   .u-pos-absolute,
   .u-top-50pc,
   .u-left-50pc; // can you tell that the @extends end here?
+  color: weird;
+  transform: translateX(50%);
 
   @extend %u-mh-auto;
   @extend %u-pos-absolute;
   @extend %u-top-50pc;
   @extend %u-left-50pc;
+  color: weird;
+  transform: translateX(50%);
 }
