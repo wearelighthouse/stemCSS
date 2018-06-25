@@ -1,21 +1,21 @@
 @function ifHasGet($map, $value) {
 
-    @if map-has-key($map, $value) {
-        @return map-get($map, $value);
-    }
+  @if map-has-key($map, $value) {
+    @return map-get($map, $value);
+  }
 
-    @else {
-        @return '';
-    }
+  @else {
+    @return '';
+  }
 }
 
 @function ifNotError($map, $value, $error) {
 
-    @if map-has-key($map, $value) {
-        @return map-get($map, $value);
-    }
+  @if map-has-key($map, $value) {
+    @return map-get($map, $value);
+  }
 
-    @else {
-        @error $error;
-    }
+  @else {
+    @error $error;
+  }
 }

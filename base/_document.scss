@@ -1,5 +1,5 @@
-body {  
-  @include fontScale(10px, 24px);
+body {
+  @extend .u-bgcolor-white;
 
   @import 
   'vars-spacing',
