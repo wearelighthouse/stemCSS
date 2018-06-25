@@ -1,4 +1,4 @@
-@function ifhasget($map, $value) {
+@function ifHasGet($map, $value) {
 
     @if map-has-key($map, $value) {
         @return map-get($map, $value);
@@ -9,7 +9,7 @@
     }
 }
 
-@function ifnoterror($map, $value, $error) {
+@function ifNotError($map, $value, $error) {
 
     @if map-has-key($map, $value) {
         @return map-get($map, $value);

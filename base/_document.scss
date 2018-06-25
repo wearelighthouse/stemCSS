@@ -1,0 +1,7 @@
+body {  
+  @include fontScale(10px, 24px);
+
+  @import 
+  'vars-spacing',
+  'vars-container';
+}

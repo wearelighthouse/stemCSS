@@ -10,7 +10,7 @@ $placeholder-library: '' !global;
     @each $property-setting in $properties-settings {
 
         // property:
-        $property-definition: ifnoterror($property-setting, property, 'No "Property: "declared in settings!');
+        $property-definition: ifNotError($property-setting, property, 'No "Property: "declared in settings!');
         
         $property: $property-definition;
         $property-class: $property-definition;
@@ -26,7 +26,7 @@ $placeholder-library: '' !global;
         }
         
         // List values
-        $valuesSettings: ifnoterror($property-setting, values, 'No "Values: ()" declared in settings!');
+        $valuesSettings: ifNotError($property-setting, values, 'No "Values: ()" declared in settings!');
 
         @each $value-setting in $valuesSettings {
 
@@ -135,7 +135,7 @@ $placeholder-library: '' !global;
                             // Combination pseudo (hoverfocus)
                             @if (type_of($pseudo) == list) {
 
-                                $pseudoClass: str-replace(to-string($pseudo), '" ', '');
+                                $pseudoClass: strReplace(toString($pseudo), '" ', '');
 
                                 @each $pseudoPart in $pseudo {
 
@@ -246,7 +246,7 @@ $placeholder-library: '' !global;
 
                         // Define the utility
                         $utility: $global-utilities-namespace + $property-class + $value-class;
-                        $utility: str-replace(to-string($utility), '.', '');
+                        $utility: strReplace(toString($utility), '.', '');
 
                         $selector: #{'.' + $global-utilities-namespace + $combinator-class + $property-class + $value-class + ' ' + $combinator};
                         
@@ -268,6 +268,4 @@ $placeholder-library: '' !global;
             }
         }
     }
-
-    // @debug $placeholder-library;
 }
