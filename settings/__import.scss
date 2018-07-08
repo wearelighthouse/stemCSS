@@ -1,24 +1,23 @@
 // Global
-@import 'settings/global';
-@import 'settings/colours';
-@import 'settings/breakpoints';
+@import 
+'settings/global',
+'settings/colours',
+'settings/breakpoints';
 
 // Utilities
 $make-utilities: ();
-@import 'settings/utilities-position';
-@import 'settings/utilities-z-index';
-@import 'settings/utilities-visibility';
-@import 'settings/utilities-overflow';
-@import 'settings/utilities-clip';
-@import 'settings/utilities-color';
-@import 'settings/utilities-display';
-@import 'settings/utilities-width';
-@import 'settings/utilities-height';
-@import 'settings/utilities-margin';
-@import 'settings/utilities-background';
-@import 'settings/utilities-content';
-@import 'settings/utilities-transform';
-@import 'settings/utilities-pointer-events';
-
-// Component
-@import 'settings/container';
+@import 
+'settings/utilities-position',
+'settings/utilities-z-index',
+'settings/utilities-visibility',
+'settings/utilities-overflow',
+'settings/utilities-clip',
+'settings/utilities-color',
+'settings/utilities-display',
+'settings/utilities-width',
+'settings/utilities-height',
+'settings/utilities-margin',
+'settings/utilities-background',
+'settings/utilities-content',
+'settings/utilities-transform',
+'settings/utilities-pointer-events';

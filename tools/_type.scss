@@ -1,11 +1,11 @@
-@mixin font-scale($smallest, $largest) {
-  font-size: #{$smallest}px;
+@mixin fontScale($smallest, $largest) {
+  font-size: #{toPx($smallest)};
 
-  @media (min-width: #{$breakpoint-smallest-font}px) and (max-width: #{$breakpoint-largest-font}px) {
-    font-size: calc(#{$smallest}px + (#{$largest} - #{$smallest}) * ( (100vw - #{$breakpoint-smallest-font}px) / ( #{$breakpoint-largest-font} - #{$breakpoint-smallest-font}) ));
+  @media (min-width: #{toPx($breakpoint-smallest-font)}) and (max-width: #{toPx($breakpoint-largest-font)}) {
+    font-size: calc(#{toPx($smallest)} + (#{stripUnit($largest)} - #{stripUnit($smallest)}) * ((100vw - #{toPx($breakpoint-smallest-font)}) / (#{stripUnit($breakpoint-largest-font)} - #{stripUnit($breakpoint-smallest-font)})));
   }
 
-  @media (min-width: #{$b-largest-font}px) {
-    font-size: #{$largest}px;
+  @media (min-width: #{toPx($breakpoint-largest-font)}) {
+    font-size: #{toPx($largest)};
   }
 }

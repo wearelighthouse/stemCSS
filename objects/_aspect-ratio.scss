@@ -17,7 +17,7 @@ $object: 'aspect-ratio';
     @extend .u-pos-absolute;
   }
 
-  $ratios: (50, 100);
+  $ratios: 50, 100;
 
   @each $ratio in $ratios {
 
