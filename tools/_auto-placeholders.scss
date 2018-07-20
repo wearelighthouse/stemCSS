@@ -1,0 +1,47 @@
+//@mixin auto-gen-placeholders($args) {
+
+  //@debug $args;
+
+  // TODO: Take all the settings and generate placeholders! Kind like this:
+
+  /*
+  $object: 'gc-start-' + $i;
+
+  // For no breakpoint
+  %#{$global-objects-namespace + $object} {
+    grid-column-start: $i;
+  }
+
+  // For every breakpoint
+  @each $breakpoint-key, $breakpoint-value in $global-breakpoints {
+    %#{$global-objects-namespace + $object + '--' + $breakpoint-key} {
+      @include breakpoint($breakpoint-key) {
+        grid-column-start: $i;
+      }
+    }
+  }
+  */
+
+  /*
+  // If optional arg is in the args map, use it, else use...
+  $property-alias = if(map-has-key($args, 'property-alias'), map-get($args, 'property-alias'), map-get($args, 'property'));
+  $value-min = if(map-has-key($args, 'value-min'), map-get($args, 'value-min'), 0);
+  $value-max = if(map-has-key($args, 'value-min'), map-get($args, 'value-min'), 99);
+  $step = if(map-has-key($args, 'step'), map-get($args, 'step'), 1);
+
+  @for $i from $value-min through $value-max {
+
+    $object: $map-get($args, 'property') + '-' + $i;
+
+    // For no breakpoint
+    %#{$global-utilities-namespace + $object} {
+
+    }
+
+
+    // TODO: For all da breakpoints
+
+  }
+  */
+
+}

@@ -1,12 +1,12 @@
 // Global
-@import 
+@import
 'settings/global',
 'settings/colours',
 'settings/breakpoints';
 
 // Utilities
 $make-utilities: ();
-@import 
+@import
 'settings/utilities-position',
 'settings/utilities-z-index',
 'settings/utilities-visibility',
@@ -21,3 +21,8 @@ $make-utilities: ();
 'settings/utilities-content',
 'settings/utilities-transform',
 'settings/utilities-pointer-events';
+
+// Auto-placeholder utilities
+$auto-gen-placeholders: ();
+@import
+'settings/utilities-gc-start';

@@ -1,3 +1,7 @@
 @each $utility-settings in $make-utilities {
   @include makeUtilities($utility-settings);
 }
+
+@each $placeholder-settings in $auto-gen-placeholders {
+  @include auto-gen-placeholders($placeholder-settings);
+}
