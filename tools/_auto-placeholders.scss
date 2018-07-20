@@ -1,47 +1,52 @@
-//@mixin auto-gen-placeholders($args) {
+
+/**
+ * Creates a (potentially massive) set of placeholder styles.
+ *
+ * @param args A SASS map containing the following keys (those with defaults are optional):
+ *
+ *   property                            - The CSS property name, e.g. 'grid-column-start'.
+ *   property-alias - default: $property - I.e 'u-[property-alias]-value'.
+ *   value-start    - default: 0         - Property's value to start at.
+ *   value-end      - default: 10        - Property's value to end at.
+ *   step           - default: 1         - Amount to increment the value between placeholders.
+ *   prefix         - default: ''        - String to shove before the value, e.g. ???
+ *   postfix        - default: ''        - String to shove after the value, e.g. 'px'.
+ *
+ * Extra temporary notes (TODO: Remove)
+ *   Might need to use 'unquote($value)' because of strings.
+ *
+ */
+@mixin auto-gen-placeholders($args) {
 
   //@debug $args;
 
-  // TODO: Take all the settings and generate placeholders! Kind like this:
+  $property: map-get($args, 'property');
+  $property-alias: map-use($args, 'property-alias', $property);
+  $step: map-use($args, 'step', 1);
+  $value-start: map-use($args, 'value-start', 0) / $step;
+  $value-end: map-use($args, 'value-end', 10) / $step;
+  $prefix: map-use($args, 'prefix', '');
+  $postfix: map-use($args, 'postfix', '');
 
-  /*
-  $object: 'gc-start-' + $i;
+  @for $i from $value-start through $value-end {
 
-  // For no breakpoint
-  %#{$global-objects-namespace + $object} {
-    grid-column-start: $i;
-  }
-
-  // For every breakpoint
-  @each $breakpoint-key, $breakpoint-value in $global-breakpoints {
-    %#{$global-objects-namespace + $object + '--' + $breakpoint-key} {
-      @include breakpoint($breakpoint-key) {
-        grid-column-start: $i;
-      }
-    }
-  }
-  */
-
-  /*
-  // If optional arg is in the args map, use it, else use...
-  $property-alias = if(map-has-key($args, 'property-alias'), map-get($args, 'property-alias'), map-get($args, 'property'));
-  $value-min = if(map-has-key($args, 'value-min'), map-get($args, 'value-min'), 0);
-  $value-max = if(map-has-key($args, 'value-min'), map-get($args, 'value-min'), 99);
-  $step = if(map-has-key($args, 'step'), map-get($args, 'step'), 1);
-
-  @for $i from $value-min through $value-max {
-
-    $object: $map-get($args, 'property') + '-' + $i;
+    $placeholder-name: $global-utilities-namespace + $property-alias + $i;
+    $value: $prefix + $i * $step + $postfix;
 
     // For no breakpoint
-    %#{$global-utilities-namespace + $object} {
-
+    %#{$placeholder-name} {
+      #{$property}: $value;
     }
 
-
-    // TODO: For all da breakpoints
+    // For every breakpoint
+    @each $breakpoint-key, $breakpoint-value in $global-breakpoints {
+      %#{$placeholder-name + '--' + $breakpoint-key} {
+        @include breakpoint($breakpoint-key) {
+          #{$property}: $value;
+        }
+      }
+    }
 
   }
-  */
 
 }
