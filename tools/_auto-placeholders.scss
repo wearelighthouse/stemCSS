@@ -52,18 +52,45 @@
 
 }
 
+@function make-placeholder($args)
+{
+  $placeholder-name: map-use(
+    $args,
+    'alias',
+    //stringified 1st property
+  );
+  
+  $properties: map-remove($args, 'alias');
+    
+  // For no breakpoint
+  %#{$placeholder-name} {
+    @each $property, $value in $properties {
+      #{$property}: $value;
+    }
+  }
+
+  // For every breakpoint
+  @each $breakpoint-key, $breakpoint-value in $global-breakpoints {
+    %#{$placeholder-name + '--' + $breakpoint-key} {
+      @include breakpoint($breakpoint-key) {
+        @each $property, $value in $properties {
+          #{$property}: $value;
+        }
+      }
+    }
+  }
+}
+
+
+@each $utility-settings in $make-utilities {
+  @include makeUtilities($utility-settings);
+}
 
 /*
 
 // Function to be passed into auto-gen-placeholders($args) for grid-column (gc) and/or other crazy stuff
 
-$name: 'gc- + $start + '-' + $span;
-$properties: (
-  'grid-column': unquote($start + ' / span ' + $span),
-  'width': 100%
-);
-
-function($name, $properties) {
+function() {
 
   $columns: 12;
 
@@ -74,10 +101,19 @@ function($name, $properties) {
       @if $start + $span < $columns + 2 {
 
         // DO THE MIDDLE BIT OF auto-gen-placeholders
-        make-placeholders($name, $properties);
+        make-placeholders((
+          'alias': 'gc-' + $start + '-' + $span,
+          'grid-column': $start + ' / span ' + $span,
+          'width': 100%
+        ));
 
     }
   }
+
+  make-placeholders(
+    'alias': 'gc-full',
+    'grid-column': '1 / -1';
+  );
 
 }
 
@@ -86,21 +122,39 @@ function($name, $properties) {
 
 /*
 
-// Function to be passed into auto-gen-placeholders($args) for width: auto, 1-20rem, and 0-100%
-
-$name: 'width + $value'
-
+// Function to be passed into auto-gen-placeholders($args) for...
+// width: auto, 1-20rem, and 0-100%
 
 function() {
 
+  make-placeholder(
+    'width': 'auto'
+  )
+
   @for $i from 1 through 20 {
-    make-placeholders: ($name, $unit)
+    make-placeholder(
+       // If alias not included, uses: `property + '-' + value`
+      'width': $i + 'rem'
+    );
   }
 
   @for $i from 0 through 100 {
-    make-placeholders: (
-      name: 'width'
-      value: $i + '%'
+    make-placeholder(
+      'alias': 'width-' + $i + 'pc',
+      'width': $i + '%'
+    );
+  }
+
+}
+
+
+// Example of display: stuff property
+
+function() {
+
+  @each $keyword in ('auto', 'flex', 'grid', 'none') {
+    make-placeholder(
+      'width': $keyword
     )
   }
 
