@@ -16,6 +16,7 @@
  *   Might need to use 'unquote($value)' because of strings.
  *
  */
+
 @mixin auto-gen-placeholders($args) {
 
   //@debug $args;
@@ -23,7 +24,7 @@
   $property: map-get($args, 'property');
   $property-alias: map-use($args, 'property-alias', $property);
   $step: map-use($args, 'step', 1);
-  $value-start: map-use($args, 'value-start', 0) / $step;
+  $value-start: (map-use($args, 'value-start', 0)) / $step;
   $value-end: map-use($args, 'value-end', 10) / $step;
   $prefix: map-use($args, 'prefix', '');
   $postfix: map-use($args, 'postfix', '');

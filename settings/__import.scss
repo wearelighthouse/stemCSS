@@ -23,6 +23,6 @@ $make-utilities: ();
 'settings/utilities-pointer-events';
 
 // Auto-placeholder utilities
-$auto-gen-placeholders: ();
+$gen-placeholder-utilities: ();
 @import
 'settings/utilities-gc-start';
