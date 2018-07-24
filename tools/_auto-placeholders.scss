@@ -54,14 +54,18 @@
 
 @function make-placeholder($args)
 {
+
+  // If 'alias' key exists in $args, use that for the placeholder-name,
+  // otherwise use the key and value of the first property in $args
   $placeholder-name: map-use(
     $args,
     'alias',
-    //stringified 1st property
+    map-keys($args)[1] + '-' + map-values($args)[1];
   );
-  
+
+  // Use the $args map, minus the alias (if it exists) as the properties map
   $properties: map-remove($args, 'alias');
-    
+
   // For no breakpoint
   %#{$placeholder-name} {
     @each $property, $value in $properties {
@@ -82,9 +86,7 @@
 }
 
 
-@each $utility-settings in $make-utilities {
-  @include makeUtilities($utility-settings);
-}
+
 
 /*
 
