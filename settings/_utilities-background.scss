@@ -37,7 +37,10 @@ $make-utilities: append($make-utilities, $utilities-background-settings);
 
 // New way(?)
 
-@each $key, $value in ($colours) {
+@each $key, $value in (
+  white: $colour-white,
+  orange: #ff6600
+  ) {
   @include make-placeholder((
     alias: 'bgcolor-' + $key,
     background-color: $value
