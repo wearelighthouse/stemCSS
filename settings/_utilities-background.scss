@@ -1,3 +1,6 @@
+
+// Ye oldy way
+
 $utilities-background-settings: (
   (
     property: ('background-color', 'bgcolor'),
@@ -30,3 +33,25 @@ $utilities-background-settings: (
 );
 
 $make-utilities: append($make-utilities, $utilities-background-settings);
+
+
+// New way(?)
+
+@each $key, $value in ($colours) {
+  @include make-placeholder((
+    alias: 'bgcolor-' + $key,
+    background-color: $value
+  ));
+}
+
+@include make-placeholder((
+  alias: 'bgrepeat-no',
+  background-repeat: no-repeat
+));
+
+@each $value in ('cover', 'contain') {
+  @include make-placeholder((
+    alias: 'bgsize-' + $value,
+    background-size: $value
+  ));
+}

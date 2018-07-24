@@ -59,14 +59,14 @@
   // otherwise use the key and value of the first property in $args
   $placeholder-name: map-use(
     $args,
-    'property-alias',
+    'alias',
     first(map-keys($args)) + '-' + first(map-values($args))
   );
 
   $placeholder-name: $global-utilities-namespace + $placeholder-name;
 
   // Use the $args map, minus the alias (if it exists) as the properties map
-  $properties: map-remove($args, 'property-alias');
+  $properties: map-remove($args, 'alias');
 
   // Debug output to list off all the placeholders being made:
   @debug('Making placeholder: ' + $placeholder-name);
@@ -89,7 +89,3 @@
     }
   }
 }
-
-
-
-

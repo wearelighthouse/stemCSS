@@ -19,7 +19,7 @@ $make-utilities: append($make-utilities, $utilities-margin-settings);
 // New way(?)
 
 @include make-placeholder((
-  property-alias: 'mh',
+  alias: 'mh',
   margin-left: auto,
   margin-right: auto
 ));
