@@ -36,7 +36,7 @@ $gen-placeholder-utilities: append($gen-placeholder-utilities, (
 
 // New-new-final-v2-forprint-final way(?)
 
-@for $i from 0 through $grid-columns {
+@for $i from 0 through $global-grid-columns {
   @include make-placeholder((
       alias: 'gc-start-' + $i,
       grid-column-start: $i

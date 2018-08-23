@@ -1,4 +1,4 @@
-$grid-columns: 12; // <-- Global variable somewhere, defined by a big grid settings/layout file!
+$columns: $global-grid-columns;
 
 @for $start from 1 through $columns {
   @for $span from 1 through $columns {
