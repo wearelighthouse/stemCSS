@@ -1,12 +1,12 @@
 // Global
-@import 
+@import
 'settings/global',
-'settings/colours',
+'settings/colors',
 'settings/breakpoints';
 
 // Utilities
 $make-utilities: ();
-@import 
+@import
 'settings/utilities-position',
 'settings/utilities-z-index',
 'settings/utilities-visibility',
