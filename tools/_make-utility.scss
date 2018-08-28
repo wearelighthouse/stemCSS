@@ -3,21 +3,20 @@
 
   // For no breakpoint
   .#{$utility-name} {
-    @each $property, $value in $properties {
-      #{$property}: $value;
-    }
+    @extend %#{$utility-name};
   }
 
   // For every breakpoint
-  @each $breakpoint-key, $breakpoint-value in $global-breakpoints {
-    %#{$utility-name + '--' + $breakpoint-key} {
-      @include breakpoint($breakpoint-key) {
-        @each $property, $value in $properties {
-          #{$property}: $value;
-        }
-      }
-    }
-  }
+  // Disabled because it creates a TON of styles in style.css, because can't extend within @medias.
+  //  @each $breakpoint-key, $breakpoint-value in $global-breakpoints {
+  //    .#{$utility-name + '--' + $breakpoint-key} {
+  //      @include breakpoint($breakpoint-key) {
+  //        @each $property, $value in $properties {
+  //          #{$property}: $value;
+  //        }
+  //      }
+  //    }
+  //  }
 
 }
 

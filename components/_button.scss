@@ -7,4 +7,13 @@ $component: 'button';
 #{'.' + $global-components-namespace + $component} {
   @extend %u-mh-auto;
   // @extend .u-mv-auto;
+  @extend %u-color-red;
+}
+
+$component: 'button2';
+
+#{'.' + $global-components-namespace + $component} {
+  @extend %u-mh-auto;
+  // @extend .u-mv-auto;
+  @extend %u-color-red;
 }
