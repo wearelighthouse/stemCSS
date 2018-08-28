@@ -1,18 +1,10 @@
-$utilities-height-settings: (
-  (
-    property: 'height',
 
-    values: (
-      (
-        ('100%', '100pc'),
-      ),
-      (
-        placeholders: (
-          1px,
-        ),
-      ),
-    ),
-  ),
-);
+@include make-utility((
+  alias: 'height-100pc',
+  class: true,
+  height: 100%
+));
 
-$make-utilities: append($make-utilities, $utilities-height-settings);
+@include make-utility((
+  height: 1px
+));
