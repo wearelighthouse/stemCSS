@@ -1,26 +1,5 @@
 
-// Ye oldy (but untested) way
-
-$utilities-gc-start-settings: (
-  (
-    property: ('grid-column', 'gc-start'),
-
-    values: (
-      (
-        start: -1,
-        end: 12,
-        step: 1,
-        unit: ('%', 'pc'),
-      ),
-    ),
-  ),
-);
-
-$make-utilities: append($make-utilities, $utilities-gc-start-settings);
-
-// New-new-final-v2-forprint-final way(?)
-
-@for $i from 0 through $global-grid-columns {
+@for $i from -1 through $global-grid-columns {
   @include make-utility((
       alias: 'gc-start-' + $i,
       grid-column-start: $i
