@@ -1,16 +1,13 @@
-$utilities-clip-settings: (
-  (
-    property: 'clip',
 
-    values: (
-      (
-        placeholders: (
-          ('rect(0, 0, 0, 0)', '0'),
-          ('rect(1px, 1px, 1px, 1px)', '1px'),
-        ),
-      ),
-    ),
-  ),
+$clip-utilities: (
+  '0': 'rect(0, 0, 0, 0)',
+  '1px': 'rect(1px, 1px, 1px, 1px)'
 );
 
-$make-utilities: append($make-utilities, $utilities-clip-settings);
+@each $value-alias, $value in ($clip-utilities) {
+  @include make-utility((
+    alias: 'clip-' + $value-alias,
+    class: true,
+    clip: $value
+  ));
+}
