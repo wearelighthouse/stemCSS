@@ -1,31 +1,23 @@
-$utilities-overflow-settings: (
-  (
-    property: ('overflow', 'ov'),
 
-    values: (
-      (
-        hidden,
-      ),
-    ),
-  ),
-  (
-    property: ('overflow-x', 'ovx'),
-
-    values: (
-      (
-        hidden,
-      ),
-    ),
-  ),
-  (
-    property: ('overflow-y', 'ovy'),
-
-    values: (
-      (
-        hidden,
-      ),
-    ),
-  ),
+$overflow-properties: (
+  'ov': 'overflow',
+  'ovx': 'overflow-x',
+  'ovy': 'overflow-x'
 );
 
-$make-utilities: append($make-utilities, $utilities-overflow-settings);
+$overflow-values-classes: (
+  visible: false,
+  hidden: true,
+  scroll: false,
+  auto: false
+);
+
+@each $property-alias, $property in ($overflow-properties) {
+  @each $value, $is-class in ($overflow-values-classes) {
+    @include make-utility((
+      alias: $property-alias + '-' + $value,
+      class: $is-class,
+      $property: $value
+    ));
+  }
+}
