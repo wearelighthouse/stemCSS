@@ -1,25 +1,7 @@
 
-// Ye oldy way
-
-$utilities-margin-settings: (
-  (
-    property: (('margin-left', 'margin-right'), 'mh'),
-
-    values: (
-      (
-        auto,
-      ),
-    ),
-  ),
-);
-
-$make-utilities: append($make-utilities, $utilities-margin-settings);
-
-
-// New way(?)
-
 @include make-utility((
-  alias: 'mh',
+  alias: 'mh-auto',
+  class: true,
   margin-left: auto,
   margin-right: auto
 ));
