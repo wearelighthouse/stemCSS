@@ -20,3 +20,4 @@ package-lock.json
 .scss-lint.yml
 *.css
 *.map
+*/_testing.scss

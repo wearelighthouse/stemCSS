@@ -1,16 +1,18 @@
 // Tools
-@import 
+@import
 'tools/ifhas',
 'tools/make-class',
 'tools/lists',
 'tools/strings',
-'tools/placeholders';
+'tools/placeholders',
+'tools/map-use',
+'tools/make-utility';
 
 // Global
-@import 
+@import
 'tools/breakpoints',
 'tools/type';
 
 // Utilities
-@import 
+@import
 'tools/utilities';

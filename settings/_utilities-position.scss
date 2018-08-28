@@ -1,3 +1,6 @@
+
+// Old way
+
 $utilities-position-settings: (
   (
     property: ('position', 'pos'),
@@ -34,3 +37,35 @@ $utilities-position-settings: (
 );
 
 $make-utilities: append($make-utilities, $utilities-position-settings);
+
+
+// New way(?)
+
+@each $value in ('absolute', 'relative') {
+  @include make-utility((
+    alias: 'pos-' + $value,
+    position: $value
+  ));
+}
+
+@include make-utility((
+  top: 0
+));
+
+@each $value in ('50', '100') {
+  @include make-utility((
+    alias: 'top-' + $value + 'pc',
+    top: $value + '%'
+  ));
+}
+
+@include make-utility((
+  left: 0
+));
+
+@each $value in ('50', '100') {
+  @include make-utility((
+    alias: 'left-' + $value + 'pc',
+    top: $value + '%'
+  ));
+}

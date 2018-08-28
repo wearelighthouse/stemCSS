@@ -1,0 +1,10 @@
+/**
+ * If a map contains a specific key, return (use) it's value, or return (use) the fallback.
+ *
+ * Essentially to be used similar to JavaScript's `x = y || z`.
+ *
+ * Extra: 'if()' vs '@if' https://www.sitepoint.com/sass-basics-control-directives-expressions/
+ */
+@function map-use($args, $intended, $fallback) {
+  @return if(map-has-key($args, $intended), map-get($args, $intended), $fallback);
+}

@@ -21,3 +21,8 @@ $make-utilities: ();
 'settings/utilities-content',
 'settings/utilities-transform',
 'settings/utilities-pointer-events';
+
+// Auto-placeholder utilities
+@import
+'settings/utilities-gc-start',
+'settings/utilities-gc';

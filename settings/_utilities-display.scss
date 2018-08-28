@@ -1,3 +1,6 @@
+
+// Ye oldy way
+
 $utilities-display-settings: (
   (
     property: ('display', ''),
@@ -13,3 +16,12 @@ $utilities-display-settings: (
 );
 
 $make-utilities: append($make-utilities, $utilities-display-settings);
+
+
+// New way(?)
+
+@each $value in ('auto', 'flex', 'grid', 'none') {
+  @include make-utility((
+    display: unquote($value)
+  ));
+}

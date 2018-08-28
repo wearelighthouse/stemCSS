@@ -7,5 +7,4 @@ $component: 'button';
 #{'.' + $global-components-namespace + $component} {
   @extend %u-mh-auto;
   // @extend .u-mv-auto;
-  color: purple;
 }

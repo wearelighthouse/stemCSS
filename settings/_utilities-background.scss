@@ -1,10 +1,13 @@
+
+// Ye oldy way
+
 $utilities-background-settings: (
   (
     property: ('background-color', 'bgcolor'),
 
     values: (
       (
-        ($colour-white, white),
+        ($color-white, white),
       ),
     ),
   ),
@@ -30,3 +33,28 @@ $utilities-background-settings: (
 );
 
 $make-utilities: append($make-utilities, $utilities-background-settings);
+
+
+// New way(?)
+
+@each $key, $value in (
+  white: $color-white,
+  orange: #ff6600
+  ) {
+  @include make-utility((
+    alias: 'bgcolor-' + $key,
+    background-color: $value
+  ));
+}
+
+@include make-utility((
+  alias: 'bgrepeat-no',
+  background-repeat: no-repeat
+));
+
+@each $value in ('cover', 'contain') {
+  @include make-utility((
+    alias: 'bgsize-' + $value,
+    background-size: $value
+  ));
+}

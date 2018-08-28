@@ -8,5 +8,17 @@ $color-brown: #CABBA0;
 $color-gray-light: #EDE9E8;
 $color-gray: #CBCCCE;
 
+// These are used to automatically generate font color and background color utilities.
+$auto-colors: (
+  'white': $color-white,
+  'black': $color-black,
+
+  'orange': $color-orange,
+  'mist': $color-mist,
+  'brown': $color-brown,
+
+  'gray-light': $color-gray-light,
+  'gray': $color-gray,
+);
 
 $color-brand: $color-white; // Contextual colour example
