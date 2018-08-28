@@ -1,0 +1,132 @@
+/*
+
+// Function to be passed into auto-gen-placeholders($args) for grid-column (gc) and/or other crazy stuff
+
+function() {
+
+  $columns: 12;
+
+  @for $start from 1 through $columns {
+    @for $span from 1 through $columns {
+
+      // Only add object if the specified values don't "overflow" out of the grid
+      @if $start + $span < $columns + 2 {
+
+        // DO THE MIDDLE BIT OF auto-gen-placeholders
+        make-placeholders((
+          'alias': 'gc-' + $start + '-' + $span,
+          'grid-column': $start + ' / span ' + $span,
+          'width': 100%
+        ));
+
+    }
+  }
+
+  make-placeholders(
+    'alias': 'gc-full',
+    'grid-column': '1 / -1';
+  );
+
+}
+
+/*
+
+
+/*
+
+// Function to be passed into auto-gen-placeholders($args) for...
+// width: auto, 1-20rem, and 0-100%
+
+function() {
+
+  make-placeholder(
+    'width': 'auto'
+  )
+
+  @for $i from 1 through 20 {
+    make-placeholder(
+       // If alias not included, uses: `property + '-' + value`
+      'width': $i + 'rem'
+    );
+  }
+
+  @for $i from 0 through 100 {
+    make-placeholder(
+      'alias': 'width-' + $i + 'pc',
+      'width': $i + '%'
+    );
+  }
+
+}
+
+
+// Example of display: stuff property
+
+function() {
+
+  @each $keyword in ('auto', 'flex', 'grid', 'none') {
+    make-placeholder(
+      'width': $keyword
+    )
+  }
+
+}
+
+
+
+/* Stolen from uprise theme work
+
+$object: 'gc-';
+$columns: 12;
+
+
+@for $start from 1 through $columns {
+  @for $span from 1 through $columns {
+
+    // Only add object if the specified values don't "overflow" out of the grid
+    @if $start + $span < $columns + 2 {
+
+      $object: 'gc-' + $start + '-' + $span;
+
+      // For no breakpoint
+      %#{$global-objects-namespace + $object} {
+        width: 100%;
+        grid-column: unquote($start + ' / span ' + $span);
+      }
+
+      // For every breakpoint
+      @each $breakpoint-key, $breakpoint-value in $global-breakpoints {
+        %#{$global-objects-namespace + $object + '--' + $breakpoint-key} {
+          @include breakpoint($breakpoint-key) {
+            width: 100%;
+            grid-column: unquote($start + ' / span ' + $span);
+          }
+        }
+      }
+
+    }
+
+  }
+}
+
+
+// Special case to add 'o-gc-full' (which is just an alias for `o-gc-1-12`).
+// `grid-column: 1 / -1` isn't used because it'd be an extra css rule.
+$object: 'gc-full';
+
+// For no breakpoint
+%#{$global-objects-namespace + $object} {
+  width: 100%;
+  grid-column: unquote('1 / span ' + $columns);
+}
+
+// For every breakpoint
+@each $breakpoint-key, $breakpoint-value in $global-breakpoints {
+  %#{$global-objects-namespace + $object + '--' + $breakpoint-key} {
+    @include breakpoint($breakpoint-key) {
+      width: 100%;
+      grid-column: unquote('1 / span ' + $columns);
+    }
+  }
+}
+*/
