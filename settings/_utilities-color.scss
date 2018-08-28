@@ -1,3 +1,4 @@
+/*
 $utilities-color-settings: (
   (
     property: 'color',
@@ -11,3 +12,11 @@ $utilities-color-settings: (
 );
 
 $make-utilities: append($make-utilities, $utilities-color-settings);
+*/
+
+@each $name, $hex in ($global-colors) {
+  @include make-placeholder((
+    alias: 'color-' + $name,
+    color: $hex
+  ));
+}
