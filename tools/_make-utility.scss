@@ -65,11 +65,11 @@
   $properties: map-remove($args, alias);
 
   // Debug output to list off all the placeholders being made:
-  @if ($class) {
-    @debug('Making placeholder & class: ' + $utility-name);
-  } else {
-    @debug('Making placeholder: ' + $utility-name);
-  }
+  //  @if ($class) {
+  //    @debug('Making placeholder & class: ' + $utility-name);
+  //  } else {
+  //    @debug('Making placeholder: ' + $utility-name);
+  //  }
 
   @if ($class) {
     @include make-class($utility-name, $properties);
