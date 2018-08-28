@@ -1,18 +1,3 @@
-/*
-$utilities-color-settings: (
-  (
-    property: 'color',
-
-    values: (
-      (
-        ($color-white, white),
-      ),
-    ),
-  ),
-);
-
-$make-utilities: append($make-utilities, $utilities-color-settings);
-*/
 
 @each $name, $hex in ($auto-colors) {
   @include make-utility((

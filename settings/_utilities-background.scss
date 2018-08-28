@@ -1,48 +1,8 @@
 
-// Ye oldy way
-
-$utilities-background-settings: (
-  (
-    property: ('background-color', 'bgcolor'),
-
-    values: (
-      (
-        ($color-white, white),
-      ),
-    ),
-  ),
-  (
-    property: ('background-repeat', 'bgrepeat'),
-
-    values: (
-      (
-        (no-repeat, no),
-      ),
-    ),
-  ),
-  (
-    property: ('background-size', 'bgsize'),
-
-    values: (
-      (
-        cover,
-        contain,
-      ),
-    ),
-  ),
-);
-
-$make-utilities: append($make-utilities, $utilities-background-settings);
-
-
-// New way(?)
-
-@each $key, $value in (
-  white: $color-white,
-  orange: #ff6600
-  ) {
+@each $key, $value in ($auto-colors) {
   @include make-utility((
     alias: 'bgcolor-' + $key,
+    class: true,
     background-color: $value
   ));
 }
