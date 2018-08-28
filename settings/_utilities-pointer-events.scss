@@ -1,13 +1,6 @@
-$utilities-pointer-events-settings: (
-  (
-    property: ('pointer-events', 'events'),
 
-    values: (
-      (
-        none,
-      ),
-    ),
-  ),
-);
-
-$make-utilities: append($make-utilities, $utilities-pointer-events-settings);
+@include make-utility((
+  alias: 'events-none',
+  class: true,
+  pointer-events: none
+));
