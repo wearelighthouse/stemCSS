@@ -1,15 +1,14 @@
-$utilities-content-settings: (
-  (
-    property: 'content',
 
-    values: (
-      (
-        placeholders: (
-          ('""', 'none'),
-        ),
-      ),
-    ),
-  ),
+// Note that the utility alias MUST be the key of this map, because identical keys are not allowed
+$content-utilities: (
+  '': '',
+  '-none': '',
+  '-colon': ':'
 );
 
-$make-utilities: append($make-utilities, $utilities-content-settings);
+@each $alias, $value in ($content-utilities) {
+  @include make-utility((
+    alias: 'content' + $alias,
+    content: $value
+  ));
+}
