@@ -41,19 +41,19 @@ $make-utilities: append($make-utilities, $utilities-background-settings);
   white: $colour-white,
   orange: #ff6600
   ) {
-  @include make-placeholder((
+  @include make-utility((
     alias: 'bgcolor-' + $key,
     background-color: $value
   ));
 }
 
-@include make-placeholder((
+@include make-utility((
   alias: 'bgrepeat-no',
   background-repeat: no-repeat
 ));
 
 @each $value in ('cover', 'contain') {
-  @include make-placeholder((
+  @include make-utility((
     alias: 'bgsize-' + $value,
     background-size: $value
   ));

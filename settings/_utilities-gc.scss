@@ -6,7 +6,7 @@ $columns: $global-grid-columns;
     // Only add object if the specified values don't "overflow" out of the grid
     @if $start + $span < $columns + 2 {
 
-      @include make-placeholder((
+      @include make-utility((
         alias: 'gc-' + $start + '-' + $span,
         grid-column: $start + ' / span ' + $span,
         width: 100%
@@ -17,7 +17,7 @@ $columns: $global-grid-columns;
   }
 }
 
-@include make-placeholder((
+@include make-utility((
   alias: 'gc-full',
   grid-column: '1 / -1'
 ));
