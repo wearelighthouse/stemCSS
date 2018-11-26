@@ -1,0 +1,14 @@
+$utilities-visibility-settings: (
+  (
+    property: ('visibility', 'vis'),
+
+    values: (
+      (
+        hidden,
+        visible,
+      ),
+    ),
+  ),
+);
+
+$make-utilities: append($make-utilities, $utilities-visibility-settings);

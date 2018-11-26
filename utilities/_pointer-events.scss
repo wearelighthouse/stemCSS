@@ -1,0 +1,6 @@
+
+@include make-utility((
+  alias: 'events-none',
+  class: true,
+  pointer-events: none
+));

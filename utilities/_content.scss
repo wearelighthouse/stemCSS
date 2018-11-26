@@ -1,0 +1,14 @@
+
+// Note that the utility alias MUST be the key of this map, because identical keys are not allowed
+$content-utilities: (
+  '': '',
+  '-none': '',
+  '-colon': ':'
+);
+
+@each $alias, $value in ($content-utilities) {
+  @include make-utility((
+    alias: 'content' + $alias,
+    content: $value
+  ));
+}

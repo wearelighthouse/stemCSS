@@ -1,0 +1,34 @@
+
+@each $value in ('absolute', 'relative') {
+  @include make-utility((
+    alias: 'pos-' + $value,
+    class: true,
+    position: $value
+  ));
+}
+
+@include make-utility((
+  class: true,
+  top: 0
+));
+
+@each $value in ('50', '100') {
+  @include make-utility((
+    alias: 'top-' + $value + 'pc',
+    class: true,
+    top: $value + '%'
+  ));
+}
+
+@include make-utility((
+  class: true,
+  left: 0
+));
+
+@each $value in ('50', '100') {
+  @include make-utility((
+    alias: 'left-' + $value + 'pc',
+    class: true,
+    top: $value + '%'
+  ));
+}

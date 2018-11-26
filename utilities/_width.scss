@@ -1,0 +1,18 @@
+$utilities-width-settings: (
+  (
+    property: 'width',
+
+    values: (
+      (
+        ('100%', '100pc'),
+      ),
+      (
+        placeholders: (
+          1px,
+        ),
+      ),
+    ),
+  ),
+);
+
+$make-utilities: append($make-utilities, $utilities-width-settings);
