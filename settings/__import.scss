@@ -3,26 +3,3 @@
 'settings/global',
 'settings/colors',
 'settings/breakpoints';
-
-// Utilities
-$make-utilities: ();
-@import
-'settings/utilities-position',
-'settings/utilities-z-index',
-'settings/utilities-visibility',
-'settings/utilities-overflow',
-'settings/utilities-clip',
-'settings/utilities-color',
-'settings/utilities-display',
-'settings/utilities-width',
-'settings/utilities-height',
-'settings/utilities-margin',
-'settings/utilities-background',
-'settings/utilities-content',
-'settings/utilities-transform',
-'settings/utilities-pointer-events';
-
-// Auto-placeholder utilities
-@import
-'settings/utilities-gc-start',
-'settings/utilities-gc';

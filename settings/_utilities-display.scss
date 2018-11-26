@@ -1,8 +1,0 @@
-
-@each $value in ('auto', 'flex', 'grid', 'block', 'none') {
-  @include make-utility((
-    alias: $value,
-    class: true,
-    display: unquote($value)
-  ));
-}

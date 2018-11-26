@@ -1,7 +1,0 @@
-
-@for $i from -1 through $global-grid-columns {
-  @include make-utility((
-      alias: 'gc-start-' + $i,
-      grid-column-start: $i
-  ));
-}

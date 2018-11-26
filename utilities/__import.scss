@@ -1,7 +1,25 @@
 // Mapped Utilities
-@import 
-'utilities/utilities';
 
-// Unmapped Utilities
-// @import 
-// 'utilities/complicated-utility';
+
+// Utilities
+$make-utilities: ();
+@import
+'utilities/position',
+'utilities/z-index',
+'utilities/visibility',
+'utilities/overflow',
+'utilities/clip',
+'utilities/color',
+'utilities/display',
+'utilities/width',
+'utilities/height',
+'utilities/margin',
+'utilities/background',
+'utilities/content',
+'utilities/transform',
+'utilities/pointer-events',
+'utilities/gc-start',
+'utilities/gc';
+
+@import
+'utilities/utilities';
