@@ -1,15 +1,16 @@
-$utilities-transform-settings: (
-  (
-    property: ('transform', ''),
 
-    values: (
-      (
-        ('translate(-50%, -50%)', 'trans--50pc'),
-        ('translateX(-50%)', 'transx--50pc'),
-        ('translateY(-50%)', 'transy--50pc'),
-      ),
-    ),
-  ),
-);
+@each $property in (translateX, translateY) {
+  @each $value in (-100, -50, 0, 50, 100) {
+    @include make-utility((
+      alias: $property + '-' + $value + 'pc',
+      transform: $property + '(' + $value + '%)'
+    ));
+  }
+}
 
-$make-utilities: append($make-utilities, $utilities-transform-settings);
+@each $value in (-100, -50, 0, 50, 100) {
+  @include make-utility((
+    alias: 'translate-' + $value + 'pc',
+    transform: 'translate' + '(' + $value + '% ' $value + '%)'
+  ));
+}

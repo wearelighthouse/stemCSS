@@ -23,7 +23,7 @@ $object: 'abscentre';
   @extend .u-pos-absolute;
   @extend .u-top-50pc;
   @extend .u-left-50pc;
-  @extend .u-trans--50pc;
+  @extend %u-translate--50pc;
 }
 
 /**
@@ -35,7 +35,7 @@ $object: 'abscentre-y';
 #{'.' + $global-objects-namespace + $object} {
   @extend .u-pos-absolute;
   @extend .u-top-50pc;
-  @extend .u-transy--50pc;
+  @extend %u-translateY--50pc;
 }
 
 /**
@@ -47,5 +47,5 @@ $object: 'abscentre-x';
 #{'.' + $global-objects-namespace + $object} {
   @extend .u-pos-absolute;
   @extend .u-left-50pc;
-  @extend .u-transx--50pc;
+  @extend %u-translateX--50pc;
 }
