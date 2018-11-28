@@ -1,9 +1,15 @@
 /**
- * If a map contains a specific key, return (use) it's value, or return (use) the fallback.
+ * If a map contains a specific key, return it's value, else return a fallback.
  *
- * Essentially to be used similar to JavaScript's `x = y || z`.
+ * For example:
+ *   $myMap: ('a': 'foo', 'b': 'bar');
+ *   property: map-use($myMap, a, 'that key is not in the map');
  *
- * Extra: 'if()' vs '@if' https://www.sitepoint.com/sass-basics-control-directives-expressions/
+ * Gives the results:
+ *    property: 'foo';
+ *
+ * If there were no 'a' key then the reults would be:
+ *    property: 'that key is not in the map';
  */
 @function map-use($args, $intended, $fallback) {
   @return if(map-has-key($args, $intended), map-get($args, $intended), $fallback);
