@@ -11,6 +11,6 @@
  * If there were no 'a' key then the reults would be:
  *    property: 'that key is not in the map';
  */
-@function map-use($args, $intended, $fallback) {
-  @return if(map-has-key($args, $intended), map-get($args, $intended), $fallback);
+@function map-use($map, $key, $fallback) {
+  @return if(map-has-key($map, $key), map-get($map, $key), $fallback);
 }
