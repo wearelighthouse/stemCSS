@@ -27,12 +27,8 @@ $object: 'aspect-ratio';
 //   }
 // }
 
+@each $ratio in ('16-9', '2-1', '1-1', '1-2', '9-16') {
 
-@each $ratio in ('16-9', '2-1') {
-  $ratioNumbers: str-split($ratio, '-');
-  @debug($ratioNumbers);
-  $value: 100 / to-int(nth($ratioNumbers, 1)) * to-int(nth($ratioNumbers, 2));
-  @debug($value);
   #{'.' + $global-objects-namespace + $object + '--' + $ratio} {
     @extend .u-pos-relative;
 
@@ -40,7 +36,7 @@ $object: 'aspect-ratio';
       @extend %u-block;
       @extend #{'%u-width-100' + $global-unit-percent};
       @extend %u-content-none;
-      padding-top: #{$value * 1%};
+      padding-top: #{getPercentFromList(str-split($ratio, '-')) * 1%};
     }
 
     > * {
@@ -48,9 +44,4 @@ $object: 'aspect-ratio';
     }
 
   }
-}
-
-
-.test {
-    @extend .o-aspect-ratio--16-9;
 }

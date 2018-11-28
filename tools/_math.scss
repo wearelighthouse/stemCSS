@@ -9,3 +9,7 @@
 
   @return $value;
 }
+
+@function getPercentFromList($list) {
+  @return 100 / to-int(nth($list, 1)) * to-int(nth($list, 2));
+}
