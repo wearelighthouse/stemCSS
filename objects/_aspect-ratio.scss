@@ -27,41 +27,6 @@ $object: 'aspect-ratio';
 //   }
 // }
 
-@function pow($number, $exponent) {
-  $value: 1;
-
-  @if $exponent > 0 {
-    @for $i from 1 through $exponent {
-      $value: $value * $number;
-    }
-  }
-
-  @return $value;
-}
-
-@function to-int($string) {
-  $int: 0;
-  @for $i from 1 through str-length($string) {
-    $char: str-slice($string, $i, $i);
-    @for $digit from 0 through 9 {
-      @if '' + $digit == $char {
-        $int: $int + $digit * pow(10, str-length($string) - $i);
-      }
-    }
-  }
-  @return $int;
-}
-
-@function str-split($string, $separator) {
-  $i: str-index($string, $separator);
-  @if $i != null {
-    @return append(
-      str-slice($string, 1, $i - 1),
-      str-split(str-slice($string, $i + 1), $separator)
-    );
-  }
-  @return $string
-}
 
 @each $ratio in ('16-9', '2-1') {
   $ratioNumbers: str-split($ratio, '-');
