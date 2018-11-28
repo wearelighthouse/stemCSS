@@ -5,7 +5,7 @@
 $object: 'hide';
 
 #{'.' + $global-objects-namespace + $object} {
-  @extend .u-z--1;
+  @extend %u-z-index--1;
   @extend .u-pos-relative;
   @extend %u-ov-hidden;
   @extend %u-visibility-hidden;
