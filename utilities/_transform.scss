@@ -11,6 +11,6 @@
 @each $value in (-100, -50, 0, 50, 100) {
   @include make-utility((
     alias: 'translate-' + $value + 'pc',
-    transform: 'translate' + '(' + $value + '% ' $value + '%)'
+    transform: unquote('translate' + '(' + $value + '%, ' + $value + '%)')
   ));
 }

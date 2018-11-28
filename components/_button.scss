@@ -8,4 +8,5 @@ $component: 'button';
   @extend %u-mh-auto;
   // @extend .u-mv-auto;
   @extend %u-ovy-hidden;
+  @extend %u-translate-50pc--from-medium--upto-large;
 }
