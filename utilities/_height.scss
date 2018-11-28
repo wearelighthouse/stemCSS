@@ -1,6 +1,6 @@
 
 @include make-utility((
-  alias: 'height-100pc',
+  alias: 'height-100' + $global-unit-percent,
   class: true,
   height: 100%
 ));

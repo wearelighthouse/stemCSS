@@ -1,6 +1,6 @@
 
 @include make-utility((
-  alias: 'width-100pc',
+  alias: 'width-100' + $global-unit-percent,
   class: true,
   width: 100%
 ));

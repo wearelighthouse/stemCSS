@@ -14,7 +14,7 @@
 
 @each $value in ('50', '100') {
   @include make-utility((
-    alias: 'top-' + $value + 'pc',
+    alias: 'top-' + $value + $global-unit-percent,
     class: true,
     top: $value + '%'
   ));
@@ -27,7 +27,7 @@
 
 @each $value in ('50', '100') {
   @include make-utility((
-    alias: 'left-' + $value + 'pc',
+    alias: 'left-' + $value + $global-unit-percent,
     class: true,
     top: $value + '%'
   ));

@@ -31,7 +31,7 @@
 
   // For every breakpoint
   @each $breakpoint-key, $breakpoint-value in $global-breakpoints {
-    %#{$utility-name + '--' + $breakpoint-key} {
+    %#{$utility-name + $global-breakpoint-separator + $breakpoint-key} {
       @include breakpoint($breakpoint-key) {
         @each $property, $value in $properties {
           #{$property}: $value;
