@@ -4,27 +4,88 @@
 
 $object: 'aspect-ratio';
 
-#{'.' + $global-objects-namespace + $object} {
-  @extend .u-pos-relative;
+// #{'.' + $global-objects-namespace + $object} {
+//   @extend .u-pos-relative;
+//
+//   &:before {
+//     @extend %u-block;
+//     @extend #{'%u-width-100' + $global-unit-percent};
+//     @extend %u-content-none;
+//   }
+//
+//   > * {
+//     @extend %u-pos-absolute;
+//   }
+//
+//   @each $ratio in (50, 100) {
+//
+//     &--#{$ratio} {
+//       &:before {
+//         padding-top: #{$ratio * 1%};
+//       }
+//     }
+//   }
+// }
 
-  &:before {
-    @extend .u-block;
-    @extend .u-width-100pc;
-    @extend %u-content-none;
+@function pow($number, $exponent) {
+  $value: 1;
+
+  @if $exponent > 0 {
+    @for $i from 1 through $exponent {
+      $value: $value * $number;
+    }
   }
 
-  > * {
-    @extend .u-pos-absolute;
-  }
+  @return $value;
+}
 
-  $ratios: 50, 100;
-
-  @each $ratio in $ratios {
-
-    &--#{$ratio} {
-      &:before {
-        padding-top: #{$ratio * 1%};
+@function to-int($string) {
+  $int: 0;
+  @for $i from 1 through str-length($string) {
+    $char: str-slice($string, $i, $i);
+    @for $digit from 0 through 9 {
+      @if '' + $digit == $char {
+        $int: $int + $digit * pow(10, str-length($string) - $i);
       }
     }
   }
+  @return $int;
+}
+
+@function str-split($string, $separator) {
+  $i: str-index($string, $separator);
+  @if $i != null {
+    @return append(
+      str-slice($string, 1, $i - 1),
+      str-split(str-slice($string, $i + 1), $separator)
+    );
+  }
+  @return $string
+}
+
+@each $ratio in ('16-9', '2-1') {
+  $ratioNumbers: str-split($ratio, '-');
+  @debug($ratioNumbers);
+  $value: 100 / to-int(nth($ratioNumbers, 1)) * to-int(nth($ratioNumbers, 2));
+  @debug($value);
+  #{'.' + $global-objects-namespace + $object + '--' + $ratio} {
+    @extend .u-pos-relative;
+
+    &:before {
+      @extend %u-block;
+      @extend #{'%u-width-100' + $global-unit-percent};
+      @extend %u-content-none;
+      padding-top: #{$value * 1%};
+    }
+
+    > * {
+      @extend %u-pos-absolute;
+    }
+
+  }
+}
+
+
+.test {
+    @extend .o-aspect-ratio--16-9;
 }
