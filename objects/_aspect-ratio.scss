@@ -1,47 +1,28 @@
 /**
  * .o-aspect-ratio
+ *
+ * Specify an aspect ratio for an element, and it will
+ * figure out it's own height based off it's width. E.g.
+ * <div class="o-aspect-ratio--16-9"></div>
  */
 
 $object: 'aspect-ratio';
 
-// #{'.' + $global-objects-namespace + $object} {
-//   @extend .u-pos-relative;
-//
-//   &:before {
-//     @extend %u-block;
-//     @extend #{'%u-width-100' + $global-unit-percent};
-//     @extend %u-content-none;
-//   }
-//
-//   > * {
-//     @extend %u-pos-absolute;
-//   }
-//
-//   @each $ratio in (50, 100) {
-//
-//     &--#{$ratio} {
-//       &:before {
-//         padding-top: #{$ratio * 1%};
-//       }
-//     }
-//   }
-// }
-
-@each $ratio in ('16-9', '2-1', '1-1', '1-2', '9-16') {
+@each $ratio in ('16-9', '2-1', '1-1') {
 
   #{'.' + $global-objects-namespace + $object + '--' + $ratio} {
-    @extend .u-pos-relative;
+    @extend %u-pos-relative;
 
     &:before {
       @extend %u-block;
-      @extend #{'%u-width-100' + $global-unit-percent};
       @extend %u-content-none;
-      padding-top: #{getPercentFromList(str-split($ratio, '-')) * 1%};
+      @extend #{'%u-width-100' + $global-unit-percent};
+      padding-top: #{getPercentFromList(split($ratio, '-')) * 1%};
     }
 
     > * {
       @extend %u-pos-absolute;
     }
-
   }
+
 }

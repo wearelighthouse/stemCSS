@@ -1,5 +1,5 @@
 
-@each $value in ('absolute', 'relative') {
+@each $value in (absolute, relative) {
   @include make-utility((
     alias: 'pos-' + $value,
     class: true,
@@ -12,7 +12,7 @@
   top: 0
 ));
 
-@each $value in ('50', '100') {
+@each $value in (50, 100) {
   @include make-utility((
     alias: 'top-' + $value + $global-unit-percent,
     class: true,
@@ -25,7 +25,7 @@
   left: 0
 ));
 
-@each $value in ('50', '100') {
+@each $value in (50, 100) {
   @include make-utility((
     alias: 'left-' + $value + $global-unit-percent,
     class: true,

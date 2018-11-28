@@ -1,3 +1,6 @@
+/**
+ * Return the base to the exponent power, that is, baseᵉˣᵖᵒⁿᵉⁿᵗ
+ */
 @function pow($base, $exponent) {
   $value: 1;
 
@@ -10,6 +13,12 @@
   @return $value;
 }
 
+
+/**
+ * Get a percentage value of the second value from a first, in a list.
+ *
+ * E.g. getPercentFromList((16, 4)) returns 25, as 4 is 25% of 16
+ */
 @function getPercentFromList($list) {
-  @return 100 / to-int(nth($list, 1)) * to-int(nth($list, 2));
+  @return 100 / parseInt(nth($list, 1)) * parseInt(nth($list, 2));
 }

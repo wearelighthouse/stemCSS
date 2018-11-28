@@ -8,6 +8,7 @@
   @return $string;
 }
 
+
 @function toString($list, $glue: '', $is-nested: false) {
   $result: null;
 
@@ -26,6 +27,7 @@
   @return $result;
 }
 
+
 @function stripUnit($number) {
   @if type-of($number) == 'number' and not unitless($number) {
     @return $number / ($number * 0 + 1);
@@ -34,15 +36,21 @@
   @return $number;
 }
 
+
 @function toPx($number) {
   @return $number + 0px;
 }
+
 
 @function toRem($number) {
   @return $number + 0rem;
 }
 
-@function str-split($string, $separator) {
+
+/**
+ * Split a string into a list of strings, using a specified separator character.
+ */
+@function split($string, $separator) {
   $i: str-index($string, $separator);
   @if $i != null {
     @return append(
@@ -53,7 +61,14 @@
   @return $string;
 }
 
-@function to-int($string) {
+
+/**
+ * Convert a string into an integer.
+ *
+ * String must be digits-only.
+ * Only works with positive numbers.
+ */
+@function parseInt($string) {
   $int: 0;
   @for $i from 1 through str-length($string) {
     $char: str-slice($string, $i, $i);
