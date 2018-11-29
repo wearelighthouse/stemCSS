@@ -1,0 +1,51 @@
+
+@each $direction in (row, row-reverse, column, column-reverse) {
+  @include make-utility((
+      alias: 'fd-' + $direction,
+      flex-direction: $direction
+  ));
+}
+
+@each $wrap in (nowrap, wrap, wrap-reverse) {
+  @include make-utility((
+    alias: 'fw-' + $wrap,
+    flex-wrap: $wrap
+  ));
+}
+
+@each $direction in (row, row-reverse, column, column-reverse) {
+  @each $wrap in (nowrap, wrap, wrap-reverse) {
+    @include make-utility((
+      alias: 'ff-' + $direction + '-' + $wrap,
+      flex-flow: $direction + ' ' + $wrap
+    ));
+  }
+}
+
+@each $value in (flex-start, flex-end, center, space-between, space-around) {
+  @include make-utility((
+    alias: 'jc-' + $value,
+    class: true,
+    justify-content: $value
+  ));
+}
+
+@each $value in (flex-start, flex-end, center, stretch, baseline) {
+  @include make-utility((
+    alias: 'ai-' + $value,
+    class: true,
+    align-items: $value
+  ));
+}
+
+@each $value in (0, 1) {
+  @include make-utility((
+    alias: 'fs-' + $value,
+    flex-shrink: $value
+  ));
+
+  @include make-utility((
+    alias: 'fg-' + $value,
+    flex-grow: $value
+  ));
+}
