@@ -12,7 +12,7 @@
   background-repeat: no-repeat
 ));
 
-@each $value in ('cover', 'contain') {
+@each $value in (cover, contain) {
   @include make-utility((
     alias: 'bgsize-' + $value,
     background-size: $value

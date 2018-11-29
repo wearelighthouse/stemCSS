@@ -1,7 +1,19 @@
 
-@each $value in ('auto', 'flex', 'grid', 'block', 'none') {
+$aliases: (
+  'auto',
+  'flex',
+  'inline-flex',
+  'inline',
+  'inline-block',
+  'grid',
+  'block',
+  'display-none'
+);
+
+@each $alias in $aliases  {
+  $value: strReplace($alias, 'display-');
   @include make-utility((
-    alias: $value,
+    alias: $alias,
     class: true,
     display: unquote($value)
   ));
