@@ -7,6 +7,6 @@ $component: 'button';
 #{'.' + $global-components-namespace + $component} {
   @extend %u-mh-auto;
   // @extend .u-mv-auto;
-  @extend %u-ovy-hidden;
   @extend %u-translateX-50pc--from-medium--upto-large;
+  @extend %u-ov-y-hidden;
 }

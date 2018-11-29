@@ -50,7 +50,7 @@
 /**
  * Split a string into a list of strings, using a specified separator character.
  */
-@function split($string, $separator) {
+@function str-split($string, $separator) {
   $i: str-index($string, $separator);
   @if $i != null {
     @return append(

@@ -17,7 +17,7 @@ $object: 'aspect-ratio';
       @extend %u-block;
       @extend %u-content-none;
       @extend #{'%u-width-100' + $global-unit-percent};
-      padding-top: #{getPercentFromList(split($ratio, '-')) * 1%};
+      padding-top: #{getPercentFromList(str-split($ratio, '-')) * 1%};
     }
 
     > * {
