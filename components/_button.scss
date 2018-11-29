@@ -9,4 +9,5 @@ $component: 'button';
   // @extend .u-mv-auto;
   @extend %u-translateX-50pc--from-medium--upto-large;
   @extend %u-ov-y-hidden;
+  background-color: $color-orange;
 }
