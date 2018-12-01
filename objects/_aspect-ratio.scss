@@ -8,16 +8,16 @@
 
 $object: 'aspect-ratio';
 
-@each $ratio in ('16-9', '2-1', '1-1') {
+@each $h, $v in (16:9, 2:1, 1:1) {
 
-  #{'.' + $global-objects-namespace + $object + '--' + $ratio} {
+  #{'.' + $global-objects-namespace + $object + '--' + $h + '-' + $v} {
     @extend %u-pos-relative;
 
     &:before {
       @extend %u-block;
       @extend %u-content-none;
       @extend #{'%u-width-100' + $global-unit-percent};
-      padding-top: #{getPercentFromList(str-split($ratio, '-')) * 1%};
+      padding-top: #{getPercentFromList(($h, $v)) * 1%};
     }
 
     > * {

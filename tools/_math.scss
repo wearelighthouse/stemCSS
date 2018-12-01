@@ -20,5 +20,5 @@
  * E.g. getPercentFromList((16, 4)) returns 25, as 4 is 25% of 16
  */
 @function getPercentFromList($list) {
-  @return 100 / parseInt(nth($list, 1)) * parseInt(nth($list, 2));
+  @return (100 / nth($list, 1) * nth($list, 2));
 }
