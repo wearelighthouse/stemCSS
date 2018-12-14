@@ -1,20 +1,8 @@
-// Tools
-@import 'tools/_import';
-
-// Settings
-@import 'settings/_import';
-
-// Base
-@import 'base/_import';
-
-// Mapped Utilities
-@import 'utilities/_import';
-
-// Objects
-@import 'objects/_import';
-
-// Components
-@import 'components/_import';
-
-// Interactions
-@import 'interactions/_import';
+@import
+'tools/_import',
+'settings/_import',
+'base/_import',
+'utilities/_import',
+'objects/_import',
+'components/_import',
+'interactions/_import';
