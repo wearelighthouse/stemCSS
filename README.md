@@ -9,8 +9,8 @@ Class that produces a single `value: property`.
 _In some circumstances_ - like `mh` (`margin-left`, `margin-right`), a utility produces two properties.
 ```
 .u-mh-auto {
-  margin-left: auto; 
-  margin-right: auto; 
+  margin-left: auto;
+  margin-right: auto;
 }
 ```
 
@@ -31,9 +31,9 @@ Follow the *BEM* methodology for their children _where appropriate_.
 ```
 .c-button {
   @extend .u-flex;
-  @extend .u-bgcolor-grey;
-  @extend .u-color-black;
-  
+  @extend .u-bgcolor-black;
+  @extend .u-color-white;
+
   &__icon {
     @extend .u-pos-absolute;
     @extend .u-left-50pc;
