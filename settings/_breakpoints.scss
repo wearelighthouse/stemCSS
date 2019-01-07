@@ -5,10 +5,8 @@ $breakpoint-smallest-font: $breakpoint-minimum;
 $breakpoint-largest-font: $breakpoint-large;
 
 $global-breakpoints: (
-
   landscape: 'screen and (orientation: landscape)',
   portrait: 'screen and (orientation: portrait)'
-
 );
 
 
@@ -32,6 +30,6 @@ $global-breakpoints: map-merge($global-breakpoints, make-width-breakpoints((
 )));
 
 // Print all the breakpoints to check they have been generated as intended
-@each $breakpoint-key, $breakpoint-value in $global-breakpoints {
- @debug $breakpoint-key + ': ' + $breakpoint-value;
-}
+// @each $breakpoint-key, $breakpoint-value in $global-breakpoints {
+//  @debug $breakpoint-key + ': ' + $breakpoint-value;
+// }
