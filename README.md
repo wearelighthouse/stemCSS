@@ -113,3 +113,15 @@ $global-breakpoints: map-merge($global-breakpoints, make-width-breakpoints((
 The main advantage of using "stemCSS style" breakpoints are that they are extending placeholders, rather than requiring additional individual CSS rules (i.e. you cannot `@extend` a utility from within a standard iotaCSS breakpoint).
 
 If, for example for consistency, you wanted to restrict the available widths to only 0%, 50%, or 100%, and had created those options in the `_width.scss` utility, then using `@extend %u-width-60pc--from-medium` would fail, whereas `@include breakpoint(from-medium) { width: 60% }` would obviously not.
+
+# Colors
+
+Text and background color utilities and are very similar to [iotaCSS's](https://www.iotacss.com/docs/utilities/color/). Colors are defined in [`settings/_colors.scss`](https://github.com/wearelighthouse/stemCSS/blob/master/settings/_colors.scss). E.g:
+```
+$color-very-dark: #111111;
+$auto-colors: (
+  'black': $color-very-dark
+}
+```
+Allows you to use both: `@extend %u-color-black;` and `@extend %u-bgcolor-black;`
+```
