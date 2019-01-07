@@ -1,0 +1,10 @@
+
+@include make-utility((
+  alias: 'width-100' + $global-unit-percent,
+  class: true,
+  width: 100%
+));
+
+@include make-utility((
+  width: 1px
+));

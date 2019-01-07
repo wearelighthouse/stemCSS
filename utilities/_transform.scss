@@ -1,0 +1,16 @@
+
+@each $property in (translateX, translateY) {
+  @each $value in (-100, -50, 0, 50, 100) {
+    @include make-utility((
+      alias: $property + '-' + $value + $global-unit-percent,
+      transform: $property + '(' + $value + '%)'
+    ));
+  }
+}
+
+@each $value in (-100, -50, 0, 50, 100) {
+  @include make-utility((
+    alias: 'translate-' + $value + $global-unit-percent,
+    transform: unquote('translate' + '(' + $value + '%, ' + $value + '%)')
+  ));
+}

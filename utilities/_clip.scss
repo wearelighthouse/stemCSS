@@ -1,0 +1,12 @@
+
+$clip-utilities: (
+  '0': 'rect(0, 0, 0, 0)',
+  '1px': 'rect(1px, 1px, 1px, 1px)'
+);
+
+@each $value-alias, $value in ($clip-utilities) {
+  @include make-utility((
+    alias: 'clip-' + $value-alias,
+    clip: $value
+  ));
+}

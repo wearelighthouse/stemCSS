@@ -1,0 +1,24 @@
+
+$columns: $global-grid-columns;
+
+@for $start from 1 through $columns {
+  @for $span from 1 through $columns {
+
+    // Only add object if the specified values don't "overflow" out of the grid
+    @if $start + $span < $columns + 2 {
+
+      @include make-utility((
+        alias: 'gc-' + $start + '-' + $span,
+        grid-column: $start + ' / span ' + $span,
+        width: 100%
+      ));
+
+    }
+
+  }
+}
+
+@include make-utility((
+  alias: 'gc-full',
+  grid-column: '1 / -1'
+));

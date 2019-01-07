@@ -1,0 +1,20 @@
+
+@each $key, $value in ($auto-colors) {
+  @include make-utility((
+    alias: 'bgcolor-' + $key,
+    class: true,
+    background-color: $value
+  ));
+}
+
+@include make-utility((
+  alias: 'bgrepeat-no',
+  background-repeat: no-repeat
+));
+
+@each $value in (cover, contain) {
+  @include make-utility((
+    alias: 'bgsize-' + $value,
+    background-size: $value
+  ));
+}

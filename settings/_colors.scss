@@ -1,0 +1,15 @@
+
+// Global color variables
+
+$color-white: #FFFFFF;
+$color-black: #000000;
+
+
+// Colors used to automatically generate font and background color utilities.
+
+$auto-colors: (
+  'white': $color-white,
+  'black': $color-black,
+  'transparent': transparent,
+  'currentColor': currentColor
+);

@@ -1,0 +1,19 @@
+
+@each $value in (capitalize, lowercase, uppercase) {
+  @include make-utility((
+    alias: $value,
+    text-transform: $value,
+    class: true
+  ));
+}
+
+@each $value in (left, center, right) {
+  @include make-utility((
+    text-align: $value
+  ));
+}
+
+@include make-utility((
+  alias: underline,
+  text-decoration: underline
+));

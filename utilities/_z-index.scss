@@ -1,0 +1,7 @@
+
+@for $i from -9 through 9 {
+  @include make-utility((
+    alias: 'z-index-' + $i,
+    z-index: $i
+  ));
+}

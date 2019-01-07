@@ -6,10 +6,32 @@ $breakpoint-largest-font: $breakpoint-large;
 
 $global-breakpoints: (
 
-  uptolarge:
-  'screen and (max-width: '$breakpoint-large - 1')',
-
-  fromlarge:
-  'screen and (min-width: '$breakpoint-large')',
+  landscape: 'screen and (orientation: landscape)',
+  portrait: 'screen and (orientation: portrait)'
 
 );
+
+
+/**
+ * User specified breakpoint "boundaries".
+ *
+ * Adds width breakpoints to the $global-breakpoints map with:
+ *
+ *         breakpoint-a (as a min-width media query)
+ *    from-breakpoint-a (as a min-width media query)
+ *    upto-breakpoint-a (as a max-width media query)
+ *
+ *  ... and all possible combinations of:
+ *
+ *    from-breakpoint-a--upto-breakpoint-b (where breakpoint b > breakpoint a)
+ */
+$global-breakpoints: map-merge($global-breakpoints, make-width-breakpoints((
+  small: 400px,
+  medium: 800px,
+  large: 1200px,
+)));
+
+// Print all the breakpoints to check they have been generated as intended
+@each $breakpoint-key, $breakpoint-value in $global-breakpoints {
+ @debug $breakpoint-key + ': ' + $breakpoint-value;
+}

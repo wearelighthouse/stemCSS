@@ -1,0 +1,80 @@
+
+@mixin make-class($utility-name, $properties) {
+
+  // For no breakpoint
+  .#{$utility-name} {
+    @extend %#{$utility-name};
+  }
+
+  // For every breakpoint
+  // Disabled because it creates a TON of styles in style.css, because can't extend within @medias.
+  //  @each $breakpoint-key, $breakpoint-value in $global-breakpoints {
+  //    .#{$utility-name + '--' + $breakpoint-key} {
+  //      @include breakpoint($breakpoint-key) {
+  //        @each $property, $value in $properties {
+  //          #{$property}: $value;
+  //        }
+  //      }
+  //    }
+  //  }
+
+}
+
+@mixin make-placeholder($utility-name, $properties) {
+
+  // For no breakpoint
+  %#{$utility-name} {
+    @each $property, $value in $properties {
+      #{$property}: $value;
+    }
+  }
+
+  // For every breakpoint
+  @each $breakpoint-key, $breakpoint-value in $global-breakpoints {
+    %#{$utility-name + $global-breakpoint-separator + $breakpoint-key} {
+      @include breakpoint($breakpoint-key) {
+        @each $property, $value in $properties {
+          #{$property}: $value;
+        }
+      }
+    }
+  }
+
+}
+
+@mixin make-utility($args) {
+
+  $class: map-use(
+    $args,
+    class,
+    false
+  );
+
+  $args: map-remove($args, class);
+
+  // If 'alias' key exists in $args, use that for the placeholder-name,
+  // otherwise use the key and value of the first property in $args
+  $utility-name: map-use(
+    $args,
+    alias,
+    first(map-keys($args)) + '-' + first(map-values($args))
+  );
+
+  $utility-name: $global-utilities-namespace + $utility-name;
+
+  $properties: map-remove($args, alias);
+
+  // Debug output to list off all the placeholders being made:
+  //  @if ($class) {
+  //    @debug('Making placeholder & class: ' + $utility-name);
+  //  } else {
+  //    @debug('Making placeholder: ' + $utility-name);
+  //  }
+
+  @if ($class) {
+    @include make-class($utility-name, $properties);
+  }
+
+  @include make-placeholder($utility-name, $properties);
+
+}

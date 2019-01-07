@@ -1,0 +1,16 @@
+/**
+ * If a map contains a specific key, return it's value, else return a fallback.
+ *
+ * For example:
+ *   $myMap: ('a': 'foo', 'b': 'bar');
+ *   property: map-use($myMap, a, 'that key is not in the map');
+ *
+ * Gives the results:
+ *    property: 'foo';
+ *
+ * If there were no 'a' key then the reults would be:
+ *    property: 'that key is not in the map';
+ */
+@function map-use($map, $key, $fallback) {
+  @return if(map-has-key($map, $key), map-get($map, $key), $fallback);
+}

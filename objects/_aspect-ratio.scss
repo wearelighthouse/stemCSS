@@ -1,30 +1,36 @@
 /**
  * .o-aspect-ratio
+ *
+ * Specify an aspect ratio for an element, and it will
+ * figure out it's own height based off it's width. E.g.
+ *     `<div class="o-aspect-ratio--16-9"></div>`
+ *
+ * To use a specific aspect ratio it must be included in the ratio list
+ *     `((horizontal:vertical), (...), (...), ...)`
  */
 
 $object: 'aspect-ratio';
 
-#{'.' + $global-objects-namespace + $object} {
-  @extend .u-pos-relative;
+@each $ratio in ((16:9), (2:1), (1:1)) {
 
-  &:before {
-    @extend .u-block;
-    @extend .u-width-100pc;
-    @extend %u-content-none;
-  }
+    $h: first(map-keys($ratio));
+    $v: first(map-values($ratio));
 
-  > * {
-    @extend .u-pos-absolute;
-  }
+    #{'.' + $global-objects-namespace + $object + '--' + $h + '-' + $v} {
+      @extend %u-pos-relative;
 
-  $ratios: 50, 100;
-
-  @each $ratio in $ratios {
-
-    &--#{$ratio} {
       &:before {
-        padding-top: #{$ratio * 1%};
+        @extend %u-block;
+        @extend %u-content-none;
+        @extend #{'%u-width-100' + $global-unit-percent};
+        padding-top: #{getPercentFromList(($h, $v)) * 1%};
+      }
+
+      > * {
+        @extend %u-pos-absolute;
       }
     }
-  }
+
+  //}
+
 }

@@ -8,6 +8,7 @@
   @return $string;
 }
 
+
 @function toString($list, $glue: '', $is-nested: false) {
   $result: null;
 
@@ -26,6 +27,7 @@
   @return $result;
 }
 
+
 @function stripUnit($number) {
   @if type-of($number) == 'number' and not unitless($number) {
     @return $number / ($number * 0 + 1);
@@ -34,9 +36,11 @@
   @return $number;
 }
 
+
 @function toPx($number) {
   @return $number + 0px;
 }
+
 
 @function toRem($number) {
   @return $number + 0rem;

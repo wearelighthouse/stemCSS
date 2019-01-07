@@ -1,7 +1,7 @@
 & {
   --ContainerWidth: 98vw;
 
-  @include breakpoint(fromlarge) {
+  @include breakpoint(from-large) {
     --ContainerWidth: calc(90vw);
   }
 }
