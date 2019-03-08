@@ -1,3 +1,26 @@
+# stemCSS
+An [OOCSS](https://www.keycdn.com/blog/oocss) Sass framework for rapidly creating organised, responsive, and consistent user interfaces. Originally based off an early fork of [iotaCSS](https://www.iotacss.com/), stemCSS has grown into it's own thing, with a focus on code reuse and flexible programatically created utilities.
+
+## Getting Started
+1. Download the [latest release]() _- this link is TODO when v1 is done!_
+
+```
+$ curl -o stemCSS.zip https://codeload.github.com/wearelighthouse/stemCSS/zip/master
+```
+
+2. Get the contents of it into an assets folder in your project. E.g.
+
+```
+$ unzip -q stemCSS.zip
+$ rm -r stemCSS.zip
+$ mkdir -p assets/scss
+$ cp -r stemCSS-master. assets/scss
+$ rm -r stemCSS-master
+```
+
+3. [Use something like gulp + gulp-sass to transpile the scss](https://css-tricks.com/gulp-for-beginners/).
+
+
 # Utilities
 Class or placeholder selectors that produces a single `value: property`.
 ```
