@@ -7,28 +7,21 @@
   ));
 }
 
-@include make-utility((
-  class: true,
-  top: 0
-));
+@each $property in (top, right, bottom, left) {
 
-@each $value in (50, 100) {
+  // E.g. `@extend %u-right;` To align to right
   @include make-utility((
-    alias: 'top-' + $value + $global-unit-percent,
     class: true,
-    top: $value + '%'
+    alias: $property,
+    $property: 0
   ));
-}
 
-@include make-utility((
-  class: true,
-  left: 0
-));
+  @each $value in (50, 100) {
+    @include make-utility((
+      alias: $property + '-' + $value + $global-unit-percent,
+      class: true,
+      $property: $value + '%'
+    ));
+  }
 
-@each $value in (50, 100) {
-  @include make-utility((
-    alias: 'left-' + $value + $global-unit-percent,
-    class: true,
-    top: $value + '%'
-  ));
 }

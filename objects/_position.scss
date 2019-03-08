@@ -1,30 +1,30 @@
 
 .o-absfill {
-  @extend .u-pos-absolute;
-  @extend .u-top-0;
-  @extend .u-left-0;
-  @extend .u-width-100pc;
-  @extend .u-height-100pc;
+  @extend %u-pos-absolute;
+  @extend %u-top;
+  @extend %u-left;
+  @extend %u-width-100pc;
+  @extend %u-height-100pc;
 }
 
 
 .o-abscentre {
-  @extend .u-pos-absolute;
-  @extend .u-top-50pc;
-  @extend .u-left-50pc;
+  @extend %u-pos-absolute;
+  @extend %u-top-50pc;
+  @extend %u-left-50pc;
   @extend %u-translate--50pc;
 }
 
 
 .o-abscentre-x {
-  @extend .u-pos-absolute;
-  @extend .u-left-50pc;
+  @extend %u-pos-absolute;
+  @extend %u-left-50pc;
   @extend %u-translateX--50pc;
 }
 
 
 .o-abscentre-y {
-  @extend .u-pos-absolute;
-  @extend .u-top-50pc;
+  @extend %u-pos-absolute;
+  @extend %u-top-50pc;
   @extend %u-translateY--50pc;
 }
