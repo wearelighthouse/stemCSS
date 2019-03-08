@@ -1,0 +1,13 @@
+$scope: 'wysiwyg';
+
+#{'.' + $global-scope-namespace + $scope} {
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+}
