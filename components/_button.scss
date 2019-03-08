@@ -1,9 +1,4 @@
-/**
- * .c-button
- */
 
-$component: 'button';
-
-#{'.' + $global-components-namespace + $component} {
+.c-button {
   @extend %u-mh-auto;
 }

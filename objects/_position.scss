@@ -1,10 +1,5 @@
-/**
- * .o-absfill
- */
 
-$object: 'absfill';
-
-#{'.' + $global-objects-namespace + $object} {
+.o-absfill {
   @extend .u-pos-absolute;
   @extend .u-top-0;
   @extend .u-left-0;
@@ -13,39 +8,23 @@ $object: 'absfill';
 }
 
 
-/**
- * .o-abscentre
- */
-
-$object: 'abscentre';
-
-#{'.' + $global-objects-namespace + $object} {
+.o-abscentre {
   @extend .u-pos-absolute;
   @extend .u-top-50pc;
   @extend .u-left-50pc;
   @extend %u-translate--50pc;
 }
 
-/**
- * .o-abscentre-y
- */
 
-$object: 'abscentre-y';
-
-#{'.' + $global-objects-namespace + $object} {
-  @extend .u-pos-absolute;
-  @extend .u-top-50pc;
-  @extend %u-translateY--50pc;
-}
-
-/**
- * .o-abscentre-x
- */
-
-$object: 'abscentre-x';
-
-#{'.' + $global-objects-namespace + $object} {
+.o-abscentre-x {
   @extend .u-pos-absolute;
   @extend .u-left-50pc;
   @extend %u-translateX--50pc;
+}
+
+
+.o-abscentre-y {
+  @extend .u-pos-absolute;
+  @extend .u-top-50pc;
+  @extend %u-translateY--50pc;
 }

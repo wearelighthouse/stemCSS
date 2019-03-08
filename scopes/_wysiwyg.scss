@@ -1,6 +1,5 @@
-$scope: 'wysiwyg';
 
-#{'.' + $global-scope-namespace + $scope} {
+.s-wysiwyg {
 
   p {
     margin-bottom: 1rem;
