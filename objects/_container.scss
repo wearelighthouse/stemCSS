@@ -1,10 +1,5 @@
-/**
- * .o-container
- */
 
-$object: 'container';
-
-#{'.' + $global-objects-namespace + $object} {
+.o-container {
   @extend .u-mh-auto;
   width: var(--ContainerWidth);
 }

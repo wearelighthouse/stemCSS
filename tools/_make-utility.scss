@@ -60,7 +60,7 @@
     first(map-keys($args)) + '-' + first(map-values($args))
   );
 
-  $utility-name: $global-utilities-namespace + $utility-name;
+  $utility-name: 'u-' + $utility-name;
 
   $properties: map-remove($args, alias);
 

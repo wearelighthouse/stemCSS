@@ -1,14 +1,15 @@
 /**
- * .o-dictate
  * Visually hidden, but provided for screen readers (dictated).
+ * Similar to WordPress .screen-reader-text:
+ * https://make.wordpress.org/accessibility/handbook/markup/the-css-class-screen-reader-text/
  */
-
-$object: 'dictate';
-
-#{'.' + $global-objects-namespace + $object} {
-  @extend .u-ov-hidden;
-  @extend .u-pos-absolute;
+.o-dicate {
+  @extend %u-ov-hidden;
+  @extend %u-pos-absolute;
   @extend %u-width-1px;
   @extend %u-height-1px;
   @extend %u-clip-1px;
+  border: 0;
+  padding: 0;
+  margin: -1px;
 }
