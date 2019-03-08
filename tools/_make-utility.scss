@@ -1,5 +1,5 @@
 
-@mixin make-class($utility-name, $properties) {
+@mixin make-class-from-placeholder($utility-name, $properties) {
 
   // For no breakpoint
   .#{$utility-name} {
@@ -71,10 +71,10 @@
   //    @debug('Making placeholder: ' + $utility-name);
   //  }
 
-  @if ($class) {
-    @include make-class($utility-name, $properties);
-  }
-
   @include make-placeholder($utility-name, $properties);
+
+  @if ($class) {
+    @include make-class-from-placeholder($utility-name, $properties);
+  }
 
 }
