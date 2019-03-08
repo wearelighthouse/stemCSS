@@ -2,6 +2,7 @@
 .s-wysiwyg {
 
   p {
+    @extend .type-p;
     margin-bottom: 1rem;
   }
 
