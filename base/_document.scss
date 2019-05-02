@@ -1,7 +1,7 @@
 body {
-  @extend .u-bgcolor-white;
+  @include fontScale(14, 22);
 
-  @import 
+  @import
   'vars-spacing',
   'vars-container';
 }
