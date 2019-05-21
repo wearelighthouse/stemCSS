@@ -73,6 +73,6 @@
       @content;
     }
   } @else {
-    @warn 'Breakpoint size ' + #{$size} + ' doesn\'t exist.';
+    @warn 'Breakpoint size \'#{$size}\' doesn\'t exist.';
   }
 }
