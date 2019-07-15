@@ -14,8 +14,8 @@ $ curl -o stemCSS.zip https://codeload.github.com/wearelighthouse/stemCSS/zip/ma
 $ unzip -q stemCSS.zip
 $ rm -r stemCSS.zip
 $ mkdir -p assets/scss
-$ cp -r stemCSS-master. assets/scss
-$ rm -r stemCSS-master
+$ cp -r stemCSS-master/ assets/scss
+$ rm -r stemCSS-master/
 ```
 
 3. [Use something like gulp + gulp-sass to transpile the scss](https://css-tricks.com/gulp-for-beginners/).
