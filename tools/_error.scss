@@ -1,0 +1,17 @@
+/**
+ * Gives an element an :after pseudo, with an error message.
+ *
+ * Used with gulp-replace or similar build tool to removed it for production, e.g:
+ * (just before gulp-clean-css)
+ * .pipe(replace(/(\/\* dev-only:start \*\/[^]*\/\* dev-only:end \*\/)/g, ''))
+ */
+@mixin error($message) {
+  &:after {
+    /* dev-only:start */
+    width: 100%;
+    font-family: monospace;
+    font-size: 14px;
+    content: 'Error: ' + $message;
+    /* dev-only:end */
+  }
+}
