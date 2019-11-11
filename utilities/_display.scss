@@ -17,3 +17,9 @@ $aliases: (
     display: unquote($value)
   ));
 }
+
+@include make-utility((
+  alias: border-box,
+  class: true,
+  box-sizing: border-box
+));
