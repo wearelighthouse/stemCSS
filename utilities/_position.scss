@@ -20,7 +20,7 @@
     @include make-utility((
       alias: $property + '-' + $value + $global-unit-percent,
       class: true,
-      $property: $value + '%'
+      $property: $value * 1%
     ));
   }
 
