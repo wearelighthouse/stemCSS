@@ -14,7 +14,7 @@ $ curl -o stemCSS.zip https://codeload.github.com/wearelighthouse/stemCSS/zip/ma
 $ unzip -q stemCSS.zip
 $ rm -r stemCSS.zip
 $ mkdir -p assets/scss
-$ cp -r stemCSS-master/ assets/scss/
+$ cp -r stemCSS-master/* assets/scss/
 $ rm -r stemCSS-master/
 ```
 
