@@ -147,4 +147,3 @@ $auto-colors: (
 }
 ```
 Allows you to use both: `@extend %u-color-black;` and `@extend %u-bgcolor-black;`
-```
