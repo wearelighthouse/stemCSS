@@ -9,7 +9,7 @@ $aliases: (
   'display-none'
 );
 
-@each $alias in $aliases  {
+@each $alias in $aliases {
   $value: strReplace($alias, 'display-');
   @include make-utility((
     alias: $alias,

@@ -1,0 +1,18 @@
+
+@include make-utility((
+  alias: rounded,
+  class: true,
+  border-radius: .25rem
+));
+
+@include make-utility((
+  alias: round,
+  class: true,
+  border-radius: 50%
+));
+
+@include make-utility((
+  alias: pill,
+  class: true,
+  border-radius: 1e3px
+));
