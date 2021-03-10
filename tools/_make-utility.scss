@@ -73,7 +73,7 @@
 
   @include make-placeholder($utility-name, $properties);
 
-  @if ($class) {
+  @if ($class or $global-everything-as-class) {
     @include make-class-from-placeholder($utility-name, $properties);
   }
 
