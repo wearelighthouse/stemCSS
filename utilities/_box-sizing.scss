@@ -1,0 +1,12 @@
+
+@include make-utility((
+  alias: border-box,
+  class: true,
+  box-sizing: border-box
+));
+
+@include make-utility((
+  alias: content-box,
+  class: true,
+  box-sizing: content-box
+));
