@@ -4,3 +4,9 @@
   class: true,
   pointer-events: none
 ));
+
+@include make-utility((
+  alias: 'events-all',
+  class: true,
+  pointer-events: all
+));
