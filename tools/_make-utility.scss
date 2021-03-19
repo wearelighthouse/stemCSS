@@ -1,6 +1,4 @@
-
 @mixin make-class-from-placeholder($utility-name, $properties) {
-
   // For no breakpoint
   .#{$utility-name} {
     @extend %#{$utility-name};
@@ -17,11 +15,9 @@
   //      }
   //    }
   //  }
-
 }
 
 @mixin make-placeholder($utility-name, $properties) {
-
   // For no breakpoint
   %#{$utility-name} {
     @each $property, $value in $properties {
@@ -39,11 +35,9 @@
       }
     }
   }
-
 }
 
 @mixin make-utility($args) {
-
   $class: map-use(
     $args,
     class,
@@ -76,5 +70,4 @@
   @if ($class or $global-everything-as-class) {
     @include make-class-from-placeholder($utility-name, $properties);
   }
-
 }
