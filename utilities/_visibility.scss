@@ -1,4 +1,3 @@
-
 @each $value in (hidden, visible) {
   @include make-utility((
     visibility: $value

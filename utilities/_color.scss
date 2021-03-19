@@ -1,4 +1,3 @@
-
 @each $name, $hex in ($auto-colors) {
   @include make-utility((
     alias: 'color-' + $name,

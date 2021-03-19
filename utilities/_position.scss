@@ -1,4 +1,3 @@
-
 @each $value in (absolute, relative) {
   @include make-utility((
     alias: 'pos-' + $value,
@@ -8,7 +7,6 @@
 }
 
 @each $property in (top, right, bottom, left) {
-
   // E.g. `@extend %u-right;` To align to right
   @include make-utility((
     class: true,
@@ -23,5 +21,4 @@
       $property: $value * 1%
     ));
   }
-
 }

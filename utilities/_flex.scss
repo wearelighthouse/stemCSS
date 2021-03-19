@@ -1,4 +1,3 @@
-
 @each $direction in (row, row-reverse, column, column-reverse) {
   @include make-utility((
     alias: 'fd-' + $direction,
