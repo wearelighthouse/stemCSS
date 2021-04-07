@@ -1,25 +1,24 @@
-@function strReplace($string, $search, $replace: '') {
+@function str-replace($string, $search, $replace: '') {
   $index: str-index($string, $search);
 
   @if $index {
-    @return str-slice($string, 1, $index - 1) + $replace + strReplace(str-slice($string, $index + str-length($search)), $search, $replace);
+    $before: str-slice($string, 1, $index - 1);
+    $after: str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    @return $before + $replace + $after;
   }
 
   @return $string;
 }
 
-
-@function toString($list, $glue: '', $is-nested: false) {
+@function to-string($list, $glue: '', $is-nested: false) {
   $result: null;
 
   @for $i from 1 through length($list) {
     $e: nth($list, $i);
 
     @if type-of($e) == list {
-      $result: $result#{toString($e, $glue, true)};
-    }
-
-    @else {
+      $result: $result#{to-string($e, $glue, true)};
+    } @else {
       $result: if($i != length($list) or $is-nested, $result#{$e}#{$glue}, $result#{$e});
     }
   }
@@ -27,8 +26,7 @@
   @return $result;
 }
 
-
-@function stripUnit($number) {
+@function strip-unit($number) {
   @if type-of($number) == 'number' and not unitless($number) {
     @return $number / ($number * 0 + 1);
   }
@@ -36,12 +34,12 @@
   @return $number;
 }
 
-
-@function toPx($number) {
+@function to-px($number) {
+  /* stylelint-disable-next-line length-zero-no-unit */
   @return $number + 0px;
 }
 
-
-@function toRem($number) {
+@function to-rem($number) {
+  /* stylelint-disable-next-line length-zero-no-unit */
   @return $number + 0rem;
 }

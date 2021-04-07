@@ -11,7 +11,7 @@ $aliases: (
 );
 
 @each $alias in $aliases {
-  $value: strReplace($alias, 'display-');
+  $value: str-replace($alias, 'display-');
   @include make-utility((
     alias: $alias,
     class: true,

@@ -6,7 +6,7 @@
  * .pipe(replace(/(\/\* dev-only:start \*\/[^]*\/\* dev-only:end \*\/)/g, ''))
  */
 @mixin error($message) {
-  &:after {
+  &::after {
     /* dev-only:start */
     width: 100%;
     font-family: monospace;

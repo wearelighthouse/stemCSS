@@ -1,4 +1,4 @@
-@mixin createPaddingUtils($value, $alias: $value) {
+@mixin create-padding-utils($value, $alias: $value) {
   @include make-utility((
     alias: 'p-' + $alias,
     class: true,
@@ -49,9 +49,9 @@
   @for $i from 1 through $global-size-range {
     $alias: $sign * $i;
     $value: $alias * $global-size-step;
-    @include createPaddingUtils($value, $alias);
+    @include create-padding-utils($value, $alias);
   }
 }
 
 // Create padding utilities for 0 (unitless)
-@include createPaddingUtils(0);
+@include create-padding-utils(0);

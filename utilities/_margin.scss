@@ -1,4 +1,4 @@
-@mixin createMarginUtils($value, $alias: $value) {
+@mixin create-margin-utils($value, $alias: $value) {
   @include make-utility((
     alias: 'm-' + $alias,
     class: true,
@@ -49,11 +49,11 @@
   @for $i from 1 through $global-size-range {
     $alias: $sign * $i;
     $value: $alias * $global-size-step;
-    @include createMarginUtils($value, $alias);
+    @include create-margin-utils($value, $alias);
   }
 }
 
 // Create margin utilities for auto (e.g. u-mx-auto), then 0 (unitless)
 @each $value in auto, 0 {
-  @include createMarginUtils($value);
+  @include create-margin-utils($value);
 }
