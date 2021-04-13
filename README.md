@@ -29,9 +29,9 @@ Class or placeholder selectors that produces a single `value: property`.
 .u-pos-absolute { position: absolute; }
 ```
 
-_In some circumstances_ - like `mh` (`margin-left`, `margin-right`), a utility produces two or more properties.
+_In some circumstances_ - like `mx` (`margin-left`, `margin-right`), a utility produces two or more properties.
 ```
-.u-mh-auto {
+.u-mx-auto {
   margin-left: auto;
   margin-right: auto;
 }
@@ -44,7 +44,7 @@ Utilities are "created" by passing a sass map (hence the double brackets) into t
 The items in the map can include an __alias__ to determine the name of the utility, a __class__ flag which creates the utility as a class which is always included in the transpiled CSS and can be used in the HTML (rather than just a placeholder which _cannot_ be used in the HTML, and is only in the transpiled CSS if it gets extended), and a __set of CSS properties__.
 ```
 @include make-utility((
-  alias: 'mh-auto',
+  alias: 'mx-auto',
   class: true,
   margin-left: auto,
   margin-right: auto
@@ -70,7 +70,7 @@ Never *visual* - you can't picture an object because it has no colours. If it ha
 Objects typically @extend utilities.
 ```
 .o-container {
-  @extend .u-mh-auto;
+  @extend .u-mx-auto;
   width: 90vw;
 }
 ```
@@ -81,7 +81,7 @@ Follow the *BEM* methodology for their children _where appropriate_.
 ```
 .c-button {
   @extend .u-flex;
-  @extend .u-bgcolor-black;
+  @extend .u-bg-color-black;
   @extend .u-color-white;
 
   &__icon {
@@ -146,4 +146,4 @@ $auto-colors: (
   'black': $color-very-dark
 }
 ```
-Allows you to use both: `@extend %u-color-black;` and `@extend %u-bgcolor-black;`
+Allows you to use both: `@extend %u-color-black;` and `@extend %u-bg-color-black;`
