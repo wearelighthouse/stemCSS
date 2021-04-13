@@ -6,7 +6,6 @@
  *  - But easy to swap out for either of those in full if required!
  */
 
-
 // Remove margins on body
 body {
   margin: 0;
@@ -47,7 +46,7 @@ a {
 button {
   margin: 0;
   padding: 0;
+  font: inherit;
   background: none;
   border: none;
-  font: inherit;
 }

@@ -1,7 +1,59 @@
+@mixin create-margin-utils($value, $alias: $value) {
+  @include make-utility((
+    alias: 'm-' + $alias,
+    class: true,
+    margin: $value
+  ));
 
-@include make-utility((
-  alias: 'mh-auto',
-  class: true,
-  margin-left: auto,
-  margin-right: auto
-));
+  @include make-utility((
+    alias: 'mx-' + $alias,
+    class: true,
+    margin-right: $value,
+    margin-left: $value
+  ));
+
+  @include make-utility((
+    alias: 'my-' + $alias,
+    class: true,
+    margin-top: $value,
+    margin-bottom: $value
+  ));
+
+  @include make-utility((
+    alias: 'mt-' + $alias,
+    class: true,
+    margin-top: $value
+  ));
+
+  @include make-utility((
+    alias: 'mr-' + $alias,
+    class: true,
+    margin-right: $value
+  ));
+
+  @include make-utility((
+    alias: 'mb-' + $alias,
+    class: true,
+    margin-bottom: $value
+  ));
+
+  @include make-utility((
+    alias: 'ml-' + $alias,
+    class: true,
+    margin-left: $value
+  ));
+}
+
+// Create margin utilities for -1...-16, then 1..16
+@each $sign in -1, 1 {
+  @for $i from 1 through $global-size-range {
+    $alias: $sign * $i;
+    $value: $alias * $global-size-step;
+    @include create-margin-utils($value, $alias);
+  }
+}
+
+// Create margin utilities for auto (e.g. u-mx-auto), then 0 (unitless)
+@each $value in auto, 0 {
+  @include create-margin-utils($value);
+}

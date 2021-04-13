@@ -1,11 +1,15 @@
-@mixin fontScale($smallest, $largest) {
-  font-size: #{toPx($smallest)};
+@mixin font-scale($smallest, $largest) {
+  font-size: #{to-px($smallest)};
 
-  @media (min-width: #{toPx($breakpoint-smallest-font)}) and (max-width: #{toPx($breakpoint-largest-font)}) {
-    font-size: calc(#{toPx($smallest)} + (#{stripUnit($largest)} - #{stripUnit($smallest)}) * ((100vw - #{toPx($breakpoint-smallest-font)}) / (#{stripUnit($breakpoint-largest-font)} - #{stripUnit($breakpoint-smallest-font)})));
+  @media (min-width: #{to-px($breakpoint-smallest-font)}) and (max-width: #{to-px($breakpoint-largest-font)}) {
+    $font-diff: strip-unit($largest) - strip-unit($smallest);
+    $breakpoint-diff: strip-unit($breakpoint-largest-font) - strip-unit($breakpoint-smallest-font);
+    $vw-minus-smallest-breakpoint: 100vw - #{to-px($breakpoint-smallest-font)};
+
+    font-size: calc(#{to-px($smallest)} + #{$font-diff} * (#{$vw-minus-smallest-breakpoint}) / #{$breakpoint-diff});
   }
 
-  @media (min-width: #{toPx($breakpoint-largest-font)}) {
-    font-size: #{toPx($largest)};
+  @media (min-width: #{to-px($breakpoint-largest-font)}) {
+    font-size: #{to-px($largest)};
   }
 }

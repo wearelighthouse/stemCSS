@@ -1,0 +1,57 @@
+@mixin create-padding-utils($value, $alias: $value) {
+  @include make-utility((
+    alias: 'p-' + $alias,
+    class: true,
+    padding: $value
+  ));
+
+  @include make-utility((
+    alias: 'px-' + $alias,
+    class: true,
+    padding-right: $value,
+    padding-left: $value
+  ));
+
+  @include make-utility((
+    alias: 'py-' + $alias,
+    class: true,
+    padding-top: $value,
+    padding-bottom: $value
+  ));
+
+  @include make-utility((
+    alias: 'pt-' + $alias,
+    class: true,
+    padding-top: $value
+  ));
+
+  @include make-utility((
+    alias: 'pr-' + $alias,
+    class: true,
+    padding-right: $value
+  ));
+
+  @include make-utility((
+    alias: 'pb-' + $alias,
+    class: true,
+    padding-bottom: $value
+  ));
+
+  @include make-utility((
+    alias: 'pl-' + $alias,
+    class: true,
+    padding-left: $value
+  ));
+}
+
+// Create padding utilities for -1...-16, then 1..16
+@each $sign in -1, 1 {
+  @for $i from 1 through $global-size-range {
+    $alias: $sign * $i;
+    $value: $alias * $global-size-step;
+    @include create-padding-utils($value, $alias);
+  }
+}
+
+// Create padding utilities for 0 (unitless)
+@include create-padding-utils(0);

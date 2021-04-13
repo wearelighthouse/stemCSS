@@ -9,7 +9,6 @@ $global-breakpoints: (
   portrait: 'screen and (orientation: portrait)'
 );
 
-
 /**
  * User specified breakpoint "boundaries".
  *
@@ -23,11 +22,14 @@ $global-breakpoints: (
  *
  *    from-breakpoint-a--upto-breakpoint-b (where breakpoint b > breakpoint a)
  */
-$global-breakpoints: map-merge($global-breakpoints, make-width-breakpoints((
-  small: 400px,
-  medium: 800px,
-  large: 1200px,
-)));
+$global-breakpoints: map-merge(
+  $global-breakpoints,
+  make-width-breakpoints((
+    small: 400px,
+    medium: 800px,
+    large: 1200px,
+  ))
+);
 
 // Print all the breakpoints to check they have been generated as intended
 // @each $breakpoint-key, $breakpoint-value in $global-breakpoints {

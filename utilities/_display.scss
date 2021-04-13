@@ -1,16 +1,17 @@
-
 $aliases: (
   'flex',
   'inline-flex',
   'inline',
   'inline-block',
   'grid',
+  'inline-grid',
   'block',
-  'display-none'
+  'display-none',
+  'contents'
 );
 
-@each $alias in $aliases  {
-  $value: strReplace($alias, 'display-');
+@each $alias in $aliases {
+  $value: str-replace($alias, 'display-');
   @include make-utility((
     alias: $alias,
     class: true,

@@ -1,8 +1,7 @@
-
 @each $direction in (row, row-reverse, column, column-reverse) {
   @include make-utility((
-      alias: 'fd-' + $direction,
-      flex-direction: $direction
+    alias: 'fd-' + $direction,
+    flex-direction: $direction
   ));
 }
 
@@ -30,6 +29,14 @@
   ));
 }
 
+@each $value in (center) {
+  @include make-utility((
+    alias: 'ji-' + $value,
+    class: true,
+    justify-items: $value
+  ));
+}
+
 @each $value in (flex-start, flex-end, center, stretch, baseline) {
   @include make-utility((
     alias: 'ai-' + $value,
@@ -37,6 +44,11 @@
     align-items: $value
   ));
 }
+
+@include make-utility((
+  alias: 'fb-0',
+  flex-basis: 0
+));
 
 @each $value in (0, 1) {
   @include make-utility((

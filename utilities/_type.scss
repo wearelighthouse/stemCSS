@@ -1,4 +1,3 @@
-
 @each $value in (capitalize, lowercase, uppercase) {
   @include make-utility((
     alias: $value,
