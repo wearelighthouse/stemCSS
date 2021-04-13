@@ -1,7 +1,3 @@
 body {
   @include font-scale(14, 22);
-
-  @import
-    'vars-spacing',
-    'vars-container';
 }
