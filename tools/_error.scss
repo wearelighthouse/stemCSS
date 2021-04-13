@@ -9,8 +9,8 @@
   &::after {
     /* dev-only:start */
     width: 100%;
-    font-family: monospace;
     font-size: 14px;
+    font-family: monospace;
     content: 'Error: ' + $message;
     /* dev-only:end */
   }

@@ -1,8 +1,8 @@
 /**
  * Get a percentage value of the second value from a first, in a list.
  *
- * E.g. getPercentFromList((16, 4)) returns 25, as 4 is 25% of 16
+ * E.g. get-percent-from-list((16, 4)) returns 25, as 4 is 25% of 16
  */
-@function getPercentFromList($list) {
+@function get-percent-from-list($list) {
   @return (100 / nth($list, 1) * nth($list, 2));
 }
